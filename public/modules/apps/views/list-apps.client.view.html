@@ -1,0 +1,38 @@
+<div data-ng-init="appsCtrl.loadAll()">
+    <section class="content-header">
+        <div class="col-lg-10">
+            <h2 translate="apps.APPS"></h2>
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-6 animated fadeIn">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h5><span data-ng-bind="appsCtrl.apps.length"></span> <span translate="apps.APPSLENGTH"></span></h5>
+                        <div class="box-tools pull-right">
+                            <a class="btn btn-primary" data-ng-click="appsCtrl.reload();">
+                                <i class="glyphicon glyphicon-refresh"></i>
+                            </a>
+                            <a class="btn btn-primary" data-ng-click="appsCtrl.create();">
+                                <i class="glyphicon glyphicon-plus-sign"></i>
+                            </a>
+                         </div>
+                    </div>
+                    <div class="box-body">
+                        <apps-list apps="appsCtrl.apps" selected="appsCtrl.selected" on-app-select="appsCtrl.select"></apps-list>
+                        <div class="alert alert-warning text-center" data-ng-hide="!appsCtrl.apps.$resolved || appsCtrl.apps.length" translate="global.NODATASETS"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div ui-view="view"></div>
+                <div ui-view="edit"></div>
+                <div ui-view="create"></div>
+            </div>
+        </div>
+	</section>
+</div>

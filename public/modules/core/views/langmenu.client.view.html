@@ -1,0 +1,11 @@
+<a href="" class="dropdown-toggle" data-toggle="dropdown">
+    <lang-icon style="margin-top:6px;" key="language.selectedId"></lang-icon>
+    <b class="caret"></b>
+</a>
+<ul role="menu" class="dropdown-menu">
+    <li ng-repeat="(sortid, langSorted) in language.available">
+        <a ng-click="language.set(langSorted.key, $event);">
+            <lang-icon style="margin-top:7px;" key="langSorted.key"></lang-icon> {{langSorted.key|translate}}
+        </a>
+    </li>
+</ul>

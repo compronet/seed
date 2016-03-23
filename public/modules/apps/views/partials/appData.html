@@ -1,0 +1,61 @@
+<div class="appData">
+    <div class="form-group">
+        <label class="col-lg-4 control-label" for="name" translate="global.LANGUAGE"></label>
+        <div class="col-lg-8">
+            <select ng-model="appDataCtrl.descLang">
+                <option ng-repeat="lang in appDataCtrl.languages" value="{{lang.key}}" >{{lang.key|translate}}</option>
+            </select>
+        </div>
+    </div>
+<div class="form-group">
+    <label class="col-lg-4 control-label" for="name" translate="global.NAME"></label>
+    <div class="col-lg-8">
+        <input type="text" data-ng-model="appDataCtrl.app.name" id="name" class="form-control"
+               placeholder="{{'global.NAME'|translate}}" required>
+    </div>
+</div>
+    <div class="form-group">
+        <label class="col-lg-4 control-label" for="version" translate="apps.VERSION"></label>
+        <div class="col-lg-8">
+            <input type="text" data-ng-model="appDataCtrl.app.version" id="version" class="form-control"
+                   placeholder="{{'apps.VERSION'|translate}}" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-4 control-label" for="version" translate="devices.DEVICE"></label>
+        <div class="col-lg-8">
+
+                <div class="input-group">
+                    <span ng-show="appDataCtrl.app.device._id && !appDataCtrl.loading" class="form-control">
+                        <span data-ng-bind="appDataCtrl.app.device.manufacturer"></span> <span data-ng-bind="appDataCtrl.app.device.model"></span>
+                    </span>
+                    <span disabled class="form-control" ng-show="!appDataCtrl.app.device._id && !appDataCtrl.loading" translate="apps.NORELATEDDEVICE"></span>
+                    <span class="input-group-btn">
+                        <a class="btn btn-default" data-ng-click="appDataCtrl.deviceSelection();">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </a>
+                    </span>
+                </div>
+            
+        </div>
+    </div>
+<div class="form-group">
+    <label class="col-lg-4 control-label" for="description"><span translate="global.DESCRIPTION"></span><lang-icon class="pull-right" key="appDataCtrl.descLang"></lang-icon></label>
+    <div class="col-lg-7">
+        <textarea rows="10" cols="5" data-ng-model="appDataCtrl.app.description[appDataCtrl.descLang]" id="description" class="form-control" placeholder="{{'global.DESCRIPTION'|translate}}"></textarea>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-4 control-label" for="port" translate="apps.PORT"></label>
+    <div class="col-lg-8">
+        <input type="text" data-ng-model="appDataCtrl.app.port" id="port" class="form-control" placeholder="{{'apps.PORT'|translate}}">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-4 control-label" for="path" translate="apps.PATH"></label>
+    <div class="col-lg-8">
+        <input type="text" data-ng-model="appDataCtrl.app.path" id="path" class="form-control"
+               placeholder="{{'apps.PATH'|translate}}" required>
+    </div>
+</div>
+</div>

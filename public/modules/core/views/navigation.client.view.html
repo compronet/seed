@@ -1,0 +1,41 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+	<!-- Sidebar user panel -->
+	<div class="user-panel">
+	  <div class="pull-left image">
+		<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+	  </div>
+	  <div class="pull-left info">
+		<p>Alexander Pierce</p>
+		<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+	  </div>
+	</div>
+	<!-- search form -->
+	<form action="#" method="get" class="sidebar-form">
+	  <div class="input-group">
+		<input type="text" name="q" class="form-control" placeholder="Search...">
+		<span class="input-group-btn">
+		  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+		</span>
+	  </div>
+	</form>
+	<!-- /.search form -->
+	<!-- sidebar menu: : style can be found in sidebar.less -->
+	<ul class="sidebar-menu">
+		<li class="header">MAIN NAVIGATION</li>
+		<li ng-class="{active: $uiRoute}" ui-route="/" >
+			<a href="/#!/home"><i class="fa fa-home pull-right"></i> <span translate="menu.HOME"></span></a>
+		</li>
+		<li class="treeview" data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" ng-class="{active: ($uiRoute)}">
+			<a href=""><i class="fa {{item.iconClass}}"></i> <span  translate="{{item.title}}"></span> <span ng-show="item.items" class="fa fa-angle-left pull-right"></span></a>
+			<ul class="treeview-menu" ng-class="{in: ($uiRoute)}">
+				<li role="presentation" data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+					<a role="menuitem" tabindex="-1" href="/#!/{{subitem.link}}" translate="{{subitem.title}}"></a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

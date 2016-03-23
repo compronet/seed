@@ -1,0 +1,51 @@
+<div class="" data-ng-init="deviceViewCtrl.init()">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="box box-info">
+				<div class="box-header">
+					<h5><span data-ng-bind="deviceViewCtrl.device.manufacturer"></span> <span data-ng-bind="deviceViewCtrl.device.model"></span></h5>
+					<div class="box-tools pull-right">
+						<a class="btn btn-primary" data-ng-click="deviceViewCtrl.edit();">
+							<i class="glyphicon glyphicon-edit"></i>
+						</a>
+						<a class="btn btn-primary" data-ng-click="deviceViewCtrl.remove();">
+							<i class="glyphicon glyphicon-trash"></i>
+						</a>
+						<a class="btn btn-primary" data-ng-click="deviceViewCtrl.close();">
+							<i class="glyphicon glyphicon-remove"></i>
+						</a>
+					</div>
+				</div>
+				<div class="box-body">
+					<table class="table table-striped">
+						<tbody>
+						<tr>
+							<td translate="devices.MANUFACTURER"></td><td data-ng-bind="deviceViewCtrl.device.manufacturer"></td>
+						</tr>
+						<tr>
+							<td translate="devices.MODEL"></td><td data-ng-bind="deviceViewCtrl.device.model"></td>
+						</tr>
+						<tr>
+							<td translate="global.DESCRIPTION"></td><td data-ng-bind="deviceViewCtrl.device.description[language.selectedId]"></td>
+						</tr>
+						<tr>
+							<td translate="devices.IP"></td><td data-ng-bind="deviceViewCtrl.device.ip"></td>
+						</tr>
+						<tr>
+							<td translate="apps.APPS"></td><td>
+							<span ng-if="deviceViewCtrl.apps.length>0 && !deviceViewCtrl.loading.apps" data-ng-bind="deviceViewCtrl.apps.length"></span>
+							<div ng-if="!deviceViewCtrl.apps.length && !deviceViewCtrl.loading.apps" class="label label-warning" translate="devices.NOAPPSRELATED"></div>
+						</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="box-footer">
+					<created date="deviceViewCtrl.device.created" user="deviceViewCtrl.device.user"></created>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

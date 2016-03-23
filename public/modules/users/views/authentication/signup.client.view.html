@@ -1,0 +1,59 @@
+<div class="content" data-ng-controller="AuthenticationController">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="box box-info">
+                <div class="box-body">
+                    <h3 class="m-t-none m-b" translate="user.SIGNIN"></h3>
+                    <form role="form" name="userForm" data-ng-submit="signup()" class="signin" novalidate autocomplete="off">
+                        <div class="form-group">
+                            <label for="firstName" translate="user.FIRSTNAME"></label>
+                            <input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="{{'user.FIRSTNAME'|translate}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" translate="user.LASTNAME"></label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="{{'user.LASTNAME'|translate}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" translate="user.EMAIL"></label>
+                            <input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="{{'user.EMAIL'|translate}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="username" translate="user.USERNAME"></label>
+                            <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="{{'user.USERNAME'|translate}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" translate="user.PASSWORD"></label>
+                            <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="{{'user.PASSWORD'|translate}}">
+                        </div>
+                        <div class="text-center form-group">
+                            <button type="submit" class="btn btn-large btn-primary" translate="user.SIGNUP"></button>
+                            &nbsp; <span translate="global.OR"></span> &nbsp;
+                            <a href="/#!/signin" class="show-signup" translate="user.SIGNIN"></a>
+                        </div>
+                        <div data-ng-show="error" class="text-center text-danger">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                        <div class="text-center">
+                            <h4 translate="user.SIGNUPSOCIALTITLE"></h4>
+                            <a href="/auth/facebook" class="btn btn-white">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a href="/auth/twitter" class="btn btn-white">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="/auth/google" class="btn btn-white">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                            <a href="/auth/linkedin" class="btn btn-white">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="/auth/github" class="btn btn-white">
+                                <i class="fa fa-github"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
