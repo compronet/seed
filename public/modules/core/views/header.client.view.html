@@ -10,9 +10,7 @@
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
-        <a href="/#!/#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-        </a>
+		<span minimaliza-sidebar></span>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav" data-ng-hide="authentication.user">
                 <li ui-route="/signup">
@@ -25,11 +23,6 @@
                 <!-- START lang menu -->
                 <li class="dropdown" ng-include="'/modules/core/views/langmenu.client.view.html'"></li>
                 <!-- END lang menu -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar">
-                        <i class="fa fa-gears"></i>
-                    </a>
-                </li>
             </ul>
             <ul class="nav navbar-nav" data-ng-show="authentication.user">
                 <li class="dropdown user user-menu">
@@ -55,11 +48,6 @@
                 <!-- START lang menu -->
                 <li class="dropdown" ng-include="'/modules/core/views/langmenu.client.view.html'"></li>
                 <!-- END lang menu -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar">
-                        <i class="fa fa-gears"></i>
-                    </a>
-                </li>
             </ul>
         </div>
     </nav>

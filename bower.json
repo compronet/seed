@@ -6,10 +6,10 @@
   ],
   "description": "Admin dashboard and control panel template",
   "main": [
-	"index2.html",
-	"dist/css/AdminLTE.css",
-	"dist/js/app.js",
-	"build/less/AdminLTE.less"
+    "index2.html",
+    "dist/css/AdminLTE.css",
+    "dist/js/app.js",
+    "build/less/AdminLTE.less"
   ],
   "keywords": [
     "css",
@@ -45,7 +45,8 @@
     "angular-ui-router": "~0.2.11",
     "metisMenu": "~2.0.2",
     "fontawesome": "~4.3.0",
-    "animate.css": "3.2.1"
+    "animate.css": "3.2.1",
+    "angular-gravatar": "^0.4.2"
   },
   "devDependencies": {
     "lodash": "^4.5.1",

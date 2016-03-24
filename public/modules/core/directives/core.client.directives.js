@@ -20,11 +20,11 @@
 		.directive('minimalizaSidebar', function($timeout) {
 			return {
 				restrict: 'A',
-				template: '<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="" ng-click="minimalize()"><i class="fa fa-bars"></i></a>',
+				template: '<a class="sidebar-toggle" href="" ng-click="minimalize()" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>',
 				controller: function($scope) {
 					$scope.minimalize = function() {
-						angular.element('body').toggleClass('mini-navbar');
-						if (!angular.element('body').hasClass('mini-navbar') || angular.element('body').hasClass('body-small')) {
+						angular.element('body').toggleClass('sidebar-collapse');
+						if (!angular.element('body').hasClass('sidebar-collapse') || angular.element('body').hasClass('body-small')) {
 							// Hide menu in order to smoothly turn on when maximize menu
 							angular.element('#side-menu').hide();
 							// For smoothly turn on menu
