@@ -24,7 +24,6 @@ module.exports = {
 				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/bootstrap/dist/js/bootstrap.min.js',
 				'public/lib/metisMenu/dist/metisMenu.min.js',
-				'public/lib/PACE/pace.min.js',
 				'public/scripts.js',
 				'public/lib/angular/angular.min.js',
 				'public/lib/angular-resource/angular-resource.min.js',
@@ -39,6 +38,7 @@ module.exports = {
 				'public/lib/angular-sanitize/angular-sanitize.min.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
 				'public/lib/angular-ui-utils/ui-utils.min.js',
+				'public/lib/angular-gravatar/build/angular-gravatar.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
 			]
 		},

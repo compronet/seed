@@ -176,7 +176,16 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-
+		concat: {
+			production: {
+				options: {
+					stripBanners: true
+				},
+				files: {
+					'public/dist/vendor.min.js': '<%= vendorJavaScriptFiles %>'
+				}
+			}
+		},
 		nodemon: {
 			dev: {
 				script: 'server.js',
@@ -200,6 +209,13 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		ngAnnotate: {
+			production: {
+				files: {
+					'public/dist/js/app.js': '<%= applicationJavaScriptFiles %>'
+				}
+			}
+		},
 		concurrent: {
 			default: ['nodemon', 'watch'],
 			debug: ['nodemon', 'watch', 'node-inspector'],
@@ -218,6 +234,18 @@ module.exports = function(grunt) {
 			secure: {
 				NODE_ENV: 'secure'
 			}
+		},
+		copy: {
+			main: {
+				files: [
+					// flattens results to a single level
+					{expand: true, flatten: true, src: ['public/lib/bootstrap/fonts/*'], dest: 'public/dist/fonts/'},
+					{expand: true, flatten: true, src: ['public/lib/fontawesome/fonts/*'], dest: 'public/dist/fonts/'},
+					{expand: true, flatten: true, src: ['public/modules/core/css/patterns/*'],
+						dest: 'public/dist/css/patterns/'},
+					{expand: true, cwd: 'public/modules/core/img', src: ['**/*'], dest: 'public/dist/img'}
+				],
+			},
 		},
 		mochaTest: {
 			src: watchFiles.mochaTests,
@@ -272,6 +300,14 @@ module.exports = function(grunt) {
 	// Making grunt default to force in order not to break the project.
 	grunt.option('force', true);
 
+	// A Task for loading the configuration object
+	grunt.task.registerTask('loadConfig', 'Task that loads the config into a grunt option.', function() {
+		require('./config/init')();
+		var config = require('./config/config');
+		grunt.config.set('vendorJavaScriptFiles', config.assets.lib.js);
+		grunt.config.set('applicationJavaScriptFiles', config.assets.js);
+	});
+
 	// Default task(s).
 	grunt.registerTask('default', ['lint', 'concurrent:default']);
 
@@ -285,7 +321,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'jscs']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['env:build', 'lint', 'less', 'image', 'uglify']);
+	grunt.registerTask('build', ['env:build', 'lint', 'loadConfig', 'ngAnnotate', 'less', 'image', 'uglify', 'concat',
+		'copy']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'lint', 'mochaTest', 'karma:unit']);

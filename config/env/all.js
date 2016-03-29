@@ -25,7 +25,6 @@ module.exports = {
 				'public/lib/jquery/dist/jquery.js',
 				'public/lib/bootstrap/dist/js/bootstrap.js',
 				'public/lib/metisMenu/dist/metisMenu.js',
-				'public/lib/PACE/pace.min.js',
 				'public/scripts.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js',

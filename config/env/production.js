@@ -6,13 +6,11 @@ module.exports = {
 	port: process.env.PORT || 3074,
 	assets: {
 		lib: {
-			css: ['public/dist/css/vendor.min.css'],
 			js: ['public/dist/vendor.min.js']
 		},
-		css: 'public/dist/css/application.min.css',
+		img: ['public/dist/img/*.png'],
 		js: [
-			'public/dist/application.min.js',
-			'public/dist/templates.min.js'
+			'public/dist/js/app.min.js',
 		],
 		tests: [
 			'public/lib/angular-mocks/angular-mocks.js',
