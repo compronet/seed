@@ -22,7 +22,8 @@
 
 			// Check if provider is already in use with current user
 			$scope.isConnectedSocialAccount = function(provider) {
-				return $scope.user.provider === provider || ($scope.user.additionalProvidersData && $scope.user.additionalProvidersData[provider]);
+				return $scope.user.provider === provider || ($scope.user.additionalProvidersData &&
+					$scope.user.additionalProvidersData[provider]);
 			};
 
 			// Remove a user social account
@@ -48,12 +49,16 @@
 					$scope.success = $scope.error = null;
 					var user = new Users($scope.user);
 
-					user.$update(function(response) {
-						$scope.success = true;
-						Authentication.user = response;
-					}, function(response) {
-						$scope.error = response.data.message;
-					});
+					user.$update(
+						function(response) {
+							$scope.success = true;
+							Authentication.user = response;
+						},
+
+						function(response) {
+							$scope.error = response.data.message;
+						}
+					);
 				} else {
 					$scope.submitted = true;
 				}

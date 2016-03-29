@@ -3,21 +3,20 @@
 /**
  * Module dependencies.
  */
-var //_ = require('lodash'),
-	errorHandler = require('../errors.server.controller'),
-	mongoose = require('mongoose'),
-	//passport = require('passport'),
-	User = mongoose.model('User'),
-	config = require('../../../config/config'),
-	nodemailer = require('nodemailer'),
-	async = require('async'),
-	crypto = require('crypto');
+var errorHandler = require('../errors.server.controller');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var config = require('../../../config/config');
+var nodemailer = require('nodemailer');
+var async = require('async');
+var crypto = require('crypto');
 
 /**
  * Forgot for reset password (forgot POST)
  */
 exports.forgot = function(req, res, next) {
 	async.waterfall([
+
 		// Generate random token
 		function(done) {
 			crypto.randomBytes(20, function(err, buffer) {
@@ -25,6 +24,7 @@ exports.forgot = function(req, res, next) {
 				done(err, token);
 			});
 		},
+
 		// Lookup user by username
 		function(token, done) {
 			if (req.body.username) {
@@ -54,6 +54,7 @@ exports.forgot = function(req, res, next) {
 				});
 			}
 		},
+
 		function(token, user, done) {
 			res.render('templates/reset-password-email', {
 				name: user.displayName,
@@ -63,6 +64,7 @@ exports.forgot = function(req, res, next) {
 				done(err, emailHTML, user);
 			});
 		},
+
 		// If valid email, send reset email using service
 		function(emailHTML, user, done) {
 			var smtpTransport = nodemailer.createTransport(config.mailer.options);
@@ -159,6 +161,7 @@ exports.reset = function(req, res, next) {
 				}
 			});
 		},
+
 		function(user, done) {
 			res.render('templates/reset-password-confirm-email', {
 				name: user.displayName,
@@ -167,6 +170,7 @@ exports.reset = function(req, res, next) {
 				done(err, emailHTML, user);
 			});
 		},
+
 		// If valid email, send reset email using service
 		function(emailHTML, user, done) {
 			var smtpTransport = nodemailer.createTransport(config.mailer.options);

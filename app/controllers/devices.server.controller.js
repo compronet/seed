@@ -3,10 +3,10 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-	errorHandler = require('./errors.server.controller'),
-	Device = mongoose.model('Device'),
-	_ = require('lodash');
+var mongoose = require('mongoose');
+var errorHandler = require('./errors.server.controller');
+var Device = mongoose.model('Device');
+var _ = require('lodash');
 
 /**
  * Create a Device
@@ -92,9 +92,11 @@ exports.deviceByID = function(req, res, next, id) {
 		if (err) {
 			return next(err);
 		}
+
 		if (!device) {
 			return next(new Error('Failed to load Device ' + id));
 		}
+
 		req.device = device;
 		next();
 	});
@@ -107,5 +109,6 @@ exports.hasAuthorization = function(req, res, next) {
 	if (req.device.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
+
 	next();
 };

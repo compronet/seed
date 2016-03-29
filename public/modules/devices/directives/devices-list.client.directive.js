@@ -25,6 +25,7 @@
 					}
 				}
 			},
+
 			controllerAs: 'devicesListCtrl',
 			bindToController: true,
 			templateUrl: 'modules/devices/views/partials/devicesList.html'

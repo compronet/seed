@@ -3,25 +3,24 @@
 /**
  * Module dependencies.
  */
-var fs = require('fs'),
-	//http = require('http'),
-	https = require('https'),
-	express = require('express'),
-	morgan = require('morgan'),
-	bodyParser = require('body-parser'),
-	session = require('express-session'),
-	compress = require('compression'),
-	methodOverride = require('method-override'),
-	cookieParser = require('cookie-parser'),
-	helmet = require('helmet'),
-	passport = require('passport'),
-	MongoStore = require('connect-mongo')({
-		session: session
-	}),
-	flash = require('connect-flash'),
-	config = require('./config'),
-	consolidate = require('consolidate'),
-	path = require('path');
+var fs = require('fs');
+var https = require('https');
+var express = require('express');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var compress = require('compression');
+var methodOverride = require('method-override');
+var cookieParser = require('cookie-parser');
+var helmet = require('helmet');
+var passport = require('passport');
+var MongoStore = require('connect-mongo')({
+	session: session
+});
+var flash = require('connect-flash');
+var config = require('./config');
+var consolidate = require('consolidate');
+var path = require('path');
 
 module.exports = function(db) {
 	// Initialize express app
@@ -51,6 +50,7 @@ module.exports = function(db) {
 		filter: function(req, res) {
 			return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
 		},
+
 		level: 9
 	}));
 
@@ -118,7 +118,8 @@ module.exports = function(db) {
 		require(path.resolve(routePath))(app);
 	});
 
-	// Assume 'not found' in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
+	// Assume 'not found' in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like,
+	// set properties, use instanceof etc.
 	app.use(function(err, req, res, next) {
 		// If the error object doesn't exists
 		if (!err) {

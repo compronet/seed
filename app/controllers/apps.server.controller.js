@@ -3,10 +3,10 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-	errorHandler = require('./errors.server.controller'),
-	App = mongoose.model('App'),
-	_ = require('lodash');
+var mongoose = require('mongoose');
+var errorHandler = require('./errors.server.controller');
+var App = mongoose.model('App');
+var _ = require('lodash');
 
 /**
  * Create a App
@@ -82,6 +82,7 @@ exports.list = function(req, res) {
 			findParams.device = req.query.deviceId;
 		}
 	}
+
 	App.find(findParams).sort('-created').populate('user', 'displayName').exec(function(err, apps) {
 		if (err) {
 			return res.status(400).send({
@@ -101,9 +102,11 @@ exports.appByID = function(req, res, next, id) {
 		if (err) {
 			return next(err);
 		}
+
 		if (!app) {
 			return next(new Error('Failed to load App ' + id));
 		}
+
 		req.app = app;
 		next();
 	});
@@ -116,5 +119,6 @@ exports.hasAuthorization = function(req, res, next) {
 	if (req.app.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
+
 	next();
 };

@@ -1,7 +1,9 @@
 (function() {
 	'use strict';
+
 	// Devices controller
-	angular.module('devices').controller('DeviceEditController', ['$state', '$stateParams', 'Authentication', 'Devices', '$q',
+	angular.module('devices').controller('DeviceEditController', ['$state', '$stateParams', 'Authentication', 'Devices',
+		'$q',
 		function($state, $stateParams, Authentication, Devices, $q) {
 			var deferred = $q.defer();
 			var vm = this;
@@ -39,13 +41,17 @@
 
 			function update() {
 				deferred.promise.then(function(device) {
-					device.$update(function() {
-						$state.go('devices.view', {
-							deviceId: device._id
-						});
-					}, function(errorResponse) {
-						vm.error = errorResponse.data.message;
-					});
+					device.$update(
+						function() {
+							$state.go('devices.view', {
+								deviceId: device._id
+							});
+						},
+
+						function(errorResponse) {
+							vm.error = errorResponse.data.message;
+						}
+					);
 				});
 			}
 		}

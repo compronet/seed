@@ -1,0 +1,8 @@
+{
+    "preset": "airbnb",
+	"validateIndentation": "\t",
+	"maximumLineLength": 120,
+	"requireTrailingComma": false,
+	"safeContextKeyword": false,
+	"requireSpacesInAnonymousFunctionExpression": false
+}

@@ -13,7 +13,9 @@
 				date: '=',
 				user: '='
 			},
-			controller: function() {},
+			controller: function() {
+			},
+
 			controllerAs: 'createdCtrl',
 			bindToController: true,
 			templateUrl: 'modules/core/views/partials/created.html'

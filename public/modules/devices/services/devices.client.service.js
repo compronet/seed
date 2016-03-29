@@ -32,11 +32,12 @@
 		function getApps(deviceId, inversed) {
 			var deferred = $q.defer();
 			Apps.getRestApi().query({
-				'deviceId': deviceId,
-				'inversed': inversed
+				deviceId: deviceId,
+				inversed: inversed
 			}, function(apps) {
 				deferred.resolve(apps);
 			});
+
 			return deferred.promise;
 		}
 

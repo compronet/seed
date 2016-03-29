@@ -33,14 +33,17 @@
 						}
 					});
 
-					modalInstance.result.then(function(selectedDevice) {
-						vm.app.device = selectedDevice;
-					}, function() {
-						$log.debug('Modal dismissed at: ' + new Date());
-					});
+					modalInstance.result.then(
+						function(selectedDevice) {
+							vm.app.device = selectedDevice;
+						},
 
+						function() {
+							$log.debug('Modal dismissed at: ' + new Date());
+						});
 				}
 			},
+
 			controllerAs: 'appDataCtrl',
 			bindToController: true,
 			templateUrl: 'modules/apps/views/partials/appData.html'

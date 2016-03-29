@@ -1,13 +1,14 @@
 (function() {
 	'use strict';
+
 	// Authentication controller Spec
 	describe('AuthenticationController', function() {
 		// Initialize global variables
-		var AuthenticationController,
-			scope,
-			$httpBackend,
-			$stateParams,
-			$location;
+		var AuthenticationController;
+		var scope;
+		var $httpBackend;
+		var $stateParams;
+		var $location;
 
 		beforeEach(function() {
 			jasmine.addMatchers({
@@ -45,7 +46,6 @@
 			$httpBackend.expectGET('modules/core/i18n/locale-de.json').respond({});
 		}));
 
-
 		it('$scope.signin() should login with a correct user and password', function() {
 			// Test expected GET request
 			$httpBackend.when('POST', '/auth/signin').respond(200, 'Fred');
@@ -61,7 +61,7 @@
 		it('$scope.signin() should fail to log in with nothing', function() {
 			// Test expected POST request
 			$httpBackend.expectPOST('/auth/signin').respond(400, {
-				'message': 'Missing credentials'
+				message: 'Missing credentials'
 			});
 
 			scope.signin();
@@ -78,7 +78,7 @@
 
 			// Test expected POST request
 			$httpBackend.expectPOST('/auth/signin').respond(400, {
-				'message': 'Unknown user'
+				message: 'Unknown user'
 			});
 
 			scope.signin();
@@ -105,7 +105,7 @@
 		it('$scope.signup() should fail to register with duplicate Username', function() {
 			// Test expected POST request
 			$httpBackend.when('POST', '/auth/signup').respond(400, {
-				'message': 'Username already exists'
+				message: 'Username already exists'
 			});
 
 			scope.signup();

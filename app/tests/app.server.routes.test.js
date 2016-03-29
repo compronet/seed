@@ -1,17 +1,19 @@
 'use strict';
 
-var //should = require('should'),
-	request = require('supertest'),
-	app = require('../../server'),
-	mongoose = require('mongoose'),
-	User = mongoose.model('User'),
-	App = mongoose.model('App'),
-	agent = request.agent(app);
+var request = require('supertest');
+var app = require('../../server');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var App = mongoose.model('App');
+var agent = request.agent(app);
 
 /**
  * Globals
  */
-var credentials, user, app, appObj;
+var credentials;
+var user;
+var app;
+var appObj;
 
 /**
  * App routes tests
@@ -195,7 +197,6 @@ describe('App CRUD tests', function() {
 
 		});
 	});
-
 
 	it('should be able to get a single App if not signed in', function(done) {
 		// Create new App model instance

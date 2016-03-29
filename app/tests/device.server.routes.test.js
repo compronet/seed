@@ -1,17 +1,18 @@
 'use strict';
 
-var //should = require('should'),
-	request = require('supertest'),
-	app = require('../../server'),
-	mongoose = require('mongoose'),
-	User = mongoose.model('User'),
-	Device = mongoose.model('Device'),
-	agent = request.agent(app);
+var request = require('supertest');
+var app = require('../../server');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var Device = mongoose.model('Device');
+var agent = request.agent(app);
 
 /**
  * Globals
  */
-var credentials, user, device;
+var credentials;
+var user;
+var device;
 
 /**
  * Device routes tests
@@ -197,7 +198,6 @@ describe('Device CRUD tests', function() {
 
 		});
 	});
-
 
 	it('should be able to get a single Device if not signed in', function(done) {
 		// Create new Device model instance

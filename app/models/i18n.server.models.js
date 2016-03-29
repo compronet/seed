@@ -13,5 +13,6 @@ exports.langSchema = function(type, strdefault) {
 	config.languages.forEach(function(lang) {
 		stringSchema[lang] = stringConf;
 	});
+
 	return stringSchema;
 };

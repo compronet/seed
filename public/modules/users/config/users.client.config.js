@@ -11,6 +11,7 @@
 						responseError: function(rejection) {
 							switch (rejection.status) {
 								case 401:
+
 									// Deauthenticate the global user
 									Authentication.user = null;
 
@@ -18,6 +19,7 @@
 									$location.path('signin');
 									break;
 								case 403:
+
 									// Add unauthorized behaviour
 									break;
 							}

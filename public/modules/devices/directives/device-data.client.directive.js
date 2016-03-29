@@ -20,6 +20,7 @@
 				vm.languages = languageService.getAvailable();
 				vm.descLang = languageService.getSelected();
 			},
+
 			controllerAs: 'deviceDataCtrl',
 			bindToController: true,
 			templateUrl: 'modules/devices/views/partials/deviceData.html'

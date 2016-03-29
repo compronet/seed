@@ -2,8 +2,8 @@
 	'use strict';
 	describe('HeaderController', function() {
 		//Initialize global variables
-		var scope,
-			HeaderController;
+		var scope;
+		var HeaderController;
 
 		// Load the main application module
 		beforeEach(module(ApplicationConfiguration.applicationModuleName));

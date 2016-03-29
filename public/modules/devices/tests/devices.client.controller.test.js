@@ -1,12 +1,13 @@
 (function() {
 	'use strict';
+
 	// Devices Controller Spec
 	describe('Devices Controller Tests', function() {
 		// Initialize global variables
-		var vm,
-			$httpBackend,
-			$stateParams,
-			$location;
+		var vm;
+		var $httpBackend;
+		var $stateParams;
+		var $location;
 
 		// The $resource service augments the response object with methods for updating and deleting the resource.
 		// If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
@@ -48,7 +49,7 @@
 
 		it('vm.loadAll() should create an array with at least one Device object fetched from XHR', inject(function(Devices) {
 			// Create sample Device using the Devices service
-			var sampleDevice = new (Devices.getRestApi())({
+			var sampleDevice = new(Devices.getRestApi())({
 				name: 'New Device'
 			});
 

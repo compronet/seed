@@ -3,10 +3,10 @@
 /**
  * Module dependencies.
  */
-var passport = require('passport'),
-	User = require('mongoose').model('User'),
-	path = require('path'),
-	config = require('./config');
+var passport = require('passport');
+var User = require('mongoose').model('User');
+var path = require('path');
+var config = require('./config');
 
 /**
  * Module init function.

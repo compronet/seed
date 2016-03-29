@@ -25,6 +25,7 @@
 					}
 				}
 			},
+
 			controllerAs: 'appsListCtrl',
 			bindToController: true,
 			templateUrl: 'modules/apps/views/partials/appsList.html'

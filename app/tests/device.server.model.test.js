@@ -3,15 +3,16 @@
 /**
  * Module dependencies.
  */
-var should = require('should'),
-	mongoose = require('mongoose'),
-	User = mongoose.model('User'),
-	Device = mongoose.model('Device');
+var should = require('should');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var Device = mongoose.model('Device');
 
 /**
  * Globals
  */
-var user, device;
+var user;
+var device;
 
 /**
  * Unit tests

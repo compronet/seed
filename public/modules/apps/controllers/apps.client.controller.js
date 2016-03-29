@@ -2,7 +2,8 @@
 	'use strict';
 
 	// Apps controller
-	angular.module('apps').controller('AppsController', ['_', '$state', '$stateParams', '$location', 'Authentication', 'Apps',
+	angular.module('apps').controller('AppsController', ['_', '$state', '$stateParams', '$location', 'Authentication',
+		'Apps',
 		function(_, $state, $stateParams, $location, Authentication, Apps) {
 			var vm = this;
 			vm.authentication = Authentication;
@@ -37,13 +38,14 @@
 			Apps.onNotification(function(app) {
 				if (app) {
 					var appUpdate = _.find(vm.apps, {
-						'_id': app._id
+						_id: app._id
 					});
 					if (appUpdate) {
 						_.assign(appUpdate, app);
 					} else {
 						vm.apps.push(app);
 					}
+
 					vm.selected = app;
 				} else {
 					reload();

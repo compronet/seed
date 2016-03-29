@@ -1,12 +1,13 @@
 (function() {
 	'use strict';
+
 	// Apps Controller Spec
 	describe('Apps Controller Tests', function() {
 		// Initialize global variables
-		var vm,
-			$httpBackend,
-			$stateParams,
-			$location;
+		var vm;
+		var $httpBackend;
+		var $stateParams;
+		var $location;
 
 		// The $resource service augments the response object with methods for updating and deleting the resource.
 		// If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
@@ -48,7 +49,7 @@
 
 		it('vm.loadAll() should create an array with at least one App object fetched from XHR', inject(function(Apps) {
 			// Create sample App using the Apps service
-			var sampleApp = new (Apps.getRestApi())({
+			var sampleApp = new(Apps.getRestApi())({
 				name: 'New App'
 			});
 

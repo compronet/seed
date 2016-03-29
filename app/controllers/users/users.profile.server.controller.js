@@ -3,19 +3,17 @@
 /**
  * Module dependencies.
  */
-var _ = require('lodash'),
-	errorHandler = require('../errors.server.controller.js');
-//mongoose = require('mongoose')
-//passport = require('passport'),
-//User = mongoose.model('User');
+var _ = require('lodash');
+var errorHandler = require('../errors.server.controller.js');
 
 /**
  * Update user details
  */
 exports.update = function(req, res) {
+
 	// Init Variables
-	var user = req.user;
 	//var message = null;
+	var user = req.user;
 
 	// For security measurement we remove the roles from the req.body object
 	delete req.body.roles;

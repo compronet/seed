@@ -20,15 +20,19 @@
 			function create() {
 				var newDevice = new(Devices.getRestApi())(vm.device);
 				newDevice.description = vm.device.description;
-				newDevice.$save(function(response) {
-					Devices.notify(response);
-					$state.go('devices.view', {
-						deviceId: response._id
-					});
-					clear();
-				}, function(errorResponse) {
-					vm.error = errorResponse.data.message;
-				});
+				newDevice.$save(
+					function(response) {
+						Devices.notify(response);
+						$state.go('devices.view', {
+							deviceId: response._id
+						});
+						clear();
+					},
+
+					function(errorResponse) {
+						vm.error = errorResponse.data.message;
+					}
+				);
 			}
 
 			function clear() {

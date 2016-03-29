@@ -3,10 +3,10 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-	validators = require('mongoose-validators'),
-	i18n = require('./i18n.server.models'),
-	Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var validators = require('mongoose-validators');
+var i18n = require('./i18n.server.models');
+var Schema = mongoose.Schema;
 
 /**
  * Device Schema

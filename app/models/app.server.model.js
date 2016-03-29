@@ -3,9 +3,9 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-	i18n = require('./i18n.server.models'),
-	Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var i18n = require('./i18n.server.models');
+var Schema = mongoose.Schema;
 
 /**
  * App Schema

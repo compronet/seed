@@ -20,16 +20,21 @@
 				if (vm.app.device) {
 					vm.app.device = vm.app.device._id;
 				}
+
 				var newApp = new(Apps.getRestApi())(vm.app);
-				newApp.$save(function(response) {
-					Apps.notify(response);
-					$state.go('apps.view', {
-						appId: response._id
-					});
-					clear();
-				}, function(errorResponse) {
-					vm.error = errorResponse.data.message;
-				});
+				newApp.$save(
+					function(response) {
+						Apps.notify(response);
+						$state.go('apps.view', {
+							appId: response._id
+						});
+						clear();
+					},
+
+					function(errorResponse) {
+						vm.error = errorResponse.data.message;
+					}
+				);
 			}
 
 			function clear() {

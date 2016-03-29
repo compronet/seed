@@ -1,5 +1,6 @@
 (function() {
 	'use strict';
+
 	// Apps controller
 	angular.module('apps').controller('AppEditController', ['$state', '$stateParams', 'Authentication', 'Apps', '$q',
 		function($state, $stateParams, Authentication, Apps, $q) {
@@ -38,13 +39,18 @@
 					} else {
 						app.device = null;
 					}
-					app.$update(function() {
-						$state.go('apps.view', {
-							appId: app._id
-						});
-					}, function(errorResponse) {
-						vm.error = errorResponse.data.message;
-					});
+
+					app.$update(
+						function() {
+							$state.go('apps.view', {
+								appId: app._id
+							});
+						},
+
+						function(errorResponse) {
+							vm.error = errorResponse.data.message;
+						}
+					);
 				});
 			}
 		}

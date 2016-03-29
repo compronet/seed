@@ -18,6 +18,7 @@
 				vm.iconsPath = appConstants.translation.iconsPath;
 				vm.iconsSuffix = appConstants.translation.iconsSuffix;
 			},
+
 			controllerAs: 'langIconCtrl',
 			bindToController: true,
 			templateUrl: 'modules/core/views/partials/langIcon.html'
