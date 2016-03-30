@@ -238,12 +238,34 @@ module.exports = function(grunt) {
 		copy: {
 			main: {
 				files: [
+
 					// flattens results to a single level
-					{expand: true, flatten: true, src: ['public/lib/bootstrap/fonts/*'], dest: 'public/dist/fonts/'},
-					{expand: true, flatten: true, src: ['public/lib/fontawesome/fonts/*'], dest: 'public/dist/fonts/'},
-					{expand: true, flatten: true, src: ['public/modules/core/css/patterns/*'],
-						dest: 'public/dist/css/patterns/'},
-					{expand: true, cwd: 'public/modules/core/img', src: ['**/*'], dest: 'public/dist/img'}
+					{
+						expand: true,
+						flatten: true,
+						src: ['public/lib/bootstrap/fonts/*'],
+						dest: 'public/dist/fonts/'
+					}, {
+						expand: true,
+						flatten: true,
+						src: ['public/lib/famfamfam-flags/dist/gif/*'],
+						dest: 'public/dist/img/flags/'
+					}, {
+						expand: true,
+						flatten: true,
+						src: ['public/lib/fontawesome/fonts/*'],
+						dest: 'public/dist/fonts/'
+					}, {
+						expand: true,
+						flatten: true,
+						src: ['public/modules/core/css/patterns/*'],
+						dest: 'public/dist/css/patterns/'
+					}, {
+						expand: true,
+						cwd: 'public/modules/core/img',
+						src: ['**/*'],
+						dest: 'public/dist/img'
+					}
 				],
 			},
 		},
@@ -322,7 +344,8 @@ module.exports = function(grunt) {
 
 	// Build task(s).
 	grunt.registerTask('build', ['env:build', 'lint', 'loadConfig', 'ngAnnotate', 'less', 'image', 'uglify', 'concat',
-		'copy']);
+		'copy'
+	]);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'lint', 'mochaTest', 'karma:unit']);

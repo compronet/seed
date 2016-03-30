@@ -20,7 +20,7 @@
 					key: 'tr'
 				}
 			},
-			iconsPath: '/lib/famfamfam-flags/dist/gif/',
+			iconsPath: '/dist/img/flags/',
 			iconsSuffix: '.gif'
 		},
 		copyright: 'compronet GmbH &copy; 2016',
