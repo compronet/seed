@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var should = require('should');
+var testUser = require('../../config/test.user');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var App = mongoose.model('App');
@@ -11,23 +12,14 @@ var App = mongoose.model('App');
 /**
  * Globals
  */
-var user;
-var app;
+var user = new User(testUser.user);
+var app = {};
 
 /**
  * Unit tests
  */
 describe('App Model Unit Tests:', function() {
 	beforeEach(function(done) {
-		user = new User({
-			firstName: 'Full',
-			lastName: 'Name',
-			displayName: 'Full Name',
-			email: 'test@test.com',
-			username: 'username',
-			password: 'password'
-		});
-
 		user.save(function() {
 			app = new App({
 				name: 'App Name',
