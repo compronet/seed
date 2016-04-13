@@ -14,6 +14,7 @@
   "dependencies": {
     "R2": "^1.4.3",
     "async": "~0.9.0",
+    "bluebird": "^3.3.5",
     "body-parser": "~1.9.0",
     "bower": "~1.3.8",
     "chalk": "~0.5",

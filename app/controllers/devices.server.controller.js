@@ -3,112 +3,74 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose');
-var errorHandler = require('./errors.server.controller');
-var Device = mongoose.model('Device');
-var _ = require('lodash');
+var Promise = require('bluebird');
+Promise.config({
+	// Enables all warnings except forgotten return statements.
+	warnings: {
+		wForgottenReturn: false
+	}
+});
+var mongoose = Promise.promisifyAll(require('mongoose'));
+var baseController = require('./base.controller');
+var Collection = mongoose.model('Device');
 
 /**
- * Create a Device
+ * Create a new element
  */
 exports.create = function(req, res) {
-	var device = new Device(req.body);
-	device.user = req.user;
-
-	device.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(device);
-		}
-	});
+	baseController.create(req, res, Collection);
 };
 
 /**
- * Show the current Device
+ * Show the current element
  */
 exports.read = function(req, res) {
-	res.jsonp(req.device);
+	res.jsonp(req.element);
 };
 
 /**
- * Update a Device
+ * Update an element
  */
 exports.update = function(req, res) {
-	var device = req.device;
-
-	device = _.extend(device, req.body);
-
-	device.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(device);
-		}
-	});
+	baseController.update(req, res);
 };
 
 /**
- * Delete an Device
+ * Delete an element
  */
 exports.delete = function(req, res) {
-	var device = req.device;
-
-	device.remove(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(device);
-		}
-	});
+	baseController.delete(req, res);
 };
 
 /**
- * List of Devices
+ * List of elements
  */
 exports.list = function(req, res) {
-	Device.find().sort('-created').populate('user', 'displayName').exec(function(err, devices) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(devices);
-		}
-	});
+	var limit = req.query.limit || '';
+	var skip = req.query.offset || 0;
+	var orderBy = req.query.orderBy || '-created';
+	var filter = req.query.filter ? baseController.makeFilter(JSON.parse(req.query.filter)) : {};
+
+	var query = Collection.find(filter).skip(skip).limit(limit).sort(orderBy).populate('user', 'displayName');
+
+	baseController.list(req, res, query);
 };
 
 /**
- * Device middleware
+ * Count of elements
  */
-exports.deviceByID = function(req, res, next, id) {
-	Device.findById(id).populate('user', 'displayName').exec(function(err, device) {
-		if (err) {
-			return next(err);
-		}
+exports.count = function(req, res) {
+	var filter = req.query.filter ? baseController.makeFilter(JSON.parse(req.query.filter)) : {};
+	var query = Collection.count(filter);
 
-		if (!device) {
-			return next(new Error('Failed to load Device ' + id));
-		}
-
-		req.device = device;
-		next();
-	});
+	baseController.count(req, res, query);
 };
 
 /**
- * Device authorization middleware
+ * Element middleware
  */
-exports.hasAuthorization = function(req, res, next) {
-	if (req.device.user.id !== req.user.id) {
-		return res.status(403).send('User is not authorized');
-	}
+exports.deviceByID = function(req, res, next) {
+	var query = Collection.findById(req.params.deviceId).populate('user', 'displayName');
 
-	next();
+	baseController.elementByID(req, res, next, query);
 };

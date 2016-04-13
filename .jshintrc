@@ -29,6 +29,7 @@
 		"$": false,
 		"ApplicationConfiguration": true,
 		"screenfull": true,
+		"Promise"   : true,
 		"jQuery": true
 	},
 	"predef": [ // Extra globals.

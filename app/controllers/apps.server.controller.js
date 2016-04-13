@@ -3,122 +3,75 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose');
-var errorHandler = require('./errors.server.controller');
-var App = mongoose.model('App');
-var _ = require('lodash');
+var Promise = require('bluebird');
+Promise.config({
+	// Enables all warnings except forgotten return statements.
+	warnings: {
+		wForgottenReturn: false
+	}
+});
+var mongoose = Promise.promisifyAll(require('mongoose'));
+var baseController = require('./base.controller');
+var Collection = mongoose.model('App');
 
 /**
- * Create a App
+ * Create a new element
  */
 exports.create = function(req, res) {
-	var app = new App(req.body);
-	app.user = req.user;
-
-	app.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(app);
-		}
-	});
+	baseController.create(req, res, Collection);
 };
 
 /**
- * Show the current App
+ * Show the current element
  */
 exports.read = function(req, res) {
-	res.jsonp(req.app);
+	res.jsonp(req.element);
 };
 
 /**
- * Update a App
+ * Update an element
  */
 exports.update = function(req, res) {
-	var app = req.app;
-	app = _.extend(app, req.body);
-	app.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(app);
-		}
-	});
+	baseController.update(req, res);
 };
 
 /**
- * Delete an App
+ * Delete an element
  */
 exports.delete = function(req, res) {
-	var app = req.app;
-
-	app.remove(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(app);
-		}
-	});
+	baseController.delete(req, res);
 };
 
 /**
- * List of Apps
+ * List of elements
  */
 exports.list = function(req, res) {
+	var limit = req.query.limit || '';
+	var skip = req.query.offset || 0;
+	var orderBy = req.query.orderBy || '-created';
+	var filter = req.query.filter ? baseController.makeFilter(JSON.parse(req.query.filter)) : {};
 
-	var findParams = {};
-	if (req.query.deviceId) {
-		if (req.query.inversed) {
-			findParams.device = {
-				$not: req.query.deviceId
-			};
-		} else {
-			findParams.device = req.query.deviceId;
-		}
-	}
+	var query = Collection.find(filter).skip(skip).limit(limit).sort(orderBy).populate('user', 'displayName');
 
-	App.find(findParams).sort('-created').populate('user', 'displayName').exec(function(err, apps) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(apps);
-		}
-	});
+	baseController.list(req, res, query);
 };
 
 /**
- * App middleware
+ * Count of elements
  */
-exports.appByID = function(req, res, next, id) {
-	App.findById(id).populate('user', 'displayName').populate('device', 'manufacturer model').exec(function(err, app) {
-		if (err) {
-			return next(err);
-		}
+exports.count = function(req, res) {
+	var filter = req.query.filter ? baseController.makeFilter(JSON.parse(req.query.filter)) : {};
+	var query = Collection.count(filter);
 
-		if (!app) {
-			return next(new Error('Failed to load App ' + id));
-		}
-
-		req.app = app;
-		next();
-	});
+	baseController.count(req, res, query);
 };
 
 /**
- * App authorization middleware
+ * Element middleware
  */
-exports.hasAuthorization = function(req, res, next) {
-	if (req.app.user.id !== req.user.id) {
-		return res.status(403).send('User is not authorized');
-	}
+exports.appByID = function(req, res, next) {
+	var query = Collection.findById(req.params.appId).populate('user', 'displayName')
+		.populate('device', 'manufacturer model');
 
-	next();
+	baseController.elementByID(req, res, next, query);
 };
