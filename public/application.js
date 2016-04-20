@@ -10,6 +10,12 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 	}
 ]);
 
+angular.module(ApplicationConfiguration.applicationModuleName).config(['$translateProvider',
+	function ($translateProvider) {
+		$translateProvider.useSanitizeValueStrategy('escape');
+	}
+]);
+
 //Then define the init function for starting up the application
 angular.element(document).ready(function() {
 	//Fixing facebook bug with redirect
