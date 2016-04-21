@@ -1,8 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR ||
-		'192.168.178.20') + '/compronetlan',
+	db: 'mongodb://localhost/startapp',
 	port: process.env.PORT || 3030,
 	assets: {
 		lib: {
