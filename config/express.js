@@ -8,24 +8,27 @@ var https = require('https');
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var session = require('express-session');
+
 var compress = require('compression');
 var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var helmet = require('helmet');
 var passport = require('passport');
-var MongoStore = require('connect-mongo')({
-	session: session
-});
+var session = require('express-session'),
+	MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 var config = require('./config');
 var consolidate = require('consolidate');
 var path = require('path');
 
+
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
-
+	var mongoStore = new MongoStore({
+		db: db.connection.db,
+		collection: config.sessionCollection
+	});
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
 		require(path.resolve(modelPath));
@@ -89,10 +92,13 @@ module.exports = function(db) {
 		saveUninitialized: true,
 		resave: true,
 		secret: config.sessionSecret,
-		store: new MongoStore({
-			db: db.connection.db,
-			collection: config.sessionCollection
-		})
+		cookie: {
+			maxAge: config.sessionCookie.maxAge,
+			httpOnly: config.sessionCookie.httpOnly,
+			secure: config.sessionCookie.secure && config.secure.ssl
+		},
+		key: config.sessionKey,
+		store: mongoStore
 	}));
 
 	// use passport session
@@ -116,6 +122,9 @@ module.exports = function(db) {
 	config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {
 		require(path.resolve(routePath))(app);
 	});
+
+	// Globbing socket files
+	config.sockets = config.getGlobbedPaths('./app/sockets/**/*.js');
 
 	// Assume 'not found' in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like,
 	// set properties, use instanceof etc.
@@ -160,6 +169,15 @@ module.exports = function(db) {
 		return httpsServer;
 	}
 
+	// Configure Socket.io
+	// Load the Socket.io configuration
+	var server = require('./socket.io')(app, mongoStore);
+
+	// Return server object
+	return server;
+
 	// Return Express server instance
-	return app;
+	//return app;
 };
+
+

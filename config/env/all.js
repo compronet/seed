@@ -11,6 +11,19 @@ module.exports = {
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',
+	sessionCookie: {
+		// session expiration is set by default to 24 hours
+		maxAge: 24 * (60 * 60 * 1000),
+		// httpOnly flag makes sure the cookie is only accessed
+		// through the HTTP protocol and not JS/browser
+		httpOnly: true,
+		// secure cookie should be turned to true to provide additional
+		// layer of security so that the cookie is set only when working
+		// in HTTPS mode.
+		secure: false
+	},
+	sessionKey: 'sessionId',
+	sockets:[],
 	assets: {
 		lib: {
 			css: [
@@ -40,7 +53,8 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-gravatar/build/angular-gravatar.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/lib/jquery-flot/jquery.flot.js'
 			]
 		},
 		css: [

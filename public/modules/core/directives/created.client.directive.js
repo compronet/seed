@@ -4,7 +4,6 @@
 (function() {
 	'use strict';
 	angular.module('core').directive('created', created);
-
 	function created() {
 		return {
 			restrict: 'E',
@@ -15,7 +14,6 @@
 			},
 			controller: function() {
 			},
-
 			controllerAs: 'createdCtrl',
 			bindToController: true,
 			templateUrl: 'modules/core/views/partials/created.html'
