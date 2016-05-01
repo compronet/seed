@@ -11,27 +11,23 @@ var session = ping.createSession ();
 var interval = 1000;
 
 
-module.exports = function(io) {
+module.exports = function() {
     Collection.find().exec(function (err, devices) {
         devices.forEach(function(device){
-            query_host(io,device.ip);
+            query_host(device.ip);
         });
     });
 };
 
-function query_host (io,target){
+function query_host (target){
     session.pingHost (target, function (error, target) {
         if (error){
             console.log (chalk.red(target + ": " + error.toString ()));
         }else{
             console.log (chalk.green(target + ": Alive"));
         }
-        io.sockets.emit('device', {
-            type: 'ping',
-            error:error,
-            created: Date.now()
-        });
-        setTimeout(function(){query_host(io,target);}, interval);
+        //TODO: send mqtt
+        setTimeout(function(){query_host(target);}, interval);
     });
 
 }
