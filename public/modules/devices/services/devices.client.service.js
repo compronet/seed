@@ -31,7 +31,7 @@
 
 		function getApps(deviceId, inversed) {
 			var deferred = $q.defer();
-			Apps.getRestApi().query({
+			$resource('apps/device/:deviceId').query({
 				deviceId: deviceId,
 				inversed: inversed
 			}, function(apps) {

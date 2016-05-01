@@ -1,26 +1,20 @@
-<div class="content" data-ng-init="devicesCtrl.loadAll()">
+<div class="ctrl-wrap" data-ng-init="devicesCtrl.loadAll()">
     <section class="content-header">
-        <div class="col-lg-10">
-            <h2 translate="devices.DEVICES"></h2>
-        </div>
-        <div class="col-lg-2">
-
-        </div>
+            <h1 translate="devices.DEVICES"></h1>
     </section>
     <section class="content">
         <div class="row">
             <div class="col-lg-6 animated fadeIn">
                 <div class="box box-info">
-                    <div class="box-header">
-                        <h5><span data-ng-bind="devicesCtrl.devices.length"></span> <span translate="devices.DEVICESLENGTH"></span></h5>
+                    <div class="box-header with-border"">
+                        <h3 class="box-title"><span data-ng-bind="devicesCtrl.devices.length"></span> <span translate="devices.DEVICESLENGTH"></span></h3>
                         <div class="box-tools pull-right">
-                            <a class="btn btn-primary" data-ng-click="devicesCtrl.reload();">
+                            <a class="btn btn-box-tool" data-ng-click="devicesCtrl.reload();">
                                 <i class="glyphicon glyphicon-refresh"></i>
                             </a>
-                            <a class="btn btn-primary" data-ng-click="devicesCtrl.create();">
+                            <a class="btn btn-box-tool" data-ng-click="devicesCtrl.create();">
                                 <i class="glyphicon glyphicon-plus-sign"></i>
                             </a>
-
                         </div>
                     </div>
                     <div class="box-body">

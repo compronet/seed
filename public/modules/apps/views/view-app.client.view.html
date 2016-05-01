@@ -1,17 +1,17 @@
-<div class="" data-ng-init="appViewCtrl.init()">
+<div class="ctrl-wrap" data-ng-init="appViewCtrl.init()">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="box box-info">
-				<div class="box-header">
-					<h5 data-ng-bind="appViewCtrl.app.name"></h5>
+				<div class="box-header with-border">
+					<h3 class="box-title" data-ng-bind="appViewCtrl.app.name"></h3>
 					<div class="box-tools pull-right">
-						<a class="btn btn-primary" data-ng-click="appViewCtrl.edit();">
+						<a class="btn btn-box-tool" data-ng-click="appViewCtrl.edit();">
 							<i class="glyphicon glyphicon-edit"></i>
 						</a>
-						<a class="btn btn-primary" data-ng-click="appViewCtrl.remove();">
+						<a class="btn btn-box-tool" data-ng-click="appViewCtrl.remove();">
 							<i class="glyphicon glyphicon-trash"></i>
 						</a>
-						<a class="btn btn-primary" data-ng-click="appViewCtrl.close();">
+						<a class="btn btn-box-tool" data-ng-click="appViewCtrl.close();">
 							<i class="glyphicon glyphicon-remove"></i>
 						</a>
 					</div>

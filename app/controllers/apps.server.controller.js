@@ -67,6 +67,15 @@ exports.count = function(req, res) {
 };
 
 /**
+ * List of elements
+ */
+exports.appByDeviceID = function(req, res) {
+	var query = Collection.find({'device':req.params.deviceId});
+	baseController.list(req, res, query);
+};
+
+
+/**
  * Element middleware
  */
 exports.appByID = function(req, res, next) {
