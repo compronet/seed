@@ -9,7 +9,6 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
       // Connect only when authenticated
       if (Authentication.user) {
         this.socket = io();
-        console.log('connecting to socket.io ...',this.socket);
       }
     };
     this.connect();
