@@ -29,4 +29,4 @@ config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
 
 require('./config/ping')(socketio());
 
-console.log('PING application started');
+console.log('MQTT application started');
