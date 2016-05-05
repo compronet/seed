@@ -9,7 +9,7 @@
 
 	function Devices($rootScope, $resource, $q, Socket) {
 		var onPingHandler;
-		Socket.on('app/device/ping', function (message) {
+		Socket.on(rootTopic+'/device/ping', function (message) {
 			if(angular.isFunction(onPingHandler)){
 				onPingHandler(message.ping);
 			}

@@ -53,7 +53,7 @@
 			Devices.onPing(function(ping) {
 				if(ping && vm.device){
 					if(ping.target===vm.device.ip){
-						console.log(ping.target);
+						console.log(ping);
 						//updateChart(ping.diff);
 					}
 				}

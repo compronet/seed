@@ -13,7 +13,7 @@ Promise.config({
 var mongoose = Promise.promisifyAll(require('mongoose'));
 var baseController = require('./base.controller');
 var Collection = mongoose.model('Device');
-
+var config = require('../../config/config');
 /**
  * Create a new element
  */
@@ -87,7 +87,7 @@ exports.deviceByID = function(req, res, next) {
 function publishDeviceUpdate(app){
 	try{
 		var client = app.get('mqtt');
-		client.publish('app/device/update',JSON.stringify({'message':'test'}));
+		client.publish(config.mqtt.rootTopic+'/device/update',JSON.stringify({'message':'test'}));
 	}catch(e){
 		console.log(e);
 	}

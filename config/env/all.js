@@ -36,7 +36,7 @@ module.exports = {
 		backend: this.pubsubsettings   //pubsubsettings is the object we created above
 	},
 	mqtt:{
-		topic:'seedApp'
+		rootTopic:'seedApp'
 	},
 	assets: {
 		lib: {

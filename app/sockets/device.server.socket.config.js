@@ -1,10 +1,11 @@
 'use strict';
-var mongoose = require('mongoose');
+var config = require('../../config/config');
+
 // Create the chat configuration
 module.exports = function (client, io, socket, sessionID) {
 
   client.on('connect', function () {
-    client.subscribe('app/device/#');
+    client.subscribe(config.mqtt.rootTopic+'/device/#');
   });
 
   client.on('message', function(topic,msgBuffer,data){

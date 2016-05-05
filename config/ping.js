@@ -13,7 +13,7 @@ var mqttSrv;
 var validTargets=[];
 var _ = require('lodash');
 var Promise = require('bluebird');
-
+var config = require('./config');
 
 Promise.config({
     // Enables all warnings except forgotten return statements.
@@ -25,7 +25,7 @@ Promise.config({
 module.exports = function (srv,client) {
     mqttSrv = srv;
     client.on('connect',function(){
-        client.subscribe('app/device/update');
+        client.subscribe(config.mqtt.rootTopic+'/device/update');
     });
     client.on('message', function(topic,buffer,data) {
         targetSync();
@@ -80,7 +80,7 @@ function query_host(target) {
             ping: {sent: sent, rcvd: rcvd, diff: diff, error: error, target: target},
             created: Date.now()
         });
-        msgData.topic = 'app/device/ping';
+        msgData.topic = config.mqtt.rootTopic+'/device/ping';
         msgData.payload = strPayload;
         msgData.qos = 0;
 
