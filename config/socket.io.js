@@ -9,6 +9,7 @@ var config = require('./config'),
   cookieParser = require('cookie-parser'),
   passport = require('passport'),
   socketio = require('socket.io'),
+  mqtt    = require('mqtt'),
   session = require('express-session');
   //MongoStore = require('connect-mongo')(session);
 
@@ -95,12 +96,40 @@ module.exports = function (app, mongoStore) {
       });
     });
   });
-
+  var parseCookie = cookieParser(config.sessionSecret);
   // Add an event listener to the 'connection' event
   io.on('connection', function (socket) {
-    config.sockets.forEach(function (socketConfiguration) {
-      require(path.resolve(socketConfiguration))(io, socket);
-    });
+    var handshake = socket.handshake;
+    if (handshake.headers.cookie) {
+      parseCookie(handshake, null, function(err) {
+        if(err){
+          console.log('socket.io connection: ',err.toString());
+        }else{
+          handshake.sessionID = handshake.signedCookies['connect.sid'];
+          socket.join(handshake.sessionID);
+          //TODO: extend mqtt.connect for user auth with app
+          /*var mqttOptions = {
+            port:1883,
+            username:'appuser',
+            password:'iloveapp',
+            clientId: 'serverjs_'+uuid.v1(),
+            clear:false
+          }*/
+          var mqttOptions = {
+            clientId: handshake.sessionID
+          }
+          var client  = mqtt.connect('mqtt://localhost',mqttOptions);
+          app.set('mqtt',client);
+          config.sockets.forEach(function (socketConfiguration) {
+            require(path.resolve(socketConfiguration))(client, io, socket, handshake.sessionID);
+          });
+        }
+
+      });
+    }else{
+      console.log('socket.io connection: missing handshake.cookie');
+    }
+
   });
 
   return server;

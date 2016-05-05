@@ -24,6 +24,20 @@ module.exports = {
 	},
 	sessionKey: 'sessionId',
 	sockets:[],
+	pubsubsettings : {
+		//using ascoltatore
+		type: 'mongo',
+		url: 'mongodb://localhost:27017/mqtt',
+		pubsubCollection: 'ascoltatori',
+		mongo: {}
+	},
+	moscaSettings : {
+		port: 1883,           //mosca (mqtt) port
+		backend: this.pubsubsettings   //pubsubsettings is the object we created above
+	},
+	mqtt:{
+		topic:'seedApp'
+	},
 	assets: {
 		lib: {
 			css: [

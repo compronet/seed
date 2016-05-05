@@ -33,6 +33,7 @@
 				}, function(device) {
 					vm.device = device;
 					vm.loading.device = false;
+
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;
 						vm.apps = apps;
@@ -48,12 +49,15 @@
 				});
 			}
 
-			// Add an event listener to the 'chatMessage' event
-			Socket.on('device', function (data) {
-				console.log(data);
-				//updateChart(data);
-			});
 
+			Devices.onPing(function(ping) {
+				if(ping && vm.device){
+					if(ping.target===vm.device.ip){
+						console.log(ping.target);
+						//updateChart(ping.diff);
+					}
+				}
+			});
 
 			// REALTIME
 			// -----------------------------------

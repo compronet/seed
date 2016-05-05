@@ -6,7 +6,7 @@ require('./config/init')();
 var config = require('./config/config');
 var mongoose = require('mongoose');
 var path = require('path');
-
+var mqtt = require('mqtt');
 /**
  * Main application entry file.
  * Please note that the order of loading is important.
@@ -26,7 +26,9 @@ config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
     require(path.resolve(modelPath));
 });
 
+var mqttSrv = require('./config/mosca')();
+var client  = mqtt.connect('mqtt://localhost');
 //start the ping monitoring for devices
-require('./config/ping')();
+require('./config/ping')(mqttSrv,client);
 
 console.log('MQTT application started');

@@ -5,13 +5,19 @@
 		.factory('Devices', Devices);
 
 	// manual dependency injection.
-	Devices.$inject = ['$rootScope', '$resource', '$q', 'Apps'];
+	Devices.$inject = ['$rootScope', '$resource', '$q', 'Socket'];
 
-	function Devices($rootScope, $resource, $q, Apps) {
-
+	function Devices($rootScope, $resource, $q, Socket) {
+		var onPingHandler;
+		Socket.on('app/device/ping', function (message) {
+			if(angular.isFunction(onPingHandler)){
+				onPingHandler(message.ping);
+			}
+		});
 		var service = {
 			getRestApi: getRestApi,
 			notify: notify,
+			onPing: onPing,
 			onNotification: onNotification,
 			getApps: getApps
 		};
@@ -43,6 +49,10 @@
 
 		function notify(device) {
 			$rootScope.$emit('deviceSelected', device);
+		}
+
+		function onPing(handler){
+			onPingHandler = handler;
 		}
 
 		function onNotification(handler) {

@@ -18,7 +18,10 @@ var Collection = mongoose.model('Device');
  * Create a new element
  */
 exports.create = function(req, res) {
-	baseController.create(req, res, Collection);
+	baseController.create(req, res, Collection, function(result){
+		publishDeviceUpdate(req.app);
+		res.jsonp(result);
+	});
 };
 
 /**
@@ -32,14 +35,20 @@ exports.read = function(req, res) {
  * Update an element
  */
 exports.update = function(req, res) {
-	baseController.update(req, res);
+	baseController.update(req, res, function(result){
+		publishDeviceUpdate(req.app);
+		res.jsonp(result);
+	});
 };
 
 /**
  * Delete an element
  */
 exports.delete = function(req, res) {
-	baseController.delete(req, res);
+	baseController.delete(req, res, function(result){
+		publishDeviceUpdate(req.app);
+		res.jsonp(result);
+	});
 };
 
 /**
@@ -74,3 +83,12 @@ exports.deviceByID = function(req, res, next) {
 
 	baseController.elementByID(req, res, next, query);
 };
+
+function publishDeviceUpdate(app){
+	try{
+		var client = app.get('mqtt');
+		client.publish('app/device/update',JSON.stringify({'message':'test'}));
+	}catch(e){
+		console.log(e);
+	}
+}

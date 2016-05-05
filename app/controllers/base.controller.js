@@ -22,81 +22,123 @@ exports.makeFilter = function(filter) {
 			newFilter[key] = new RegExp(filter[key], 'i');
 		}
 	}
-
 	return newFilter;
 };
 
 /**
  * Create a new element
  */
-exports.create = function(req, res, Collection) {
+exports.create = function(req, res, Collection, resolveFn, errFn) {
 	var element = new Collection(req.body);
 	element.user = req.user;
 
 	element.saveAsync()
 		.then(function(result) {
-			res.jsonp(result);
+			if(resolveFn){
+				resolveFn(result);
+			}else{
+				res.jsonp(result);
+			}
 		})
 		.catch(function(err) {
-			handleError(res, err);
+			if(errFn){
+				errFn();
+			}else{
+				handleError(res, err);
+			}
 		});
 };
 
 /**
  * Update an element
  */
-exports.update = function(req, res) {
+exports.update = function(req, res, resolveFn, errFn) {
 	var element = _.extend(req.element, req.body);
 
 	element.saveAsync()
 		.then(function(result) {
-			res.jsonp(result);
+			if(resolveFn){
+				resolveFn(result);
+			}else{
+				res.jsonp(result);
+			}
 		})
 		.catch(function(err) {
-			handleError(res, err);
+			if(errFn){
+				errFn();
+			}else{
+				handleError(res, err);
+			}
+
 		});
 };
 
 /**
  * Delete an element
  */
-exports.delete = function(req, res) {
+exports.delete = function(req, res, resolveFn, errFn) {
 	var element = req.element;
 
 	element.removeAsync()
 		.then(function(result) {
-			res.jsonp(result);
+			if(resolveFn){
+				resolveFn(result);
+			}else{
+				res.jsonp(result);
+			}
 		})
 		.catch(function(err) {
-			handleError(res, err);
+			if(errFn){
+				errFn();
+			}else{
+				handleError(res, err);
+			}
 		});
 };
 
 /**
  * List of elements
  */
-exports.list = function(req, res, query) {
+exports.list = function(req, res, query, resolveFn, errFn) {
 	query.execAsync()
 		.then(function(elements) {
-			res.jsonp(elements);
+			if(resolveFn){
+				resolveFn(elements);
+			}else{
+				res.jsonp(elements);
+			}
 		})
 		.catch(function(err) {
-			handleError(res, err);
+			if(errFn){
+				errFn();
+			}else{
+				handleError(res, err);
+			}
 		});
 };
 
 /**
  * Count of elements
  */
-exports.count = function(req, res, query) {
+exports.count = function(req, res, query, resolveFn, errFn) {
 	query.execAsync()
 		.then(function(count) {
-			res.jsonp({
+			var countRes = {
 				count: count
-			});
+			};
+			if(resolveFn){
+				resolveFn(countRes);
+			}else{
+				res.jsonp(countRes);
+			}
+
 		})
 		.catch(function(err) {
-			handleError(res, err);
+			if(errFn){
+				errFn();
+			}else{
+				handleError(res, err);
+			}
 		});
 };
 
@@ -109,7 +151,6 @@ exports.elementByID = function(req, res, next, query) {
 			if (!element) {
 				return next(new Error('Failed to load element'));
 			}
-
 			req.element = element;
 			next();
 		})
