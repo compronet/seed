@@ -53,8 +53,9 @@
 			Devices.onPing(function(ping) {
 				if(ping && vm.device){
 					if(ping.target===vm.device.ip){
+						//TODO: implement realtime chart for ping in device detail view
 						console.log(ping);
-						//updateChart(ping.diff);
+						updateChart(ping.diff);
 					}
 				}
 			});

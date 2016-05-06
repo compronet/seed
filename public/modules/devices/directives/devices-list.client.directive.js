@@ -18,7 +18,7 @@
 			controller: function() {
 				var vm = this;
 				vm.selectFn = selectFn;
-
+				//TODO: implement status check for ping in list view directive
 				function selectFn(item) {
 					if (_.isFunction(vm.onDeviceSelect())) {
 						vm.onDeviceSelect()(item);
