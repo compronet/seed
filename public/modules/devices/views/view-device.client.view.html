@@ -37,6 +37,9 @@
 							<div ng-if="!deviceViewCtrl.apps.length && !deviceViewCtrl.loading.apps" class="label label-warning" translate="devices.NOAPPSRELATED"></div>
 						</td>
 						</tr>
+						<tr ng-if="deviceViewCtrl.pingError">
+							<td colspan="2"><div class="alert alert-danger">{{deviceViewCtrl.pingError.message}}</div></td>
+						</tr>
 						</tbody>
 
 					</table>
