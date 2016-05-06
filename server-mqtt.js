@@ -29,6 +29,6 @@ config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
 var mqttSrv = require('./config/mosca')();
 var client  = mqtt.connect('mqtt://localhost');
 //start the ping monitoring for devices
-require('./config/ping')(mqttSrv,client);
+require('./app/utils/ping')(mqttSrv,client);
 
 console.log('MQTT application started');

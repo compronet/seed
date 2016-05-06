@@ -3,9 +3,8 @@
  */
 (function() {
 	'use strict';
-	angular.module('apps').directive('appData', appData);
-	appData.$inject = ['$log', '$uibModal', 'appConstants', 'languageService'];
-
+	angular.module('apps').directive('appData', ['$log', '$uibModal', 'appConstants', 'languageService',appData]);
+	//appData.$inject = ['$log', '$uibModal', 'appConstants', 'languageService'];
 	function appData($log, $uibModal, appConstants, languageService) {
 		return {
 			restrict: 'E',

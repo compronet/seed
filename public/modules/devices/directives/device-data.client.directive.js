@@ -3,9 +3,7 @@
  */
 (function() {
 	'use strict';
-	angular.module('devices').directive('deviceData', deviceData);
-	deviceData.$inject = ['languageService'];
-
+	angular.module('devices').directive('deviceData', ['languageService',deviceData]);
 	function deviceData(languageService) {
 		return {
 			restrict: 'E',

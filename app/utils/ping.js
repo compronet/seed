@@ -13,7 +13,7 @@ var mqttSrv;
 var validTargets=[];
 var _ = require('lodash');
 var Promise = require('bluebird');
-var config = require('./config');
+var config = require('../../config/config');
 
 Promise.config({
     // Enables all warnings except forgotten return statements.

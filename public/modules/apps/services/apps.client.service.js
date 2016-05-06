@@ -1,13 +1,7 @@
 (function() {
 	'use strict';
-	angular.module('apps')
-		.factory('Apps', Apps);
-
-	// manual dependency injection.
-	Apps.$inject = ['$rootScope', '$resource'];
-
+	angular.module('apps').factory('Apps', ['$rootScope', '$resource', Apps]);
 	function Apps($rootScope, $resource) {
-
 		var service = {
 			getRestApi: getRestApi,
 			notify: notify,

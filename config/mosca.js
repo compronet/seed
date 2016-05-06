@@ -11,7 +11,7 @@ module.exports = function() {
     });  //on init it fires up setup()
 
     mqttSrv.on('clientConnected', function(client) {
-        console.log('client connected', client.id);
+        //console.log('client connected', client.id);
     });
 
     // fired when a message is received

@@ -2,7 +2,7 @@
     <div class="list-group">
         <a data-ng-repeat="device in devicesListCtrl.devices" data-ng-click="devicesListCtrl.selectFn(device)" class="list-group-item" ng-class="{active: device._id === devicesListCtrl.selected._id}">
             <h4 class="list-group-item-heading"><span data-ng-bind="device.manufacturer"></span> <span data-ng-bind="device.model"></span>
-             <!--   <i class="pull-right fa fa-circle text-green"></i> -->
+                <i ng-class="device.isReady?'pull-right fa fa-circle text-green':'pull-right fa fa-circle text-red'"></i>
             </h4>
         </a>
     </div>

@@ -3,12 +3,7 @@
  */
 (function() {
 	'use strict';
-	angular.module('core')
-		.factory('languageService', languageService);
-
-	// manual dependency injection.
-	languageService.$inject = ['appConstants'];
-
+	angular.module('core').factory('languageService', ['appConstants', languageService]);
 	function languageService(appConstants) {
 		var selected = '';
 		var method = {

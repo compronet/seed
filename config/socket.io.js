@@ -120,6 +120,7 @@ module.exports = function (app, mongoStore) {
           }
           var client  = mqtt.connect('mqtt://localhost',mqttOptions);
           app.set('mqtt',client);
+          console.log(handshake.headers.cookie);
           config.sockets.forEach(function (socketConfiguration) {
             require(path.resolve(socketConfiguration))(client, io, socket, handshake.sessionID);
           });

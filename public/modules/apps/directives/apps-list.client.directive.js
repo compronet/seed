@@ -3,9 +3,7 @@
  */
 (function() {
 	'use strict';
-	angular.module('apps').directive('appsList', appsList);
-	appsList.$inject = ['_'];
-
+	angular.module('apps').directive('appsList',['_',appsList]);
 	function appsList(_) {
 		return {
 			restrict: 'E',
