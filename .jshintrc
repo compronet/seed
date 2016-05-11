@@ -27,6 +27,7 @@
 		"jasmine": true,
 		"angular": true,
 		"$": false,
+		"io": true,
 		"ApplicationConfiguration": true,
 		"screenfull": true,
 		"Promise"   : true,

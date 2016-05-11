@@ -35,7 +35,13 @@ module.exports = {
 	},
 	moscaSettings: {
 		port: 1883,           //mosca (mqtt) port
-		backend: this.pubsubsettings   //pubsubsettings is the object we created above
+		backend: {
+			//using ascoltatore
+			type: 'mongo',
+			url: 'mongodb://localhost:27017/mqtt',
+			pubsubCollection: 'ascoltatori',
+			mongo: {}
+		}
 	},
 	mqtt:{
 		rootTopic:'seedApp'

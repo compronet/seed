@@ -4,5 +4,6 @@
 	"maximumLineLength": 120,
 	"requireTrailingComma": false,
 	"safeContextKeyword": false,
+	"requireDollarBeforejQueryAssignment": false,
 	"requireSpacesInAnonymousFunctionExpression": false
 }
