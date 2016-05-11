@@ -22,6 +22,7 @@ exports.makeFilter = function(filter) {
 			newFilter[key] = new RegExp(filter[key], 'i');
 		}
 	}
+
 	return newFilter;
 };
 
@@ -34,16 +35,16 @@ exports.create = function(req, res, Collection, resolveFn, errFn) {
 
 	element.saveAsync()
 		.then(function(result) {
-			if(resolveFn){
+			if (resolveFn) {
 				resolveFn(result);
-			}else{
+			} else {
 				res.jsonp(result);
 			}
 		})
 		.catch(function(err) {
-			if(errFn){
+			if (errFn) {
 				errFn();
-			}else{
+			} else {
 				handleError(res, err);
 			}
 		});
@@ -57,16 +58,16 @@ exports.update = function(req, res, resolveFn, errFn) {
 
 	element.saveAsync()
 		.then(function(result) {
-			if(resolveFn){
+			if (resolveFn) {
 				resolveFn(result);
-			}else{
+			} else {
 				res.jsonp(result);
 			}
 		})
 		.catch(function(err) {
-			if(errFn){
+			if (errFn) {
 				errFn();
-			}else{
+			} else {
 				handleError(res, err);
 			}
 
@@ -81,16 +82,16 @@ exports.delete = function(req, res, resolveFn, errFn) {
 
 	element.removeAsync()
 		.then(function(result) {
-			if(resolveFn){
+			if (resolveFn) {
 				resolveFn(result);
-			}else{
+			} else {
 				res.jsonp(result);
 			}
 		})
 		.catch(function(err) {
-			if(errFn){
+			if (errFn) {
 				errFn();
-			}else{
+			} else {
 				handleError(res, err);
 			}
 		});
@@ -102,16 +103,16 @@ exports.delete = function(req, res, resolveFn, errFn) {
 exports.list = function(req, res, query, resolveFn, errFn) {
 	query.execAsync()
 		.then(function(elements) {
-			if(resolveFn){
+			if (resolveFn) {
 				resolveFn(elements);
-			}else{
+			} else {
 				res.jsonp(elements);
 			}
 		})
 		.catch(function(err) {
-			if(errFn){
+			if (errFn) {
 				errFn();
-			}else{
+			} else {
 				handleError(res, err);
 			}
 		});
@@ -126,17 +127,17 @@ exports.count = function(req, res, query, resolveFn, errFn) {
 			var countRes = {
 				count: count
 			};
-			if(resolveFn){
+			if (resolveFn) {
 				resolveFn(countRes);
-			}else{
+			} else {
 				res.jsonp(countRes);
 			}
 
 		})
 		.catch(function(err) {
-			if(errFn){
+			if (errFn) {
 				errFn();
-			}else{
+			} else {
 				handleError(res, err);
 			}
 		});
@@ -151,6 +152,7 @@ exports.elementByID = function(req, res, next, query) {
 			if (!element) {
 				return next(new Error('Failed to load element'));
 			}
+
 			req.element = element;
 			next();
 		})

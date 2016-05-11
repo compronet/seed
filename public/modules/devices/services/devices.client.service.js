@@ -3,13 +3,13 @@
 	angular.module('devices').factory('Devices', ['$rootScope', '$resource', '$q', 'Socket', Devices]);
 	function Devices($rootScope, $resource, $q, Socket) {
 
-		var onPingHandlers=[];
-		Socket.on(rootTopic+'/device/ping', function (message) {
-			for(var key in onPingHandlers){
+		var onPingHandlers = [];
+		Socket.on(rootTopic + '/device/ping', function (message) {
+			for (var key in onPingHandlers) {
 				onPingHandlers[key](message.ping);
 			}
-
 		});
+
 		var service = {
 			getRestApi: getRestApi,
 			notify: notify,
@@ -46,9 +46,9 @@
 		function notify(device) {
 			$rootScope.$emit('deviceSelected', device);
 		}
-		function setPingHandler(key,handler){
-			onPingHandlers[key]=handler;
 
+		function setPingHandler(key, handler) {
+			onPingHandlers[key] = handler;
 		}
 
 		function onNotification(handler) {

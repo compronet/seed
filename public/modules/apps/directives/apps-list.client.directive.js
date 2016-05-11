@@ -3,7 +3,7 @@
  */
 (function() {
 	'use strict';
-	angular.module('apps').directive('appsList',['_',appsList]);
+	angular.module('apps').directive('appsList', ['_', appsList]);
 	function appsList(_) {
 		return {
 			restrict: 'E',

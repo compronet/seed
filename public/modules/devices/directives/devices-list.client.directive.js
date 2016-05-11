@@ -3,7 +3,7 @@
  */
 (function() {
 	'use strict';
-	angular.module('devices').directive('devicesList',['_', 'Devices', devicesList]);
+	angular.module('devices').directive('devicesList', ['_', 'Devices', devicesList]);
 	function devicesList(_, Devices) {
 		return {
 			restrict: 'E',
@@ -17,22 +17,20 @@
 				var vm = this;
 				vm.selectFn = selectFn;
 
-
 				function selectFn(item) {
 					if (_.isFunction(vm.onDeviceSelect())) {
 						vm.onDeviceSelect()(item);
 					}
 				}
 
-
 				function pingHandler(ping) {
-					var filtered = _.filter(vm.devices,{ip:ping.target});
+					var filtered = _.filter(vm.devices, { ip: ping.target });
 					var filteredDevice = filtered[0];
-					var filteredIndex = _.indexOf(vm.devices,filteredDevice);
-					vm.devices[filteredIndex].isReady = ping.error?false:true;
+					var filteredIndex = _.indexOf(vm.devices, filteredDevice);
+					vm.devices[filteredIndex].isReady = ping.error ? false : true;
 				}
 
-				Devices.setPingHandler('devicesList',pingHandler);
+				Devices.setPingHandler('devicesList', pingHandler);
 			},
 
 			controllerAs: 'devicesListCtrl',

@@ -2,7 +2,8 @@
 	'use strict';
 
 	// Devices controller
-	angular.module('devices').controller('DeviceViewController', ['$state','$timeout', '$stateParams', 'Authentication', 'Socket', 'Devices',
+	angular.module('devices').controller('DeviceViewController', ['$state', '$stateParams', 'Authentication', 'Devices',
+		'Socket', '$timeout',
 		function($state, $timeout, $stateParams, Authentication, Socket, Devices) {
 			var vm = this;
 			vm.authentication = Authentication;
@@ -49,10 +50,10 @@
 				});
 			}
 
-			Devices.setPingHandler('DeviceViewController',pingHandler);
+			Devices.setPingHandler('DeviceViewController', pingHandler);
 			function pingHandler(ping) {
-				if(ping && vm.device){
-					if(ping.target===vm.device.ip){
+				if (ping && vm.device) {
+					if (ping.target === vm.device.ip) {
 						vm.pingError = ping.error;
 						updateChart(ping.diff);
 					}
@@ -87,20 +88,24 @@
 				colors: ['#23b7e5']
 			};
 
+			var data = [];
+			var totalPoints = 300;
 
-			var data = [], totalPoints = 300;
 			function updateChart(y) {
-				if (data.length > 0){
+				if (data.length > 0) {
 					data = data.slice(1);
 				}
+
 				while (data.length < totalPoints) {
 					data.push(y);
 				}
+
 				// Zip the generated y values with the x values
 				var res = [];
 				for (var i = 0; i < data.length; ++i) {
 					res.push([i, data[i]]);
 				}
+
 				vm.realTimeData = [res];
 			}
 

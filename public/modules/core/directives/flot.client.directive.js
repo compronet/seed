@@ -4,105 +4,115 @@
  =========================================================*/
 
 (function() {
-    'use strict';
+	'use strict';
 
-    angular.module('core').directive('flot',['$http', '$timeout', flot]);
-    function flot ($http, $timeout) {
+	angular.module('core').directive('flot', ['$http', '$timeout', flot]);
 
-        var directive = {
-            restrict: 'EA',
-            template: '<div></div>',
-            scope: {
-                dataset: '=?',
-                options: '=',
-                series: '=',
-                callback: '=',
-                src: '='
-            },
-            link: link
-        };
-        return directive;
+	function flot($http, $timeout) {
 
-        function link(scope, element, attrs) {
-            var height, plot, plotArea, width;
-            var heightDefault = 220;
+		var directive = {
+			restrict: 'EA',
+			template: '<div></div>',
+			scope: {
+				dataset: '=?',
+				options: '=',
+				series: '=',
+				callback: '=',
+				src: '='
+			},
+			link: link
+		};
+		return directive;
 
-            plot = null;
+		function link(scope, element, attrs) {
+			var height;
+			var plot;
+			var plotArea;
+			var width;
+			var heightDefault = 220;
 
-            width = attrs.width || '100%';
-            height = attrs.height || heightDefault;
+			plot = null;
 
-            plotArea = $(element.children()[0]);
-            plotArea.css({
-                width: width,
-                height: height
-            });
+			width = attrs.width || '100%';
+			height = attrs.height || heightDefault;
 
-            function init() {
-                var plotObj;
-                if(!scope.dataset || !scope.options) return;
-                plotObj = $.plot(plotArea, scope.dataset, scope.options);
-                scope.$emit('plotReady', plotObj);
-                if (scope.callback) {
-                    scope.callback(plotObj, scope);
-                }
+			plotArea = $(element.children()[0]);
+			plotArea.css({
+				width: width,
+				height: height
+			});
 
-                return plotObj;
-            }
+			function init() {
+				var plotObj;
+				if (!scope.dataset || !scope.options) {
+					return;
+				}
 
-            function onDatasetChanged(dataset) {
-                if (plot) {
-                    plot.setData(dataset);
-                    plot.setupGrid();
-                    return plot.draw();
-                } else {
-                    plot = init();
-                    onSerieToggled(scope.series);
-                    return plot;
-                }
-            }
-            scope.$watchCollection('dataset', onDatasetChanged, true);
+				plotObj = $.plot(plotArea, scope.dataset, scope.options);
+				scope.$emit('plotReady', plotObj);
+				if (scope.callback) {
+					scope.callback(plotObj, scope);
+				}
 
-            function onSerieToggled (series) {
-                if( !plot || !series ) return;
-                var someData = plot.getData();
-                for(var sName in series) {
-                    angular.forEach(series[sName], toggleFor(sName));
-                }
+				return plotObj;
+			}
 
-                plot.setData(someData);
-                plot.draw();
+			function onDatasetChanged(dataset) {
+				if (plot) {
+					plot.setData(dataset);
+					plot.setupGrid();
+					return plot.draw();
+				} else {
+					plot = init();
+					onSerieToggled(scope.series);
+					return plot;
+				}
+			}
 
-                function toggleFor(sName) {
-                    return function (s, i){
-                        if(someData[i] && someData[i][sName])
-                            someData[i][sName].show = s;
-                    };
-                }
-            }
-            scope.$watch('series', onSerieToggled, true);
+			scope.$watchCollection('dataset', onDatasetChanged, true);
 
-            function onSrcChanged(src) {
+			function onSerieToggled(series) {
+				if (!plot || !series) {
+					return;
+				}
 
-                if( src ) {
+				var someData = plot.getData();
+				for (var sName in series) {
+					angular.forEach(series[sName], toggleFor(sName));
+				}
 
-                    $http.get(src)
-                        .success(function (data) {
+				plot.setData(someData);
+				plot.draw();
 
-                            $timeout(function(){
-                                scope.dataset = data;
-                            });
+				function toggleFor(sName) {
+					return function(s, i) {
+						if (someData[i] && someData[i][sName]) {
+							someData[i][sName].show = s;
+						}
+					};
+				}
+			}
 
-                        }).error(function(){
-                        $.error('Flot chart: Bad request.');
-                    });
+			scope.$watch('series', onSerieToggled, true);
 
-                }
-            }
-            scope.$watch('src', onSrcChanged);
+			function onSrcChanged(src) {
 
-        }
-    }
+				if (src) {
 
+					$http.get(src)
+						.success(function(data) {
 
+							$timeout(function() {
+								scope.dataset = data;
+							});
+
+						}).error(function() {
+							$.error('Flot chart: Bad request.');
+						});
+				}
+			}
+
+			scope.$watch('src', onSrcChanged);
+		}
+	}
 })();

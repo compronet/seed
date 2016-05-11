@@ -3,7 +3,7 @@
  */
 (function() {
 	'use strict';
-	angular.module('core').directive('langIcon',['appConstants', langIcon]);
+	angular.module('core').directive('langIcon', ['appConstants', langIcon]);
 	function langIcon(appConstants) {
 		return {
 			restrict: 'E',

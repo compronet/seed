@@ -14,13 +14,12 @@ var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var helmet = require('helmet');
 var passport = require('passport');
-var session = require('express-session'),
-	MongoStore = require('connect-mongo')(session);
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 var config = require('./config');
 var consolidate = require('consolidate');
 var path = require('path');
-
 
 module.exports = function(db) {
 	// Initialize express app
@@ -29,6 +28,7 @@ module.exports = function(db) {
 		db: db.connection.db,
 		collection: config.sessionCollection
 	});
+
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
 		require(path.resolve(modelPath));
@@ -170,14 +170,13 @@ module.exports = function(db) {
 	}
 
 	// Configure Socket.io
-	// Load the Socket.io configuration
-	var server = require('./socket.io')(app, mongoStore);
-
-	// Return server object
-	return server;
+	// Load the Socket.io configuration and return server object
+	// NOTE Socket.io function is not needed for testing
+	if (process.env.NODE_ENV !== 'test') {
+		return require('./socket.io')(app, mongoStore);
+	}
 
 	// Return Express server instance
-	//return app;
+	return app;
 };
-
 

@@ -20,6 +20,4 @@ module.exports = function(app) {
 
 	// Finish by binding the App middleware
 	app.param('appId', apps.appByID);
-
-
 };

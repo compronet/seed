@@ -1,7 +1,18 @@
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+before_install:
+  - sudo add-apt-repository ppa:chris-lea/zeromq -y
+  - sudo add-apt-repository ppa:chris-lea/libpgm -y
+  - sudo apt-get update -y
+  - sudo apt-get install libzmq3-dev -y
 language: node_js
 node_js:
-  - "0.10"
+  - "4"
 env:
-  - NODE_ENV=travis
+  - CXX=g++-4.8
 services:
   - mongodb

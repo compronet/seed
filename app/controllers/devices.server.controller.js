@@ -18,7 +18,7 @@ var config = require('../../config/config');
  * Create a new element
  */
 exports.create = function(req, res) {
-	baseController.create(req, res, Collection, function(result){
+	baseController.create(req, res, Collection, function(result) {
 		publishDeviceUpdate(req.app);
 		res.jsonp(result);
 	});
@@ -35,7 +35,7 @@ exports.read = function(req, res) {
  * Update an element
  */
 exports.update = function(req, res) {
-	baseController.update(req, res, function(result){
+	baseController.update(req, res, function(result) {
 		publishDeviceUpdate(req.app);
 		res.jsonp(result);
 	});
@@ -45,7 +45,7 @@ exports.update = function(req, res) {
  * Delete an element
  */
 exports.delete = function(req, res) {
-	baseController.delete(req, res, function(result){
+	baseController.delete(req, res, function(result) {
 		publishDeviceUpdate(req.app);
 		res.jsonp(result);
 	});
@@ -84,11 +84,11 @@ exports.deviceByID = function(req, res, next) {
 	baseController.elementByID(req, res, next, query);
 };
 
-function publishDeviceUpdate(app){
-	try{
+function publishDeviceUpdate(app) {
+	try {
 		var client = app.get('mqtt');
-		client.publish(config.mqtt.rootTopic+'/device/update',JSON.stringify({'message':'test'}));
-	}catch(e){
+		client.publish(config.mqtt.rootTopic + '/device/update', JSON.stringify({ message: 'test' }));
+	} catch (e) {
 		console.log(e);
 	}
 }

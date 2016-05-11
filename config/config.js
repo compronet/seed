@@ -53,11 +53,10 @@ module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
 	return output;
 };
 
-
 /**
  * Get files by glob patterns
  */
-module.exports.getGlobbedPaths = function (globPatterns, excludes) {
+function getGlobbedPaths(globPatterns, excludes) {
 	// URL paths regex
 	var urlRegex = new RegExp('^(?:[a-z]+:)?\/\/', 'i');
 
@@ -83,16 +82,19 @@ module.exports.getGlobbedPaths = function (globPatterns, excludes) {
 					} else {
 						file = file.replace(excludes, '');
 					}
+
 					return file;
 				});
 			}
+
 			output = _.union(output, files);
 		}
 	}
 
 	return output;
-};
+}
 
+module.exports.getGlobbedPaths = getGlobbedPaths;
 
 /**
  * Get the modules JavaScript files
