@@ -8,7 +8,6 @@
 
 $(document).ready(function() {
 
-
 	// Full height
 	function fixHeight() {
 		var heightWithoutNavbar = $('body > #wrapper').height() - 61;

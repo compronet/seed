@@ -10,7 +10,6 @@
 			replace: true,
 			scope: {
 				device: '=',
-				apps: '=',
 				loading: '='
 			},
 			controller: function() {

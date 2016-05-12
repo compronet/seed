@@ -40,7 +40,8 @@
 
 						function() {
 							$log.debug('Modal dismissed at: ' + new Date());
-						});
+						}
+					);
 				}
 			},
 

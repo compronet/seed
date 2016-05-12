@@ -3,8 +3,7 @@
 
 	// Devices controller
 	angular.module('devices').controller('DeviceViewController', ['$state', '$stateParams', 'Authentication', 'Devices',
-		'Socket', '$timeout',
-		function($state, $timeout, $stateParams, Authentication, Socket, Devices) {
+		function($state, $stateParams, Authentication, Devices) {
 			var vm = this;
 			vm.authentication = Authentication;
 			vm.loading = {};

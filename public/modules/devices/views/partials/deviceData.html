@@ -36,8 +36,7 @@
     <div class="form-group">
         <label class="col-lg-4 control-label" for="ip" translate="apps.APPS"></label>
         <div class="col-lg-8">
-            <apps-list apps="deviceDataCtrl.apps" ng-if="deviceDataCtrl.apps.length>0 && !deviceDataCtrl.loading.apps"></apps-list>
-            <div class="alert alert-warning" translate="devices.NOAPPSRELATED" ng-if="!deviceDataCtrl.apps.length && !deviceDataCtrl.loading.apps"></div>
+            <apps-list apps="deviceDataCtrl.device.apps" ng-if="!deviceDataCtrl.loading.apps" editable="true"></apps-list>
         </div>
     </div>
 

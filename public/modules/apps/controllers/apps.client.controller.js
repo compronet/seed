@@ -8,6 +8,7 @@
 			var vm = this;
 			vm.authentication = Authentication;
 			vm.selected = {};
+			vm.searchText = '';
 
 			vm.loadAll = loadAll;
 			vm.reload = reload;

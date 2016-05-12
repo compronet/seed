@@ -1,7 +1,17 @@
 <div class="list-devices">
     <div class="list-group">
-        <a data-ng-repeat="app in appsListCtrl.apps" data-ng-click="appsListCtrl.selectFn(app)" class="list-group-item" ng-class="{active: app._id === appsListCtrl.selected._id}">
-            <h4 class="list-group-item-heading" data-ng-bind="app.name"></h4>
-        </a>
+        <div ng-if="appsListCtrl.editable" class="list-group-item" data-ng-click="appsListCtrl.appSelectionFn()">
+            <h4 class="list-group-item-heading">
+                <span>Add app</span>
+                <span style="float:right"><i class="glyphicon glyphicon-plus-sign"></i></span>
+            </h4>
+        </div>
+        <div class="alert alert-warning" translate="devices.NOAPPSRELATED" ng-if="appsListCtrl.editable && !appsListCtrl.apps.length"></div>
+        <div ng-if="appsListCtrl.apps.length" data-ng-repeat="app in appsListCtrl.apps | filter:appsListCtrl.searchText" data-ng-click="appsListCtrl.selectFn(app)" class="list-group-item" ng-class="{active: app._id === appsListCtrl.selected._id}">
+            <h4 class="list-group-item-heading">
+                <span data-ng-bind="app.name"></span>
+                <span ng-if="appsListCtrl.editable" data-ng-click="appsListCtrl.removeAppFn(app)" style="float:right"><i class="glyphicon glyphicon-trash"></i></span>
+            </h4>
+        </div>
     </div>
 </div>

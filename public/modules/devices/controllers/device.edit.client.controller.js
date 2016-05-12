@@ -12,7 +12,6 @@
 			vm.loading.device = true;
 			vm.loading.apps = true;
 			vm.device = {};
-			vm.apps = [];
 
 			vm.init = init;
 			vm.cancel = cancel;
@@ -28,7 +27,7 @@
 					deferred.resolve(device);
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;
-						vm.apps = apps;
+						vm.device.apps = apps;
 					});
 				});
 			}

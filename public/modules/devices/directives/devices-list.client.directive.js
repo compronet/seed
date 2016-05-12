@@ -11,7 +11,8 @@
 			scope: {
 				devices: '=',
 				onDeviceSelect: '&',
-				selected: '='
+				selected: '=',
+				searchText: '='
 			},
 			controller: function() {
 				var vm = this;

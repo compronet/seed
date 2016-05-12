@@ -6,7 +6,9 @@
 		function($state, Authentication, Devices) {
 			var vm = this;
 			vm.authentication = Authentication;
-			vm.device = {};
+			vm.device = {
+				apps: []
+			};
 			vm.loading = {};
 
 			vm.cancel = cancel;

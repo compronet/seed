@@ -16,7 +16,6 @@
 
 			function loadAll() {
 				vm.devices = Devices.getRestApi().query();
-
 			}
 
 			function reload() {
