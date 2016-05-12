@@ -1,9 +1,10 @@
 'use strict';
 
+var config = require('../../config/config');
+
 /**
  * Module dependencies.
  */
-var config = require('../../config/config');
 exports.index = function(req, res) {
 	res.render('index', {
 		user: req.user || null,

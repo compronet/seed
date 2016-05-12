@@ -11,9 +11,6 @@ var passport = require('passport');
 var socketio = require('socket.io');
 var mqtt = require('mqtt');
 
-//var session = require('express-session');
-//MongoStore = require('connect-mongo')(session);
-
 // Define the Socket.io configuration method
 module.exports = function(app, mongoStore) {
 	var server;
@@ -66,8 +63,8 @@ module.exports = function(app, mongoStore) {
 
 	// Create a MongoDB storage object
 	/*var mongoStore = new MongoStore({
-	  mongooseConnection: db.connection,
-	  collection: config.sessionCollection
+		mongooseConnection: db.connection,
+		collection: config.sessionCollection
 	});*/
 
 	// Intercept Socket.io's handshake request
@@ -124,11 +121,11 @@ module.exports = function(app, mongoStore) {
 
 					//TODO: extend mqtt.connect for user auth with app
 					/*var mqttOptions = {
-					  port:1883,
-					  username:'appuser',
-					  password:'iloveapp',
-					  clientId: 'serverjs_'+uuid.v1(),
-					  clear:false
+						port:1883,
+						username:'appuser',
+						password:'iloveapp',
+						clientId: 'serverjs_'+uuid.v1(),
+						clear:false
 					}*/
 					var mqttOptions = {
 						clientId: handshake.sessionID
@@ -136,7 +133,6 @@ module.exports = function(app, mongoStore) {
 
 					var client = mqtt.connect('mqtt://localhost', mqttOptions);
 					app.set('mqtt', client);
-					console.log(handshake.headers.cookie);
 					config.sockets.forEach(function(socketConfiguration) {
 						require(path.resolve(socketConfiguration))(client, io, socket, handshake.sessionID);
 					});
@@ -146,7 +142,6 @@ module.exports = function(app, mongoStore) {
 		} else {
 			console.log('socket.io connection: missing handshake.cookie');
 		}
-
 	});
 
 	return server;

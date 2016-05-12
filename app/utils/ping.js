@@ -28,7 +28,7 @@ module.exports = function(srv, client) {
 		client.subscribe(config.mqtt.rootTopic + '/device/update');
 	});
 
-	client.on('message', function() {
+	client.on('message', function(/*topic, buffer, data*/) {
 		targetSync();
 	});
 

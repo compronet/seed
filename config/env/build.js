@@ -2,13 +2,14 @@
 
 module.exports = {
 	app: {
-		title: 'compronet LAN',
+		title: 'compronet SEED',
 		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
 		keywords: 'MongoDB, Express, AngularJS, Node.js'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
+	sessionCollection: 'sessions',
 	sessionCookie: {
 		// session expiration is set by default to 24 hours
 		maxAge: 24 * (60 * 60 * 1000),
@@ -23,7 +24,6 @@ module.exports = {
 		secure: false
 	},
 	sessionKey: 'sessionId',
-	sessionCollection: 'sessions',
 	assets: {
 		lib: {
 			css: [

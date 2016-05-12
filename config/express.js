@@ -8,13 +8,12 @@ var https = require('https');
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-
+var session = require('express-session');
 var compress = require('compression');
 var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var helmet = require('helmet');
 var passport = require('passport');
-var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 var config = require('./config');

@@ -16,7 +16,7 @@ module.exports = function() {
 
 	// fired when a message is received
 	/*mqttSrv.on('published', function(packet, client) {
-	    console.log('Published', packet);
+		console.log('Published', packet);
 	});*/
 
 	return mqttSrv;

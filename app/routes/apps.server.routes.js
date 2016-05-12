@@ -12,7 +12,9 @@ module.exports = function(app) {
 
 	app.route('/apps/count')
 		.get(apps.count);
+
 	app.route('/apps/device/:deviceId').get(apps.appByDeviceID);
+
 	app.route('/apps/:appId')
 		.get(apps.read)
 		.put(users.requiresLogin, base.hasAuthorization, apps.update)
