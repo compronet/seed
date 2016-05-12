@@ -4,6 +4,7 @@
 	"tr": "Turkish",
 	"global": {
 		"READY": "Ready",
+		"SEARCH": "Search",
 		"SENDDATA": "Send data",
 		"NODATAFOUND": "No datasets found",
 		"ACCEPT": "Accept",
@@ -112,8 +113,9 @@
 		"APP": "Devices",
 		"PORT": "Port",
 		"PATH": "Path",
+		"NOAPPTOSELECT": "No apps found to select",
+		"PLEASESELECTAPP": "Please select an app",
 		"NORELATEDDEVICE": "No device related"
-
 	},
 	"devices": {
 		"DEVICES": "Devices",

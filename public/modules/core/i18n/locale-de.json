@@ -4,6 +4,7 @@
 	"tr": "Türkisch",
 	"global": {
 		"READY": "Bereit",
+		"SEARCH": "Suchen",
 		"SENDDATA": "Daten absenden",
 		"NODATAFOUND": "Keine Daten gefunden",
 		"ACCEPT": "Akzeptieren",
@@ -112,8 +113,9 @@
 		"APP": "Anwendung",
 		"PORT": "Port",
 		"PATH": "Pfad",
+		"NOAPPTOSELECT": "Keine Anwendungen zur Auswahl verfügbar",
+		"PLEASESELECTAPP": "Bitte wählen Sie eine Anwendung aus",
 		"NORELATEDDEVICE": "Kein Gerät zugeordnet"
-
 	},
 	"devices": {
 		"DEVICES": "Geräte",
@@ -126,7 +128,6 @@
 		"NODEVICESTOSELECT": "Keine Geräte zur Auswahl verfügbar",
 		"PLEASESELECTDEVICE": "Bitte wählen Sie ein Gerät aus",
 		"NOAPPSRELATED": "Noch keine Anwendungen zugeordnet"
-
 	}
 
 }
