@@ -272,5 +272,6 @@ describe('App CRUD tests', function() {
 		User.remove().exec();
 		App.remove().exec();
 		done();
+		return;
 	});
 });
