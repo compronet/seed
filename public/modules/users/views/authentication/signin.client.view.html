@@ -1,52 +1,47 @@
 <div class="content" data-ng-controller="AuthenticationController">
-    <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-            <div class="box box-info">
-                <div class="box-body">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="#!/home">
+                <b>Admin</b>LTE</a>
+        </div>
 
-                        <h4 translate="user.SIGNUPSOCIALTITLE"></h4>
-                        <a href="/auth/facebook" class="btn btn-white">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a href="/auth/twitter" class="btn btn-white">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a href="/auth/google" class="btn btn-white">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                        <a href="/auth/linkedin" class="btn btn-white">
-                            <i class="fa fa-linkedin"></i>
-                        </a>
-                        <a href="/auth/github" class="btn btn-white">
-                            <i class="fa fa-github"></i>
-                        </a>
+        <div class="login-box-body">
+            <h4 class="login-box-msg" translate="user.SIGNUPSOCIALTITLE"></h4>
 
-                    <h4 translate="user.SIGNUPALTERNATIVE"></h4>
+            <div class="social-auth-links text-center">
+                <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-flat">
+                    <i class="fa fa-facebook"></i>
+                    Sign in using Facebook</a>
+                <a href="/auth/google" class="btn btn-block btn-social btn-google btn-flat">
+                    <i class="fa fa-google-plus"></i>
+                    Sign in using Google+</a>
+            </div><br>
 
-                    <form role="form" data-ng-submit="signin()" class="signin" autocomplete="off">
-                        <fieldset>
-                            <div class="form-group">
-                                <label for="username" translate="user.USERNAME"></label>
-                                <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="{{'user.USERNAME'|translate}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" translate="user.PASSWORD"></label>
-                                <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="{{'user.PASSWORD'|translate}}">
-                            </div>
-                            <div class="text-center form-group">
-                                <button type="submit" class="btn btn-primary" translate="user.SIGNIN"></button>&nbsp; or&nbsp;
-                                <a href="/#!/signup" translate="user.SIGNUP"></a>
-                            </div>
-                            <div class="forgot-password">
-                                <a href="/#!/password/forgot" translate="user.PWDFORGOT"></a>
-                            </div>
-                            <div data-ng-show="error" class="text-center text-danger">
-                                <strong data-ng-bind="error"></strong>
-                            </div>
-                        </fieldset>
-                    </form>
+            <h4 class="login-box-msg" translate="user.SIGNUPALTERNATIVE"></h4>
+
+            <form role="form" data-ng-submit="signin()" class="signin" autocomplete="off">
+                <div class="form-group has-feedback">
+                    <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="{{'user.USERNAME'|translate}}">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
-            </div>
+                <div class="form-group has-feedback">
+                    <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="{{'user.PASSWORD'|translate}}">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <div data-ng-show="error" class="text-center text-danger">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat" translate="user.SIGNIN"></button>
+                    </div>
+                </div>
+            </form><br>
+            <a href="/#!/password/forgot" translate="user.PWDFORGOT"></a><br>
+            <a href="/#!/signup" translate="user.SIGNUP"></a>
+
         </div>
     </div>
 </div>

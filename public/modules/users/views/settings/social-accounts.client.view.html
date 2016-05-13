@@ -1,37 +1,30 @@
 <div class="content" data-ng-controller="SettingsController">
-    <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-            <div class="box box-info text-center">
-                <div class="box-body">
-                    <h3 class="text-center" data-ng-show="hasConnectedAdditionalSocialAccounts()" translate="user.CONNECTSOCIAL"></h3>
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="#!/home">
+                <b>Admin</b>LTE</a>
+        </div>
 
-                    <div class="text-center">
-                        <div data-ng-repeat="(providerName, providerData) in user.additionalProvidersData" class="remove-account-container">
-                            <i class="fa fa-{{providerName}}"></i>
-                            <a class="btn btn-danger btn-remove-account" data-ng-click="removeUserSocialAccount(providerName)">
-                                <i class="glyphicon glyphicon-trash"></i>
-                            </a>
-                        </div>
-                    </div>
+        <div class="login-box-body">
+            <h3 class="text-center" data-ng-show="hasConnectedAdditionalSocialAccounts()" translate="user.CONNECTSOCIAL"></h3>
 
-                    <h3 class="col-md-12 text-center" translate="user.CONNECTSOCIALOTHER"></h3>
-
-                    <a href="/auth/facebook" class="btn btn-white">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a href="/auth/twitter" class="btn btn-white">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="/auth/google" class="btn btn-white">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                    <a href="/auth/linkedin" class="btn btn-white">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                    <a href="/auth/github" class="btn btn-white">
-                        <i class="fa fa-github"></i>
+            <div class="text-center">
+                <div data-ng-repeat="(providerName, providerData) in user.additionalProvidersData" class="remove-account-container">
+                    <i class="fa fa-{{providerName}}"></i>
+                    <a class="btn btn-danger btn-remove-account" data-ng-click="removeUserSocialAccount(providerName)">
+                        <i class="glyphicon glyphicon-trash"></i>
                     </a>
                 </div>
+            </div>
+
+            <div class="social-auth-links text-center">
+                <h4 translate="user.CONNECTSOCIALOTHER"></h4>
+                <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-flat">
+                    <i class="fa fa-facebook"></i>
+                    Sign up using Facebook</a>
+                <a href="/auth/google" class="btn btn-block btn-social btn-google btn-flat">
+                    <i class="fa fa-google-plus"></i>
+                    Sign up using Google+</a>
             </div>
         </div>
     </div>
