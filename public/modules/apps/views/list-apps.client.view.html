@@ -19,6 +19,7 @@
                     </div>
                     <div class="box-body">
                         <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span> <input ng-model="appsCtrl.searchText" type="text" placeholder="{{ 'global.SEARCH' | translate}}" class="form-control"></div>
+                        <hr/>
                         <apps-list apps="appsCtrl.apps" search-text="appsCtrl.searchText" selected="appsCtrl.selected" on-app-select="appsCtrl.select"></apps-list>
                         <div class="alert alert-warning text-center" data-ng-hide="!appsCtrl.apps.$resolved || appsCtrl.apps.length" translate="global.NODATASETS"></div>
                     </div>

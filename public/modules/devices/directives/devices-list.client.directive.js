@@ -28,7 +28,11 @@
 					var filtered = _.filter(vm.devices, { ip: ping.target });
 					var filteredDevice = filtered[0];
 					var filteredIndex = _.indexOf(vm.devices, filteredDevice);
-					vm.devices[filteredIndex].isReady = ping.error ? false : true;
+					var targetDevice = vm.devices[filteredIndex];
+					if(targetDevice){
+						targetDevice.isReady = ping.error ? false : true;
+					}
+
 				}
 
 				Devices.setPingHandler('devicesList', pingHandler);

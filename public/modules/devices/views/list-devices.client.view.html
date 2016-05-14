@@ -19,7 +19,7 @@
                     </div>
                     <div class="box-body">
                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-search"></i></span> <input ng-model="devicesCtrl.searchText" type="text" placeholder="{{ 'global.SEARCH' | translate}}" class="form-control"></div>
-
+                        <hr/>
                         <devices-list selected="devicesCtrl.selected" search-text="devicesCtrl.searchText" devices="devicesCtrl.devices" on-device-select="devicesCtrl.select"></devices-list>
                         <div class="alert alert-warning text-center" data-ng-hide="!devicesCtrl.devices.$resolved || devicesCtrl.devices.length" translate="global.NODATASETS"></div>
                     </div>
