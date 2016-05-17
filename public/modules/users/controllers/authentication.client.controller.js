@@ -2,7 +2,8 @@
 	'use strict';
 
 	angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication',
-		function($scope, $http, $location, Authentication) {
+		'$window',
+		function($scope, $http, $location, Authentication, $window) {
 			$scope.authentication = Authentication;
 
 			// If user is signed in then redirect back home
@@ -28,7 +29,7 @@
 					$scope.authentication.user = response;
 
 					// And redirect to the index page
-					$location.path('/');
+					$window.location.href = '/';
 				}).error(function(response) {
 					$scope.error = response.message;
 				});

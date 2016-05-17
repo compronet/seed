@@ -31,30 +31,10 @@
 	<![endif]-->
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini ng-cloak">
-
-<!-- Wrapper-->
-<div class="wrapper" data-ng-controller="AppController">
-	<!-- Header  -->
-	<div data-ng-include="'/modules/core/views/header.client.view.html'"></div>
-
-	<!-- Navigation -->
-	<div data-ng-include="'/modules/core/views/navigation.client.view.html'"></div>
-
-	<!-- Main view  -->
-	<div class="content-wrapper" style="min-height: 901px;">
-		{% block content %}
+<body class="hold-transition login-page ng-cloak">
+	{% block content %}
 		<div data-ui-view></div>
-		{% endblock %}
-	</div>
-	<!-- Footer -->
-	<div data-ng-include="'/modules/core/views/footer.client.view.html'"></div>
-
-</div>
-<!-- End page wrapper-->
-
-</div>
-<!-- End wrapper-->
+	{% endblock %}
 
 <!--Embedding The User Object-->
 <script type="text/javascript">
