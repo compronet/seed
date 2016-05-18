@@ -7,16 +7,16 @@ module.exports = function(app) {
 
 	// Apps Routes
 	app.route('/apps')
-		.get(apps.list)
+		.get(users.requiresLogin, apps.list)
 		.post(users.requiresLogin, apps.create);
 
 	app.route('/apps/count')
-		.get(apps.count);
+		.get(users.requiresLogin, apps.count);
 
-	app.route('/apps/device/:deviceId').get(apps.appByDeviceID);
+	app.route('/apps/device/:deviceId').get(users.requiresLogin, base.hasAuthorization, apps.appByDeviceID);
 
 	app.route('/apps/:appId')
-		.get(apps.read)
+		.get(users.requiresLogin, base.hasAuthorization, apps.read)
 		.put(users.requiresLogin, base.hasAuthorization, apps.update)
 		.delete(users.requiresLogin, base.hasAuthorization, apps.delete);
 

@@ -34,13 +34,7 @@ exports.signup = function(req, res) {
 			user.password = undefined;
 			user.salt = undefined;
 
-			req.login(user, function(err) {
-				if (err) {
-					res.status(400).send(err);
-				} else {
-					res.json(user);
-				}
-			});
+			res.json(user);
 		}
 	});
 };
@@ -53,6 +47,12 @@ exports.signin = function(req, res, next) {
 		if (err || !user) {
 			res.status(400).send(info);
 		} else {
+			// Check if user is approved
+			if (!user.approved) {
+				res.status(400).send({ message: 'User is not approved yet' });
+				return;
+			}
+
 			// Remove sensitive data before login
 			user.password = undefined;
 			user.salt = undefined;

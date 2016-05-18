@@ -7,14 +7,14 @@ module.exports = function(app) {
 
 	// Devices Routes
 	app.route('/devices')
-		.get(devices.list)
+		.get(users.requiresLogin, devices.list)
 		.post(users.requiresLogin, devices.create);
 
 	app.route('/devices/count')
-		.get(devices.count);
+		.get(users.requiresLogin, devices.count);
 
 	app.route('/devices/:deviceId')
-		.get(devices.read)
+		.get(users.requiresLogin, base.hasAuthorization, devices.read)
 		.put(users.requiresLogin, base.hasAuthorization, devices.update)
 		.delete(users.requiresLogin, base.hasAuthorization, devices.delete);
 
