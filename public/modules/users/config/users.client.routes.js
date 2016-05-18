@@ -6,6 +6,16 @@
 		function($stateProvider) {
 			// Users state routing
 			$stateProvider.
+			state('users', {
+				url: '/users',
+				views: {
+					'': {
+						controller: 'UsersController',
+						controllerAs: 'usersCtrl',
+						templateUrl: 'modules/users/views/approve/list-users.client.view.html'
+					}
+				}
+			}).
 			state('profile', {
 				url: '/settings/profile',
 				templateUrl: 'modules/users/views/settings/edit-profile.client.view.html'

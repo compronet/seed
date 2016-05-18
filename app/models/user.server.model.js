@@ -75,6 +75,10 @@ var UserSchema = new Schema({
 		}],
 		default: ['user']
 	},
+	approved: {
+		type: Boolean,
+		default: false,
+	},
 	updated: {
 		type: Date
 	},

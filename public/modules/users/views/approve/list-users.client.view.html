@@ -1,0 +1,41 @@
+<div class="ctrl-wrap" data-ng-init="usersCtrl.loadAll()">
+    <section class="content-header">
+        <h1 translate="user.USERS"></h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12 animated fadeIn">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                            <span data-ng-bind="usersCtrl.users.length"></span>
+                            <span translate="user.USERSLENGTH"></span>
+                        </h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <input ng-model="usersCtrl.searchText" type="text" placeholder="{{ 'global.SEARCH' | translate}}" class="form-control"></div>
+                        <hr/>
+                        <div class="list-devices">
+                            <div class="list-group">
+                                <a data-ng-repeat="user in usersCtrl.users | filter:usersCtrl.searchText" class="list-group-item">
+                                    <h4 class="list-group-item-heading">
+                                        <i ng-class="user.approved?'pull-left fa fa-circle text-green':'pull-left fa fa-circle text-red'"></i>
+                                        <span data-ng-bind="user.displayName"></span> - <span data-ng-bind="user.email"></span>
+                                        <button ng-click="usersCtrl.approve(user)" ng-class="user.approved ? 'btn btn-sm btn-danger pull-right':'btn btn-sm btn-success pull-right'">
+                                            {{user.approved ? 'global.REJECT':'global.APPROVE' | translate}}
+                                        </button>
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!usersCtrl.users.$resolved || usersCtrl.users.length" translate="global.NODATASETS"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

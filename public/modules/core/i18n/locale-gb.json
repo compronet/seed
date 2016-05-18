@@ -8,6 +8,8 @@
 		"SENDDATA": "Send data",
 		"NODATAFOUND": "No datasets found",
 		"ACCEPT": "Accept",
+		"APPROVE": "Approve",
+		"REJECT": "Reject",
 		"CANCELPROCESS": "Cancel process",
 		"WARNING": "Warning",
 		"EDIT": "Edit",
@@ -55,6 +57,8 @@
 		"FOOTERTEXT": "Agentur für Kommunikation und Webentwicklung"
 	},
 	"user": {
+		"USERS": "Users",
+		"USERSLENGTH": "Users",
 		"EMAIL": "E-Mail",
 		"STREET": "Street",
 		"POSTAL": "Zip",
@@ -102,8 +106,10 @@
 		"CHANGEPWD": "Change Password",
 		"APPS": "Applications",
 		"DEVICES": "Devices",
+		"USERS": "Users",
 		"APPSLIST": "List Applications",
-		"DEVICESLIST": "List Devices"
+		"DEVICESLIST": "List Devices",
+		"USERSLIST": "List Users"
 	},
 	"apps": {
 		"APPS": "Applications",
