@@ -1,8 +1,8 @@
 <div class="list-devices">
     <div class="list-group">
         <div class="alert alert-warning" translate="devices.NOAPPSRELATED" ng-if="appsListCtrl.editable && !appsListCtrl.apps.length"></div>
-        <table ng-if="appsListCtrl.apps.length" data-ng-repeat="app in appsListCtrl.apps | filter:appsListCtrl.searchText" data-ng-click="appsListCtrl.selectFn(app)" class="table table-striped" ng-class="{active: app._id === appsListCtrl.selected._id}">
-            <tr>
+        <table ng-if="appsListCtrl.apps.length" class="table table-striped" >
+            <tr data-ng-repeat="app in appsListCtrl.apps | filter:appsListCtrl.searchText" data-ng-click="appsListCtrl.selectFn(app)" ng-class="{active: app._id === appsListCtrl.selected._id}">
                 <td data-ng-bind="app.name"></td>
                 <td>
                     <a class="pull-right btn btn-sm btn-default ng-scope" data-ng-click="appsListCtrl.removeAppFn(app)" ng-if="appsListCtrl.editable">
