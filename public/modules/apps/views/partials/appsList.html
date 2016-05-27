@@ -1,12 +1,15 @@
 <div class="list-devices">
     <div class="list-group">
-        <div ng-if="appsListCtrl.editable" class="list-group-item" data-ng-click="appsListCtrl.appSelectionFn()">
-            <h4 class="list-group-item-heading">
+        <div ng-if="appsListCtrl.editable">
+            <a class="pull-right btn btn-sm btn-default ng-scope" data-ng-click="appsListCtrl.appSelectionFn()">
+                <span translate="apps.SETRELATION"></span>
+            </a>
+            <a class="pull-right btn btn-sm btn-default ng-scope" data-ng-click="appsListCtrl.appCreateInline()">
                 <span translate="apps.ADD"></span>
-                <span class="pull-right"><i class="glyphicon glyphicon-plus-sign"></i></span>
-            </h4>
+            </a>
         </div>
         <div class="alert alert-warning" translate="devices.NOAPPSRELATED" ng-if="appsListCtrl.editable && !appsListCtrl.apps.length"></div>
+
         <div ng-if="appsListCtrl.apps.length" data-ng-repeat="app in appsListCtrl.apps | filter:appsListCtrl.searchText" data-ng-click="appsListCtrl.selectFn(app)" class="list-group-item" ng-class="{active: app._id === appsListCtrl.selected._id}">
             <h4 class="list-group-item-heading">
                 <span data-ng-bind="app.name"></span>

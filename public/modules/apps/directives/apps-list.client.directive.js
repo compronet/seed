@@ -22,6 +22,7 @@
 				vm.selectFn = selectFn;
 				vm.removeAppFn = removeApp;
 				vm.appSelectionFn = appSelection;
+				vm.appCreateInline = appCreateInline;
 
 				function selectFn(item) {
 					if (_.isFunction(vm.onAppSelect())) {
@@ -32,9 +33,11 @@
 				function removeApp(app) {
 					_.pull(vm.apps, app);
 				}
-
-				function appSelection() {
+				function appCreateInline(){
 					//TODO: add "create new app" here in addition to setting the device relation of an existing one
+					console.warn('not implemented yet');
+				}
+				function appSelection() {
 					var modalInstance = $uibModal.open({
 						animation: appConstants.animationsEnabled,
 						templateUrl: 'modules/apps/views/partials/appsModal.html',
