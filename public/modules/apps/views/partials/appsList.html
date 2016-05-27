@@ -1,7 +1,7 @@
 <div class="list-devices">
     <div class="list-group">
         <div class="alert alert-warning" translate="devices.NOAPPSRELATED" ng-if="appsListCtrl.editable && !appsListCtrl.apps.length"></div>
-        <table ng-if="appsListCtrl.apps.length" class="table table-striped" >
+        <table ng-if="appsListCtrl.apps.length" class="table table-striped table-hover" >
             <tr data-ng-repeat="app in appsListCtrl.apps | filter:appsListCtrl.searchText" data-ng-click="appsListCtrl.selectFn(app)" ng-class="{active: app._id === appsListCtrl.selected._id}">
                 <td data-ng-bind="app.name"></td>
                 <td>
@@ -12,13 +12,13 @@
             </tr>
         </table>
 
-        <div ng-if="appsListCtrl.editable">
-            <a class="pull-right btn btn-sm btn-default ng-scope" data-ng-click="appsListCtrl.appSelectionFn()">
+        <div ng-if="appsListCtrl.editable" class="btn-group pull-right">
+            <button type="button" class="btn btn-sm btn-default ng-scope" data-ng-click="appsListCtrl.appSelectionFn()">
                 <span translate="apps.SETRELATION"></span>
-            </a>
-            <a class="pull-right btn btn-sm btn-default ng-scope" data-ng-click="appsListCtrl.appCreateInline()">
+            </button>
+            <button type="button" class="btn btn-sm btn-default ng-scope" data-ng-click="appsListCtrl.appCreateInline()">
                 <span translate="apps.ADD"></span>
-            </a>
+            </button>
         </div>
     </div>
 </div>
