@@ -3,6 +3,7 @@
 	"gb": "İngilizce",
 	"tr": "Türkçe",
 	"global": {
+		"OK": "Tamam",
 		"READY": "Hazır",
 		"SENDDATA": "Verileri gönder",
 		"NODATAFOUND": "Veri bulunamadı",

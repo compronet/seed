@@ -3,6 +3,7 @@
 	"gb": "English",
 	"tr": "Turkish",
 	"global": {
+		"OK": "OK",
 		"READY": "Ready",
 		"SEARCH": "Search",
 		"SENDDATA": "Send data",
