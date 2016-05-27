@@ -106,6 +106,7 @@
 	},
 	"apps": {
 		"APPS": "Uygulamalar",
+		"ADD": "Yeni oluştur",
 		"VERSION": "Sürüm",
 		"APPSLENGTH": "Uygulama",
 		"CREATENEW": "Yeni uygulama oluştur",

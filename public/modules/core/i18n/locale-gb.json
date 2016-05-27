@@ -113,6 +113,7 @@
 	},
 	"apps": {
 		"APPS": "Applications",
+		"ADD": "Create new",
 		"VERSION": "Version",
 		"APPSLENGTH": "Applications",
 		"CREATENEW": "Create New Application",

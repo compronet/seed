@@ -2,8 +2,8 @@
     <div class="list-group">
         <div ng-if="appsListCtrl.editable" class="list-group-item" data-ng-click="appsListCtrl.appSelectionFn()">
             <h4 class="list-group-item-heading">
-                <span>Add app</span>
-                <span style="float:right"><i class="glyphicon glyphicon-plus-sign"></i></span>
+                <span translate="apps.ADD"></span>
+                <span class="pull-right"><i class="glyphicon glyphicon-plus-sign"></i></span>
             </h4>
         </div>
         <div class="alert alert-warning" translate="devices.NOAPPSRELATED" ng-if="appsListCtrl.editable && !appsListCtrl.apps.length"></div>

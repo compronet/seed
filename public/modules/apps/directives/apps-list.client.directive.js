@@ -34,6 +34,7 @@
 				}
 
 				function appSelection() {
+					//TODO: change for create new app instead of setting the relation of an existing here
 					var modalInstance = $uibModal.open({
 						animation: appConstants.animationsEnabled,
 						templateUrl: 'modules/apps/views/partials/appsModal.html',
