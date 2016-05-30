@@ -33,7 +33,7 @@
 	]).run(['Menus',
 		function(Menus) {
 			// Set top bar menu items
-			Menus.addMenuItem('topbar', 'menu.USERS', 'users', 'dropdown', '/users/:id', false, null, 200, 'fa-users');
+			Menus.addMenuItem('topbar', 'menu.USERS', 'users', 'dropdown', '/users/:id', false, ['admin'], 200, 'fa-users');
 			Menus.addSubMenuItem('topbar', 'users', 'menu.USERSLIST', 'users');
 		}
 	]);

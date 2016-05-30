@@ -23,7 +23,7 @@ exports.makeFilter = function(filter, user) {
 		}
 	}
 
-	if(_.indexOf(user.roles, 'admin') === -1) {
+	if (_.indexOf(user.roles, 'admin') === -1) {
 		newFilter.user = {
 			_id: user._id
 		};
@@ -171,8 +171,8 @@ exports.elementByID = function(req, res, next, query) {
  * Element authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if(_.indexOf(req.user.roles, 'admin') !== -1) {
-		next();
+	if (_.indexOf(req.user.roles, 'admin') !== -1) {
+		return next();
 	}
 
 	if (req.element.user.id !== req.user.id) {

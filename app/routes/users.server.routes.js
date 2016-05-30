@@ -10,8 +10,8 @@ module.exports = function(app) {
 	var users = require('../../app/controllers/users.server.controller');
 
 	// Endpoints to user approve
-	app.route('/users').get(users.list);
-	app.route('/users/approve').post(users.approve);
+	app.route('/users').get(users.requiresLogin, users.hasAuthorization(['admin']), users.list);
+	app.route('/users/approve').post(users.requiresLogin, users.hasAuthorization(['admin']), users.approve);
 
 	// Setting up the users profile api
 	app.route('/users/me').get(users.me);
