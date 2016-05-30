@@ -33,10 +33,12 @@
 				function removeApp(app) {
 					_.pull(vm.apps, app);
 				}
-				function appCreateInline(){
+
+				function appCreateInline() {
 					//TODO: add "create new app" here in addition to setting the device relation of an existing one
 					console.warn('not implemented yet');
 				}
+
 				function appSelection() {
 					var modalInstance = $uibModal.open({
 						animation: appConstants.animationsEnabled,
