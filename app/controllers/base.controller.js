@@ -15,12 +15,18 @@ var handleError = function(res, err) {
 /**
  * Make filter for the list query
  */
-exports.makeFilter = function(filter) {
+exports.makeFilter = function(filter, user) {
 	var newFilter = {};
 	for (var key in filter) {
 		if (filter[key].length > 0) {
 			newFilter[key] = new RegExp(filter[key], 'i');
 		}
+	}
+
+	if(_.indexOf(user.roles, 'admin') === -1) {
+		newFilter.user = {
+			_id: user._id
+		};
 	}
 
 	return newFilter;
@@ -165,6 +171,10 @@ exports.elementByID = function(req, res, next, query) {
  * Element authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
+	if(_.indexOf(req.user.roles, 'admin') !== -1) {
+		next();
+	}
+
 	if (req.element.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
