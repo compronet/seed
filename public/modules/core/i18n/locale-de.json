@@ -108,6 +108,7 @@
 		"APPS": "Anwendungen",
 		"DEVICES": "Geräte",
 		"USERS": "Benutzer",
+		"CHAT": "Chat",
 		"APPSLIST": "Liste Anwendungen",
 		"DEVICESLIST": "Liste Geräte",
 		"USERSLIST": "Liste Benutzer"
@@ -122,6 +123,7 @@
 		"PORT": "Port",
 		"PATH": "Pfad",
 		"NOAPPTOSELECT": "Keine Anwendungen zur Auswahl verfügbar",
+		"SETRELATION": "Set Beziehung",
 		"PLEASESELECTAPP": "Bitte wählen Sie eine Anwendung aus",
 		"NORELATEDDEVICE": "Kein Gerät zugeordnet"
 	},
@@ -136,6 +138,9 @@
 		"NODEVICESTOSELECT": "Keine Geräte zur Auswahl verfügbar",
 		"PLEASESELECTDEVICE": "Bitte wählen Sie ein Gerät aus",
 		"NOAPPSRELATED": "Noch keine Anwendungen zugeordnet"
+	},
+	"chat": {
+		"NEWMESSAGE": "Neue Nachricht",
+		"SEND": "Schicken"
 	}
-
 }

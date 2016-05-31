@@ -108,6 +108,7 @@
 		"APPS": "Applications",
 		"DEVICES": "Devices",
 		"USERS": "Users",
+		"CHAT": "Chat",
 		"APPSLIST": "List Applications",
 		"DEVICESLIST": "List Devices",
 		"USERSLIST": "List Users"
@@ -122,6 +123,7 @@
 		"PORT": "Port",
 		"PATH": "Path",
 		"NOAPPTOSELECT": "No apps found to select",
+		"SETRELATION": "Set relation",
 		"PLEASESELECTAPP": "Please select an app",
 		"NORELATEDDEVICE": "No device related"
 	},
@@ -136,5 +138,9 @@
 		"NODEVICESTOSELECT": "No devices found to select",
 		"PLEASESELECTDEVICE": "Please select a device",
 		"NOAPPSRELATED": "No related apps yet"
+	},
+	"chat": {
+		"NEWMESSAGE": "New message",
+		"SEND": "Send"
 	}
 }

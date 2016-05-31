@@ -1,17 +1,17 @@
 <div class="ctrl-wrap">
     <section class="content-header">
-        <h1>Chat</h1>
+        <h1 translate="menu.CHAT"></h1>
     </section>
     <section class="content">
         <div class="row">
             <div class="col-lg-12 animated fadeIn">
                 <div class="box box-primary direct-chat direct-chat-primary">
                     <div class="box-header with-border">
-                        <h1 class="box-title">Chat</h1>
+                        <h1 class="box-title" translate="menu.CHAT"></h1>
                     </div>
                     <div class="box-body">
                         <div class="direct-chat-messages" style="min-height: 710px;">
-                            <div class="direct-chat-msg" ng-repeat="message in chatCtrl.messages">
+                            <div ng-class="{right: message.type !== 'message'}" class="direct-chat-msg" ng-repeat="message in chatCtrl.messages">
                                 <div class="direct-chat-info clearfix">
                                     <span class="direct-chat-name pull-left" ng-bind="message.user.username"></span>
                                     <span class="direct-chat-timestamp pull-right" ng-bind="message.created | date:'mediumTime'"></span>
@@ -24,9 +24,9 @@
                     <div class="box-footer">
                         <form ng-submit="chatCtrl.sendMessage();">
                             <div class="input-group">
-                                <input type="text" id="messageText" name="messageText" class="form-control" ng-model="chatCtrl.messageText" placeholder="Enter new message">
+                                <input type="text" id="messageText" name="messageText" class="form-control" ng-model="chatCtrl.messageText" placeholder="{{ 'chat.NEWMESSAGE' | translate}}">
                                 <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-primary btn-flat" ng-disabled="!chatCtrl.messageText.length">Send</button>
+                                    <button type="submit" class="btn btn-primary btn-flat" ng-disabled="!chatCtrl.messageText.length" translate="chat.SEND"></button>
                                 </span>
                             </div>
                         </form>
