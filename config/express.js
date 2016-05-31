@@ -24,7 +24,7 @@ module.exports = function(db) {
 	// Initialize express app
 	var app = express();
 	var mongoStore = new MongoStore({
-		db: db.connection.db,
+		mongooseConnection: db.connection,
 		collection: config.sessionCollection
 	});
 
