@@ -29,7 +29,7 @@
     "lodash": "^4.13.1",
     "method-override": "^2.3.6",
     "mocha": "^2.5.3",
-    "mongoose": "~3.8.8",
+    "mongoose": "^4.4.19",
     "morgan": "^1.7.0",
     "mosca": "^1.4.0",
     "mqtt": "^1.10.0",
