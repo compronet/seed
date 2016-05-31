@@ -13,6 +13,7 @@ var user = {
 	email: 'test@test.com',
 	username: credentials.username,
 	password: credentials.password,
+	approved: true,
 	provider: 'local'
 };
 

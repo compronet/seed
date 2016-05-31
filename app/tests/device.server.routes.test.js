@@ -168,7 +168,7 @@ describe('Device CRUD tests', function() {
 			});
 	});
 
-	it('should be able to get a list of Devices if not signed in', function(done) {
+	it('should not be able to get a list of Devices if not signed in', function(done) {
 		// Create new Device model instance
 		var deviceObj = new Device(device);
 
@@ -176,30 +176,26 @@ describe('Device CRUD tests', function() {
 		deviceObj.save(function() {
 			// Request Devices
 			request(app).get('/devices')
-				.end(function(req, res) {
-					// Set assertion
-					res.body.should.be.an.Array.with.lengthOf(1);
-
+				.expect(401)
+				.end(function(deviceSaveErr) {
 					// Call the assertion callback
-					done();
+					done(deviceSaveErr);
 				});
 
 		});
 	});
 
-	it('should be able to get a single Device if not signed in', function(done) {
+	it('should not be able to get a single Device if not signed in', function(done) {
 		// Create new Device model instance
 		var deviceObj = new Device(device);
 
 		// Save the Device
 		deviceObj.save(function() {
 			request(app).get('/devices/' + deviceObj._id)
-				.end(function(req, res) {
-					// Set assertion
-					res.body.should.be.an.Object.with.property('manufacturer', device.manufacturer);
-
+				.expect(401)
+				.end(function(deviceSaveErr) {
 					// Call the assertion callback
-					done();
+					done(deviceSaveErr);
 				});
 		});
 	});

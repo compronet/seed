@@ -166,7 +166,7 @@ describe('App CRUD tests', function() {
 			});
 	});
 
-	it('should be able to get a list of Apps if not signed in', function(done) {
+	it('should not be able to get a list of Apps if not signed in', function(done) {
 		// Create new App model instance
 		var appObjNew = new App(appObj);
 
@@ -174,30 +174,25 @@ describe('App CRUD tests', function() {
 		appObjNew.save(function() {
 			// Request Apps
 			request(app).get('/apps')
-				.end(function(req, res) {
-					// Set assertion
-					res.body.should.be.an.Array.with.lengthOf(1);
-
+				.expect(401)
+				.end(function(appSaveErr) {
 					// Call the assertion callback
-					done();
+					done(appSaveErr);
 				});
-
 		});
 	});
 
-	it('should be able to get a single App if not signed in', function(done) {
+	it('should not be able to get a single App if not signed in', function(done) {
 		// Create new App model instance
 		var appObjNew = new App(appObj);
 
 		// Save the App
 		appObjNew.save(function() {
 			request(app).get('/apps/' + appObjNew._id)
-				.end(function(req, res) {
-					// Set assertion
-					res.body.should.be.an.Object.with.property('name', appObjNew.name);
-
+				.expect(401)
+				.end(function(appSaveErr) {
 					// Call the assertion callback
-					done();
+					done(appSaveErr);
 				});
 		});
 	});
