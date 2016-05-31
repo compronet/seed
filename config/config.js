@@ -36,17 +36,22 @@ module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
 		if (urlRegex.test(globPatterns)) {
 			output.push(globPatterns);
 		} else {
-			glob(globPatterns, {
-				sync: true
-			}, function(err, files) {
-				if (removeRoot) {
-					files = files.map(function(file) {
-						return file.replace(removeRoot, '');
-					});
-				}
+			var files = glob.sync(globPatterns);
+			if (removeRoot) {
+				files = files.map(function(file) {
+					if (_.isArray(removeRoot)) {
+						for (var i in removeRoot) {
+							file = file.replace(removeRoot[i], '');
+						}
+					} else {
+						file = file.replace(removeRoot, '');
+					}
 
-				output = _.union(output, files);
-			});
+					return file;
+				});
+			}
+
+			output = _.union(output, files);
 		}
 	}
 
@@ -65,7 +70,7 @@ function getGlobbedPaths(globPatterns, excludes) {
 
 	// If glob pattern is array then we use each pattern in a recursive way, otherwise we use glob
 	if (_.isArray(globPatterns)) {
-		globPatterns.forEach(function (globPattern) {
+		globPatterns.forEach(function(globPattern) {
 			output = _.union(output, getGlobbedPaths(globPattern, excludes));
 		});
 	} else if (_.isString(globPatterns)) {
@@ -74,7 +79,7 @@ function getGlobbedPaths(globPatterns, excludes) {
 		} else {
 			var files = glob.sync(globPatterns);
 			if (excludes) {
-				files = files.map(function (file) {
+				files = files.map(function(file) {
 					if (_.isArray(excludes)) {
 						for (var i in excludes) {
 							file = file.replace(excludes[i], '');
