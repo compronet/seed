@@ -25,7 +25,7 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "glob": "^7.0.3",
-    "helmet": "~0.5.0",
+    "helmet": "^2.1.0",
     "lodash": "^4.13.1",
     "method-override": "^2.3.6",
     "mocha": "^2.5.3",
