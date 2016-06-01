@@ -21,14 +21,35 @@
 	</form>
 	<!-- /.search form -->
 	<!-- sidebar menu: : style can be found in sidebar.less -->
-	<ul side-navigation id="side-menu" class="sidebar-menu">
-		<li class="header">MAIN NAVIGATION</li>
-		<li ng-class="{active: $uiRoute}" ui-route="/" >
-			<a href="/#!/"><i class="fa fa-home"></i> <span translate="menu.HOME"></span></a>
-		<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-			<a href="/#!/{{item.items[0].link}}"><i class="fa {{item.iconClass}}"></i> <span  translate="{{item.title}}"></span></a>
-		</li>
-	</ul>
+	<!-- Inline template with sidebar items markup and ng-directives-->
+	<script type="text/ng-template" id="sidebar-renderer.html">
+	    <span ng-if="item.heading">{{(item.translate | translate) || (item.title | translate)}}</span>
+	    <a href="" title="{{item.title | translate}}" ng-if="item.items.length">
+	        <div ng-if="item.alert" ng-class="item.label || 'label label-success'" class="pull-right">{{item.alert}}</div>
+	        <em ng-hide="inSubmenu" class="{{item.iconClass}}"></em>
+	        <span>{{(item.translate | translate) || (item.title | translate)}}</span>
+	    </a>
+	    <a href="/#!/{{item.link}}" title="{{item.title | translate}}" ng-if="!item.items.length">
+	        <div ng-if="item.alert" ng-class="item.label || 'label label-success'" class="pull-right">{{item.alert}}</div>
+	        <em ng-hide="inSubmenu" class="{{item.iconClass}}"></em>
+	        <span>{{(item.translate | translate) || (item.title | translate)}}</span>
+	    </a>
+	    <ul ng-if="item.items.length" uib-collapse="isCollapse(pIndex)" ng-init="addCollapse(pIndex, item)" ng-click="$event.stopPropagation();" class="nav sidebar-subnav">
+	        <li class="sidebar-subnav-header">{{(item.translate | translate) || (item.title | translate)}}</li>
+	        <li ng-repeat="item in item.items | orderBy: 'position'" ng-include="'sidebar-renderer.html'" ng-class="{active: ($uiRoute)}" data-ng-if="item.shouldRender(authentication.user);" ui-route="{{item.uiRoute}}"></li>
+	    </ul>
+	</script>
+	<!-- START Sidebar (left)-->
+	<div class="aside-inner">
+	    <nav sidebar="" sidebar-anyclick-close="" ng-class="{'show-scrollbar': app.layout.asideScrollbar}" class="sidebar">
+	        <!-- START sidebar nav-->
+	        <ul class="nav">
+	            <li ng-class="{active: ($uiRoute || ($state.$current.url.source.indexOf(item.uiRoute)) > -1 )}" ng-repeat="item in menu.items | orderBy: 'position'" ng-include="'sidebar-renderer.html'" data-ng-if="item.shouldRender(authentication.user);" ui-route="{{item.uiRoute}}" ng-init="pIndex = $index;" ng-click="toggleCollapse(pIndex, true)"></li>
+	        </ul>
+	        <!-- END sidebar nav-->
+	    </nav>
+	</div>
+	<!-- END Sidebar (left)-->
   </section>
   <!-- /.sidebar -->
 </aside>

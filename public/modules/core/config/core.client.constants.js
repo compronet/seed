@@ -3,7 +3,14 @@
  */
 (function() {
 	'use strict';
-	angular.module('core').constant('appConstants', {
+	angular.module('core')
+	.constant('APP_MEDIAQUERY', {
+		desktopLG: 1200,
+		desktop: 992,
+		tablet: 768,
+		mobile: 480
+	})
+	.constant('appConstants', {
 		defaultLanguageCode: 'de',
 		translation: {
 			filesPath: 'modules/core/i18n/',

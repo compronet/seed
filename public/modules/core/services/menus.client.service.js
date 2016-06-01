@@ -169,6 +169,9 @@
 
 			//Adding the topbar menu
 			this.addMenu('topbar');
+
+			//Adding the sidebar menu
+			this.addMenu('sidebar');
 		}
 	]);
 })();
