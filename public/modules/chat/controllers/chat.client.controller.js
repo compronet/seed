@@ -2,8 +2,8 @@
 	'use strict';
 
 	// Create the 'chat' controller
-	angular.module('chat').controller('ChatController', ['$scope', 'Authentication', 'Socket',
-		function($scope, Authentication, Socket) {
+	angular.module('chat').controller('ChatController', ['$scope', '$window', 'Authentication', 'Socket',
+		function($scope, $window, Authentication, Socket) {
 			var vm = this;
 			vm.messages = [];
 			vm.messageText = '';
@@ -37,6 +37,17 @@
 			$scope.$on('$destroy', function() {
 				Socket.removeListener('chatMessage');
 			});
+
+			angular.element($window).bind('resize', function() {
+				vm.onResize();
+			});
+
+			vm.onResize = function() {
+				angular.element('.direct-chat-messages').css('min-height',
+					angular.element('.main-sidebar').height() - 251);
+			};
+
+			vm.onResize();
 		}
 	]);
 })();

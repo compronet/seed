@@ -2,12 +2,17 @@
 	"de": "Almanca",
 	"gb": "İngilizce",
 	"tr": "Türkçe",
+	"hu": "",
+	"pt": "",
 	"global": {
 		"OK": "Tamam",
 		"READY": "Hazır",
+		"SEARCH": "",
 		"SENDDATA": "Verileri gönder",
 		"NODATAFOUND": "Veri bulunamadı",
 		"ACCEPT": "Kabul et",
+		"APPROVE": "",
+		"REJECT": "",
 		"CANCELPROCESS": "İşlemi iptal et",
 		"WARNING": "Uyarı",
 		"EDIT": "Düzenle",
@@ -55,6 +60,8 @@
 		"FOOTERTEXT": "Agentur für Kommunikation und Webentwicklung"
 	},
 	"user": {
+		"USERS": "",
+		"USERSLENGTH": "",
 		"EMAIL": "E-Posta",
 		"STREET": "Cadde",
 		"POSTAL": "Posta kodu",
@@ -102,8 +109,11 @@
 		"CHANGEPWD": "Şifre değiştir",
 		"APPS": "Uygulamalar",
 		"DEVICES": "Cihazlar",
+		"USERS": "",
+		"CHAT": "",
 		"APPSLIST": "Uygulamaları sırala",
-		"DEVICESLIST": "Cihazları sırala"
+		"DEVICESLIST": "Cihazları sırala",
+		"USERSLIST": ""
 	},
 	"apps": {
 		"APPS": "Uygulamalar",
@@ -114,8 +124,10 @@
 		"APP": "Uygulama",
 		"PORT": "Port",
 		"PATH": "Dizin",
+		"NOAPPTOSELECT": "",
+		"SETRELATION": "",
+		"PLEASESELECTAPP": "",
 		"NORELATEDDEVICE": "Cihaz tanımlanmamış"
-
 	},
 	"devices": {
 		"DEVICES": "Cihazlar",
@@ -128,7 +140,9 @@
 		"NODEVICESTOSELECT": "Cihaz seçeneği bulunamadı",
 		"PLEASESELECTDEVICE": "Lütfen cihaz seçiniz",
 		"NOAPPSRELATED": "Hanüz atanmış uygulama yok"
-
+	},
+	"chat": {
+		"NEWMESSAGE": "",
+		"SEND": ""
 	}
-
 }

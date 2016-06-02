@@ -18,6 +18,12 @@
 				},
 				2: {
 					key: 'tr'
+				},
+				3: {
+					key: 'hu'
+				},
+				4: {
+					key: 'pt'
 				}
 			},
 			iconsPath: '/dist/img/flags/',

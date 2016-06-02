@@ -2,6 +2,8 @@
 	"de": "Deutsch",
 	"gb": "Englisch",
 	"tr": "Türkisch",
+	"hu": "Ungarisch",
+	"pt": "Portugiesisch",
 	"global": {
 		"OK": "OK",
 		"READY": "Bereit",
@@ -9,7 +11,7 @@
 		"SENDDATA": "Daten absenden",
 		"NODATAFOUND": "Keine Daten gefunden",
 		"ACCEPT": "Akzeptieren",
-		"APPROVE": "Gutheißen",
+		"APPROVE": "Freischalten",
 		"REJECT": "Ablehnen",
 		"CANCELPROCESS": "Vorgang abbrechen",
 		"WARNING": "Warnung",

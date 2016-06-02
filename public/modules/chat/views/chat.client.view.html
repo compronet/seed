@@ -10,7 +10,7 @@
                         <h1 class="box-title" translate="menu.CHAT"></h1>
                     </div>
                     <div class="box-body">
-                        <div class="direct-chat-messages" style="min-height: 710px;">
+                        <div class="direct-chat-messages">
                             <div ng-class="{right: message.type !== 'message'}" class="direct-chat-msg" ng-repeat="message in chatCtrl.messages">
                                 <div class="direct-chat-info clearfix">
                                     <span class="direct-chat-name pull-left" ng-bind="message.user.username"></span>

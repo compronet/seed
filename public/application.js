@@ -24,6 +24,9 @@ angular.element(document).ready(function() {
 		window.location.hash = '#!';
 	}
 
+	// Set fixed scrollbar
+	angular.element('body').css('overflow-y', 'scroll');
+
 	//Then init the app
 	angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });
