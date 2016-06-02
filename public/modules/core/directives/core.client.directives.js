@@ -3,10 +3,21 @@
 
 	//Directive used to set metisMenu and minimalize button
 	angular.module('core')
-		.directive('sideNavigation', function($timeout) {
+		.directive('sideNavigation', function($timeout, $window) {
 			return {
 				restrict: 'A',
 				link: function(scope, element) {
+					angular.element($window).bind('resize', function() {
+						scope.onResize();
+					});
+
+					scope.onResize = function() {
+						angular.element('.content-wrapper, .right-side').css('min-height',
+							angular.element('.main-sidebar').height() - 51);
+					};
+
+					scope.onResize();
+
 					// Call metsi to build when user signup
 					scope.$watch('authentication.user', function() {
 						$timeout(function() {
@@ -24,18 +35,34 @@
 					'role="button"><span class="sr-only">Toggle navigation</span></a>',
 				controller: function($scope) {
 					$scope.minimalize = function() {
-						angular.element('body').toggleClass('sidebar-collapse');
-						if (!angular.element('body').hasClass('sidebar-collapse') || angular.element('body').hasClass('body-small')) {
-							// Hide menu in order to smoothly turn on when maximize menu
-							angular.element('#side-menu').hide();
+						if (!angular.element('body').hasClass('body-small')) {
+							angular.element('body').toggleClass('sidebar-collapse');
+							if (!angular.element('body').hasClass('sidebar-collapse')) {
+								// Hide menu in order to smoothly turn on when maximize menu
+								angular.element('#side-menu').hide();
 
-							// For smoothly turn on menu
-							$timeout(function() {
-								angular.element('#side-menu').fadeIn(500);
-							}, 100);
+								// For smoothly turn on menu
+								$timeout(function() {
+									angular.element('#side-menu').fadeIn(500);
+								}, 100);
+							} else {
+								// Remove all inline style from jquery fadeIn function to reset menu state
+								angular.element('#side-menu').removeAttr('style');
+							}
 						} else {
-							// Remove all inline style from jquery fadeIn function to reset menu state
-							angular.element('#side-menu').removeAttr('style');
+							angular.element('body').toggleClass('sidebar-open');
+							if (!angular.element('body').hasClass('sidebar-open')) {
+								// Hide menu in order to smoothly turn on when maximize menu
+								angular.element('#side-menu').hide();
+
+								// For smoothly turn on menu
+								$timeout(function() {
+									angular.element('#side-menu').fadeIn(500);
+								}, 100);
+							} else {
+								// Remove all inline style from jquery fadeIn function to reset menu state
+								angular.element('#side-menu').removeAttr('style');
+							}
 						}
 					};
 				}
