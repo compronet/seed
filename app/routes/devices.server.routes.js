@@ -14,7 +14,7 @@ module.exports = function(app) {
 		.get(users.requiresLogin, devices.count);
 
 	app.route('/devices/:deviceId')
-		.get(users.requiresLogin, base.hasAuthorization, devices.read)
+		.get(users.requiresLogin, devices.read)
 		.put(users.requiresLogin, base.hasAuthorization, devices.update)
 		.delete(users.requiresLogin, base.hasAuthorization, devices.delete);
 

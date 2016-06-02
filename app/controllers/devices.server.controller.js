@@ -95,7 +95,7 @@ exports.list = function(req, res) {
 	var skip = req.query.offset || 0;
 	var orderBy = req.query.orderBy || '-created';
 	var queryFilter = req.query.filter ? JSON.parse(req.query.filter) : {};
-	var filter = baseController.makeFilter(queryFilter, req.user);
+	var filter = baseController.makeFilter(queryFilter, req.user, req.query.onlyOwn);
 
 	var query = Collection.find(filter).skip(skip).limit(limit).sort(orderBy).populate('user', 'displayName');
 
@@ -107,7 +107,7 @@ exports.list = function(req, res) {
  */
 exports.count = function(req, res) {
 	var queryFilter = req.query.filter ? JSON.parse(req.query.filter) : {};
-	var filter = baseController.makeFilter(queryFilter, req.user);
+	var filter = baseController.makeFilter(queryFilter, req.user, req.query.onlyOwn);
 	var query = Collection.count(filter);
 
 	baseController.count(req, res, query);

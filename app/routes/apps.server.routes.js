@@ -13,10 +13,10 @@ module.exports = function(app) {
 	app.route('/apps/count')
 		.get(users.requiresLogin, apps.count);
 
-	app.route('/apps/device/:deviceId').get(users.requiresLogin, base.hasAuthorization, apps.appByDeviceID);
+	app.route('/apps/device/:deviceId').get(users.requiresLogin, apps.appByDeviceID);
 
 	app.route('/apps/:appId')
-		.get(users.requiresLogin, base.hasAuthorization, apps.read)
+		.get(users.requiresLogin, apps.read)
 		.put(users.requiresLogin, base.hasAuthorization, apps.update)
 		.delete(users.requiresLogin, base.hasAuthorization, apps.delete);
 

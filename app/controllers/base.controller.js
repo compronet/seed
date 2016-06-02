@@ -15,7 +15,7 @@ var handleError = function(res, err) {
 /**
  * Make filter for the list query
  */
-exports.makeFilter = function(filter, user) {
+exports.makeFilter = function(filter, user, onlyOwn) {
 	var newFilter = {};
 	for (var key in filter) {
 		if (filter[key].length > 0) {
@@ -23,7 +23,7 @@ exports.makeFilter = function(filter, user) {
 		}
 	}
 
-	if (_.indexOf(user.roles, 'admin') === -1) {
+	if (_.indexOf(user.roles, 'admin') === -1 && onlyOwn === 'true') {
 		newFilter.user = {
 			_id: user._id
 		};
