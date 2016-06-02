@@ -26,7 +26,7 @@
 					key: 'pt'
 				}
 			},
-			iconsPath: '/dist/img/flags/',
+			iconsPath: '/www/img/flags/',
 			iconsSuffix: '.gif'
 		},
 		copyright: 'compronet GmbH &copy; 2016',
