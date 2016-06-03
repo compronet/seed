@@ -237,11 +237,6 @@ module.exports = function(grunt) {
 					}, {
 						expand: true,
 						flatten: true,
-						src: ['public/lib/fontawesome/fonts/*'],
-						dest: 'public/www/fonts/'
-					}, {
-						expand: true,
-						flatten: true,
 						src: ['public/www/modules/core/css/patterns/*'],
 						dest: 'public/www/css/patterns/'
 					}, {
