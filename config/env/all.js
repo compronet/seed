@@ -82,17 +82,17 @@ module.exports = {
 		css: [
 			'public/www/css/AdminLTE.css',
 			'public/www/css/skins/_all-skins.css',
-			'public/modules/**/css/*.css'
+			'public/www/modules/**/css/*.css'
 		],
 		js: [
 			'public/config.js',
 			'public/application.js',
-			'public/modules/*/*.js',
-			'public/modules/*/*[!tests]*/*.js'
+			'public/www/modules/*/*.js',
+			'public/www/modules/*/*[!tests]*/*.js'
 		],
 		tests: [
 			'public/lib/angular-mocks/angular-mocks.js',
-			'public/modules/*/tests/*.js'
+			'public/www/modules/*/tests/*.js'
 		]
 	}
 };
