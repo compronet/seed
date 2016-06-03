@@ -58,6 +58,8 @@ module.exports = {
 			]
 		},
 		css: [
+			'public/www/css/AdminLTE.min.css',
+			'public/www/css/skins/_all-skins.min.css',
 			'public/modules/**/css/*.css'
 		],
 		js: [

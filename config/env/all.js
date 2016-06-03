@@ -80,6 +80,8 @@ module.exports = {
 			]
 		},
 		css: [
+			'public/www/css/AdminLTE.css',
+			'public/www/css/skins/_all-skins.css',
 			'public/modules/**/css/*.css'
 		],
 		js: [
