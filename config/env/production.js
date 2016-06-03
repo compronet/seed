@@ -15,7 +15,7 @@ module.exports = {
 		],
 		tests: [
 			'public/lib/angular-mocks/angular-mocks.js',
-			'public/www/modules/*/tests/*.js'
+			'public/modules/*/tests/*.js'
 		]
 	},
 	facebook: {
