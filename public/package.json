@@ -1,0 +1,16 @@
+{
+  "name": "seedapp",
+  "version": "1.1.1",
+  "description": "seedApp: An Ionic project",
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": [
+    "android"
+  ]
+}

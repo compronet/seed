@@ -6,6 +6,7 @@
 var fs = require('fs');
 var https = require('https');
 var express = require('express');
+var cors = require('cors');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -40,6 +41,18 @@ module.exports = function(db) {
 	app.locals.facebookAppId = config.facebook.clientID;
 	app.locals.jsFiles = config.getJavaScriptAssets();
 	app.locals.cssFiles = config.getCSSAssets();
+
+	//app.use(cors());
+
+	var whitelist = ['http://192.168.178.5:3000', 'http://localhost:3000','http://192.168.178.5:3030','http://141.0.20.167:3030','http://192.168.178.5:8100'];
+	var corsOptions = {
+		origin: function(origin, callback){
+			var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+			callback(null, originIsWhitelisted);
+		},
+		credentials: true
+	};
+	app.use(cors(corsOptions));
 
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {

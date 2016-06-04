@@ -1,4 +1,4 @@
-<header class="main-header" data-ng-controller="HeaderController">
+<header class="main-header" data-ng-controller="HeaderController" ng-show="authentication.user">
     <!-- Logo -->
     <a href="/#!/home" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -12,6 +12,13 @@
         <!-- Sidebar toggle button-->
 		<span minimaliza-sidebar></span>
         <div class="navbar-custom-menu">
+            <!-- START lang menu -->
+            <ul class="nav navbar-nav">
+
+            <li class="dropdown" ng-include="'/modules/core/views/langmenu.client.view.html'"></li>
+
+            </ul>
+            <!-- END lang menu -->
             <ul class="nav navbar-nav" data-ng-hide="authentication.user">
                 <li ui-route="/signup">
                     <a href="/#!/signup" translate="menu.SIGNUP"></a>
@@ -45,9 +52,7 @@
                         </li>
                     </ul>
                 </li>
-                <!-- START lang menu -->
-                <li class="dropdown" ng-include="'/modules/core/views/langmenu.client.view.html'"></li>
-                <!-- END lang menu -->
+
             </ul>
         </div>
     </nav>

@@ -1,14 +1,14 @@
 (function() {
 	'use strict';
-	angular.module('apps').factory('Apps', ['$rootScope', '$resource', Apps]);
-	function Apps($rootScope, $resource) {
+	angular.module('apps').factory('Apps', ['$rootScope', '$resource','appConstants', Apps]);
+	function Apps($rootScope, $resource, appConstants) {
 		var service = {
 			getRestApi: getRestApi,
 			notify: notify,
 			onNotification: onNotification
 		};
 
-		var restApi = $resource('apps/:appId', {
+		var restApi = $resource(appConstants.restUrl+'/apps/:appId', {
 			appId: '@_id'
 		}, {
 			update: {

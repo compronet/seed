@@ -7,7 +7,12 @@
 
         <div class="login-box-body">
             <h4 class="login-box-msg" translate="user.SIGNUPSOCIALTITLE"></h4>
+            <!-- START lang menu -->
+            <ul class="nav navbar-nav">
+                <li class="dropdown" ng-include="'/modules/core/views/langmenu.client.view.html'"></li>
 
+            </ul>
+            <!-- END lang menu -->
             <div class="social-auth-links text-center">
                 <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-flat">
                     <i class="fa fa-facebook"></i>

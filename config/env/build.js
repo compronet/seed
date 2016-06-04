@@ -30,7 +30,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.min.css',
 				'public/lib/metisMenu/dist/metisMenu.min.css',
 				'public/lib/animate.css/animate.min.css',
-				'public/lib/whirl.css/dist/whirl.min.css'
+				'public/lib/whirl.css/dist/whirl.min.css',
+				'public/lib/ionic/css/ionic.min.css'
 			],
 			js: [
 				'public/lib/lodash/dist/lodash.min.js',
@@ -38,7 +39,7 @@ module.exports = {
 				'public/lib/bootstrap/dist/js/bootstrap.min.js',
 				'public/lib/metisMenu/dist/metisMenu.min.js',
 				'public/scripts.js',
-				'public/lib/angular/angular.min.js',
+				'public/lib/ionic/js/ionic.bundle.min.js',
 				'public/lib/angular-resource/angular-resource.min.js',
 				'public/lib/angular-cookies/angular-cookies.min.js',
 				'public/lib/angular-translate/angular-translate.min.js',

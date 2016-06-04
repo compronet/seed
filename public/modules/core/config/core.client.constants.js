@@ -4,6 +4,7 @@
 (function() {
 	'use strict';
 	angular.module('core').constant('appConstants', {
+		restUrl: 'http://192.168.178.5:'+(window.restPort?window.restPort:'3030'),
 		defaultLanguageCode: 'de',
 		translation: {
 			filesPath: 'modules/core/i18n/',
@@ -26,7 +27,7 @@
 					key: 'pt'
 				}
 			},
-			iconsPath: '/www/img/flags/',
+			iconsPath: '/img/flags/',
 			iconsSuffix: '.gif'
 		},
 		copyright: 'compronet GmbH &copy; 2016',

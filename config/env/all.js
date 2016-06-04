@@ -12,6 +12,7 @@ module.exports = {
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',
 	sessionCookie: {
+
 		// session expiration is set by default to 24 hours
 		maxAge: 24 * (60 * 60 * 1000),
 
@@ -52,7 +53,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/metisMenu/dist/metisMenu.css',
 				'public/lib/animate.css/animate.css',
-				'public/lib/whirl.css/dist/whirl.css'
+				'public/lib/whirl.css/dist/whirl.css',
+				'public/lib/ionic/css/ionic.css'
 			],
 			js: [
 				'public/lib/lodash/dist/lodash.js',
@@ -60,7 +62,7 @@ module.exports = {
 				'public/lib/bootstrap/dist/js/bootstrap.js',
 				'public/lib/metisMenu/dist/metisMenu.js',
 				'public/scripts.js',
-				'public/lib/angular/angular.js',
+				'public/lib/ionic/js/ionic.bundle.js',
 				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-cookies/angular-cookies.js',
 				'public/lib/angular-translate/angular-translate.js',

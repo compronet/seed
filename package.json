@@ -12,6 +12,7 @@
     "postinstall": "bower install --config.interactive=false"
   },
   "dependencies": {
+    "cors":"2.7.1 ",
     "async": "^1.5.2",
     "bluebird": "^3.4.0",
     "body-parser": "^1.15.0",

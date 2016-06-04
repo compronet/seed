@@ -229,6 +229,22 @@ module.exports = function(grunt) {
 						flatten: true,
 						src: ['public/lib/bootstrap/fonts/*'],
 						dest: 'public/www/fonts/'
+					},{
+						expand: true,
+						flatten: false,
+						cwd:'public/modules/',
+						src: ['**/**', '!**/*.js'],
+						dest: 'public/www/modules/'
+					},{
+						expand: true,
+						flatten: true,
+						src: ['public/lib/ionic/fonts/*'],
+						dest: 'public/www/fonts/'
+					}, {
+						expand: true,
+						flatten: true,
+						src: ['public/lib/famfamfam-flags/dist/gif/*'],
+						dest: 'public/img/flags/'
 					}, {
 						expand: true,
 						flatten: true,

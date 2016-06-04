@@ -13,7 +13,7 @@
 
 					scope.onResize = function() {
 						angular.element('.content-wrapper, .right-side').css('min-height',
-							angular.element('.main-sidebar').height() - 51);
+							angular.element('.main-sidebar').height()- 51);
 					};
 
 					scope.onResize();
