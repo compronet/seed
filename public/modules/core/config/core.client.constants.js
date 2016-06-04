@@ -4,7 +4,8 @@
 (function() {
 	'use strict';
 	angular.module('core').constant('appConstants', {
-		restUrl: 'http://192.168.178.5:'+(window.restPort?window.restPort:'3030'),
+		//restUrl: 'http://seed.compronet.io:'+(window.restPort?window.restPort:'3030'),
+		restUrl: 'http://localhost:'+(window.restPort?window.restPort:'3030'),
 		defaultLanguageCode: 'de',
 		translation: {
 			filesPath: 'modules/core/i18n/',

@@ -49,13 +49,17 @@ module.exports = {
 	},
 	assets: {
 		lib: {
-			css: [
-				'public/lib/bootstrap/dist/css/bootstrap.css',
-				'public/lib/metisMenu/dist/metisMenu.css',
-				'public/lib/animate.css/animate.css',
-				'public/lib/whirl.css/dist/whirl.css',
-				'public/lib/ionic/css/ionic.css'
-			],
+			css:{
+				mobile:[
+					'public/lib/ionic/css/ionic.css'
+				],
+				web:[
+					'public/lib/bootstrap/dist/css/bootstrap.css',
+					'public/lib/metisMenu/dist/metisMenu.css',
+					'public/lib/animate.css/animate.css',
+					'public/lib/whirl.css/dist/whirl.css'
+				]
+			},
 			js: [
 				'public/lib/lodash/dist/lodash.js',
 				'public/lib/jquery/dist/jquery.js',
@@ -80,11 +84,14 @@ module.exports = {
 				'public/lib/jquery-flot/jquery.flot.js'
 			]
 		},
-		css: [
-			'public/www/css/AdminLTE.css',
-			'public/www/css/skins/_all-skins.css',
-			'public/modules/**/css/*.css'
-		],
+		css:{
+			mobile:['public/www/css/mobile/*.css'],
+			web:[
+				'public/www/css/AdminLTE.css',
+				'public/www/css/skins/_all-skins.css',
+				'public/modules/**/css/*.css'
+			]
+		},
 		js: [
 			'public/config.js',
 			'public/application.js',

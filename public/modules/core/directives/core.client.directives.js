@@ -1,19 +1,20 @@
 (function() {
 	'use strict';
-
+    
 	//Directive used to set metisMenu and minimalize button
 	angular.module('core')
-		.directive('sideNavigation', function($timeout, $window) {
+		.directive('sideNavigation', function($timeout, $window, Authentication) {
 			return {
 				restrict: 'A',
 				link: function(scope, element) {
+
 					angular.element($window).bind('resize', function() {
 						scope.onResize();
 					});
 
 					scope.onResize = function() {
-						angular.element('.content-wrapper, .right-side').css('min-height',
-							angular.element('.main-sidebar').height()- 51);
+						var minH = $window.innerHeight- (Authentication.user?100:-49);
+						angular.element('.content-wrapper').css('min-height', minH	);
 					};
 
 					scope.onResize();
@@ -22,7 +23,8 @@
 					scope.$watch('authentication.user', function() {
 						$timeout(function() {
 							element.metisMenu();
-						});
+							scope.onResize();
+						},100);
 					});
 
 				}

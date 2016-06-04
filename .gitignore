@@ -4,7 +4,13 @@
 npm-debug.log
 node_modules/
 public/lib
-public/www
+public/www/*.css
+public/www/*/*.css
+public/www/*.js
+public/www/*/*.js
+public/www/css
+public/www/fonts
+
 app/tests/coverage/
 .bower-*/
 .idea/

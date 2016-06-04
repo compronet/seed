@@ -26,13 +26,15 @@ module.exports = {
 	sessionKey: 'sessionId',
 	assets: {
 		lib: {
-			css: [
-				'public/lib/bootstrap/dist/css/bootstrap.min.css',
-				'public/lib/metisMenu/dist/metisMenu.min.css',
-				'public/lib/animate.css/animate.min.css',
-				'public/lib/whirl.css/dist/whirl.min.css',
-				'public/lib/ionic/css/ionic.min.css'
-			],
+			css:{
+				mobile:['public/lib/ionic/css/ionic.min.css'],
+				web:[
+					'public/lib/bootstrap/dist/css/bootstrap.min.css',
+					'public/lib/metisMenu/dist/metisMenu.min.css',
+					'public/lib/animate.css/animate.min.css',
+					'public/lib/whirl.css/dist/whirl.min.css'
+				]
+			},
 			js: [
 				'public/lib/lodash/dist/lodash.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
@@ -57,11 +59,14 @@ module.exports = {
 				'public/lib/jquery-flot/jquery.flot.js'
 			]
 		},
-		css: [
-			'public/www/css/AdminLTE.min.css',
-			'public/www/css/skins/_all-skins.min.css',
-			'public/modules/**/css/*.css'
-		],
+		css:{
+			mobile:['public/www/css/mobile/*.css'],
+			web:[
+				'public/www/css/AdminLTE.min.css',
+				'public/www/css/skins/_all-skins.min.css',
+				'public/modules/**/css/*.css'
+			]
+		},
 		js: [
 			'public/config.js',
 			'public/application.js',

@@ -14,26 +14,25 @@
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script> <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]-->
     </head>
 
-    <body class="hold-transition skin-blue sidebar-mini ng-cloak">
-
+    <body data-ng-controller="AppController" class="ng-cloak">
+        <div ng-class="{'hold-transition skin-blue sidebar-mini':authentication.user,'hold-transition login-page':!authentication.user}" >
         <!-- Wrapper-->
-        <div class="wrapper" data-ng-controller="AppController">
+        <div class="wrapper">
             <!-- Header  -->
+
             <div data-ng-include="'/modules/core/views/header.client.view.html'"></div>
 
             <!-- Navigation -->
             <div data-ng-include="'/modules/core/views/navigation.client.view.html'"></div>
 
             <!-- Main view  -->
-            <div class="content-wrapper">
+            <div ng-class="{'content-wrapper':authentication.user,'content':!authentication.user}">
                 {% block content %}{% endblock %}
             </div>
             <!-- Footer -->
@@ -61,6 +60,7 @@
             <!--Livereload script rendered -->
             <script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
         {% endif %}
+        </div>
     </body>
 
 </html>

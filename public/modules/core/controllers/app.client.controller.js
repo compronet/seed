@@ -5,9 +5,10 @@
 (function() {
 	'use strict';
 	angular.module('core').controller('AppController', ['$scope', '$state', '$translate', 'appConstants',
-		'languageService',
-		function($scope, $state, $translate, appConstants, languageService) {
-
+		'languageService', 'Authentication',
+		function($scope, $state, $translate, appConstants, languageService, Authentication) {
+			$scope.authentication = Authentication;
+			
 			// Internationalization
 			// ----------------------
 			$scope.copyright = appConstants.copyright;

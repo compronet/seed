@@ -40,10 +40,11 @@ module.exports = function(db) {
 	app.locals.keywords = config.app.keywords;
 	app.locals.facebookAppId = config.facebook.clientID;
 	app.locals.jsFiles = config.getJavaScriptAssets();
-	app.locals.cssFiles = config.getCSSAssets();
+	app.locals.cssFiles = config.getCSSAssets('web');
 
 	//app.use(cors());
-
+	
+	/*
 	var whitelist = ['http://192.168.178.5:3000', 'http://localhost:3000','http://192.168.178.5:3030','http://141.0.20.167:3030','http://192.168.178.5:8100'];
 	var corsOptions = {
 		origin: function(origin, callback){
@@ -53,7 +54,8 @@ module.exports = function(db) {
 		credentials: true
 	};
 	app.use(cors(corsOptions));
-
+	*/
+	
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {
 		res.locals.url = req.protocol + '://' + req.headers.host + req.url;

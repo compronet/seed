@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 		serverJS: ['server.js', 'config/**/*.js', 'app/**/*.js'],
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/modules/**/*.js'],
-		clientLess: ['public/build/less/*.less', 'public/build/less/skins/*.less', 'public/www/js/app.js'],
+		clientLess: ['public/build/less/*.less', 'public/build/less/skins/*.less'],
 		mochaTests: ['app/tests/**/*.js']
 	};
 
@@ -67,25 +67,17 @@ module.exports = function(grunt) {
 					compress: false
 				},
 				files: {
-					// compilation.css  :  source.less
 					'public/www/css/AdminLTE.css': 'public/build/less/AdminLTE.less',
-
-					//Non minified skin files
 					'public/www/css/skins/_all-skins.css': 'public/build/less/skins/_all-skins.less'
 				}
 			},
-
-			// Production compresses version
 			production: {
 				options: {
 					// Whether to compress or not
 					compress: true
 				},
 				files: {
-					// compilation.css  :  source.less
 					'public/www/css/AdminLTE.min.css': 'public/build/less/AdminLTE.less',
-
-					// Skins minified
 					'public/www/css/skins/_all-skins.min.css': 'public/build/less/skins/_all-skins.less'
 				}
 			}
@@ -94,7 +86,9 @@ module.exports = function(grunt) {
 			combine: {
 				files: {
 					'public/www/app.min.css': '<%= applicationCSSFiles %>',
-					'public/www/vendor.min.css': '<%= vendorCSSFiles %>'
+					'public/www/vendor.min.css': '<%= vendorCSSFiles %>',
+					'public/www/app.mobile.min.css': '<%= applicationMobileCSSFiles %>',
+					'public/www/vendor.mobile.min.css': '<%= vendorMobileCSSFiles %>'
 				}
 			}
 		},
@@ -105,7 +99,7 @@ module.exports = function(grunt) {
 				mangle: true,
 				preserveComments: 'some'
 			},
-			my_target: {
+			target: {
 				files: {
 					'public/www/js/app.min.js': ['public/www/js/app.js']
 				}
@@ -166,7 +160,7 @@ module.exports = function(grunt) {
 					stripBanners: true
 				},
 				files: {
-					'public/www/vendor.min.js': '<%= vendorJavaScriptFiles %>'
+					'public/www/js/vendor.min.js': '<%= vendorJavaScriptFiles %>'
 				}
 			}
 		},
@@ -229,12 +223,6 @@ module.exports = function(grunt) {
 						flatten: true,
 						src: ['public/lib/bootstrap/fonts/*'],
 						dest: 'public/www/fonts/'
-					},{
-						expand: true,
-						flatten: false,
-						cwd:'public/modules/',
-						src: ['**/**', '!**/*.js'],
-						dest: 'public/www/modules/'
 					},{
 						expand: true,
 						flatten: true,
@@ -323,8 +311,10 @@ module.exports = function(grunt) {
 		var config = require('./config/config');
 		grunt.config.set('vendorJavaScriptFiles', config.assets.lib.js);
 		grunt.config.set('applicationJavaScriptFiles', config.assets.js);
-		grunt.config.set('vendorCSSFiles', config.assets.lib.css);
-		grunt.config.set('applicationCSSFiles', config.assets.css);
+		grunt.config.set('vendorCSSFiles', config.assets.lib.css.web);
+		grunt.config.set('applicationCSSFiles', config.assets.css.web);
+		grunt.config.set('vendorMobileCSSFiles', config.assets.lib.css.mobile);
+		grunt.config.set('applicationMobileCSSFiles', config.assets.css.mobile);
 	});
 
 	// Default task(s).

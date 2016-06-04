@@ -31,7 +31,7 @@
 					// And redirect to the index page
 					//$window.location.href = '/';
 					$rootScope.user = response;
-					$state.go('apps');
+					$state.go('home');
 					
 				}).error(function(response) {
 					$scope.error = response.message;

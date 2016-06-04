@@ -5,11 +5,12 @@
  *
  * Custom scripts
  */
-
+/*
 $(document).ready(function() {
 
 	// Full height
 	function fixHeight() {
+
 		var heightWithoutNavbar = $('body > #wrapper').height() - 61;
 		$('.sidebard-panel').css('min-height', heightWithoutNavbar + 'px');
 
@@ -50,3 +51,4 @@ $(function() {
 		}
 	});
 });
+*/
