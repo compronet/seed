@@ -1,0 +1,51 @@
+<div class="ctrl-wrap" data-ng-init="appViewCtrl.init()">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="box box-info">
+				<div class="box-header with-border">
+					<h3 class="box-title" data-ng-bind="appViewCtrl.app.name"></h3>
+					<div class="box-tools pull-right">
+						<a class="btn btn-box-tool" data-ng-click="appViewCtrl.edit();">
+							<i class="fa fa-edit"></i>
+						</a>
+						<a class="btn btn-box-tool" data-ng-click="appViewCtrl.remove();">
+							<i class="fa fa-trash-o"></i>
+						</a>
+						<a class="btn btn-box-tool" data-ng-click="appViewCtrl.close();">
+							<i class="fa fa-remove"></i>
+						</a>
+					</div>
+				</div>
+				<div class="box-body">
+					<table class="table table-striped">
+						<tbody>
+						<tr>
+							<td translate="apps.VERSION"></td><td data-ng-bind="appViewCtrl.app.version"></td>
+						</tr>
+						<tr>
+							<td translate="global.DESCRIPTION"></td><td data-ng-bind="appViewCtrl.app.description[language.selectedId]"></td>
+						</tr>
+						<tr>
+							<td translate="apps.PORT"></td><td data-ng-bind="appViewCtrl.app.port"></td>
+						</tr>
+						<tr>
+							<td translate="apps.PATH"></td><td data-ng-bind="appViewCtrl.app.path"></td>
+						</tr>
+						<tr>
+							<td translate="devices.DEVICE"></td><td>
+							 <span ng-if="appViewCtrl.app.device && !appViewCtrl.loading">
+								<span data-ng-bind="appViewCtrl.app.device.manufacturer"></span> <span data-ng-bind="appViewCtrl.app.device.model"></span>
+							</span>
+							<div class="label label-warning" ng-if="!appViewCtrl.app.device && !appViewCtrl.loading" translate="apps.NORELATEDDEVICE"></div>
+						</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="box-footer">
+					<created date="appViewCtrl.app.created" user="appViewCtrl.app.user"></created>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

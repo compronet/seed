@@ -1,0 +1,22 @@
+<ion-view title="Login" data-ng-controller="AuthenticationController">
+    <ion-content padding="true" class="has-header">
+        <form role="form" data-ng-submit="signin()" class="list" autocomplete="off">
+            <ion-list id="login-list1" class=" ">
+                <label class="item item-input " id="login-input1">
+                    <span class="input-label" translate="user.USERNAME"></span>
+                    <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="{{'user.USERNAME'|translate}}">
+                </label>
+                <label class="item item-input " id="login-input2">
+                    <span class="input-label" translate="user.PASSWORD"></span>
+                    <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="{{'user.PASSWORD'|translate}}">
+                    <span class="fa fa-lock form-control-feedback"></span>
+                </label>
+            </ion-list>
+            <div class="spacer" style="height: 40px;"></div>
+            <button type="submit" class="button button-stable  button-block " translate="user.SIGNIN"></button>
+            <a onclick="window.open('/#!/password/forgot', '_system', 'location=yes'); return false;" class=" button button-positive  button-block button-clear "translate="user.PWDFORGOT"></a><br>
+            <a onclick="window.open('/#!/signup', '_system', 'location=yes'); return false;" class=" button button-positive  button-block button-clear " translate="user.SIGNUP"></a>
+
+        </form>
+    </ion-content>
+</ion-view>

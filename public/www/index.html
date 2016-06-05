@@ -15,29 +15,26 @@
 
 </head>
 
-<body data-ng-controller="AppController" class="ng-cloak">
-    <div ng-class="{'hold-transition skin-blue sidebar-mini':authentication.user,'hold-transition login-page':!authentication.user}" >
-        <!-- Wrapper-->
-        <div class="wrapper">
-            <!-- Header  -->
-            <div data-ng-include="'/modules/core/views/header.client.view.html'"></div>
-            <!-- Navigation -->
-            <div data-ng-include="'/modules/core/views/navigation.client.view.html'"></div>
-            <!-- Main view  -->
-            <div ng-class="{'content-wrapper':authentication.user,'content':!authentication.user}">
-                <div data-ui-view></div>
-            </div>
-            <!-- Footer -->
-            <div data-ng-include="'/modules/core/views/footer.client.view.html'"></div>
-        </div>
-        <!-- End page wrapper-->
+<body data-ng-controller="AppController"  animation="slide-left-right-ios7">
+    <div>
 
-        <!--Load The Socket.io File-->
-        <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-        <!--Application JavaScript Files-->
-        <script type="text/javascript" src="js/vendor.min.js"></script>
-        <script type="text/javascript" src="js/app.min.js"></script>
+            <!-- Header  -->
+            <div data-ng-include="'modules/core/views/header.client.view.html'"></div>
+            <!-- Navigation -->
+            <div data-ng-include="'modules/core/views/navigation.client.view.html'"></div>
+            <!-- Main view  -->
+            <div data-ui-view></div>
+
+            <!-- Footer -->
+            <div data-ng-include="'modules/core/views/footer.client.view.html'"></div>
+
+
     </div>
+    <!--Load The Socket.io File-->
+    <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <!--Application JavaScript Files-->
+    <script type="text/javascript" src="js/vendor.min.js"></script>
+    <script type="text/javascript" src="js/app.min.js"></script>
 </body>
 
 </html>

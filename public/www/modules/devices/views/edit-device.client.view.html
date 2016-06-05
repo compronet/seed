@@ -1,0 +1,23 @@
+<div data-ng-init="deviceEditCtrl.init()">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title" translate="global.EDIT"></h3>
+                </div>
+                <form class="form-horizontal" data-ng-submit="deviceEditCtrl.update()" novalidate>
+                    <div class="box-body">
+                        <device-data device="deviceEditCtrl.device" apps="deviceEditCtrl.apps" loading="deviceEditCtrl.loading"></device-data>
+                        <div data-ng-show="deviceEditCtrl.error" class="text-danger">
+                            <strong data-ng-bind="deviceEditCtrl.error"></strong>
+                        </div>
+                    </div>
+                    <div class="box-footer text-right">
+                        <a class="btn btn-sm btn-default" data-ng-click="deviceEditCtrl.cancel();" translate="global.CANCEL"></a>
+                        <button class="btn btn-sm btn-primary" type="submit"><strong translate="global.UPDATE"></strong></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

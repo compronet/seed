@@ -1,0 +1,25 @@
+<div class="devicesModal">
+    <div class="modal-header">
+        <h3 class="modal-title" translate="devices.DEVICES"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-warning" ng-if="!devices.length" translate="devices.NODEVICESTOSELECT">
+
+        </div>
+        <div class="list-items" ng-if="devices.length>0">
+            <devices-list selected="selected" devices="devices" on-device-select="select"></devices-list>
+            <div ng-if="selected._id">
+                <span translate="global.YOURSELECTION"></span>: <b data-ng-bind="selected.manufacturer"></b> <b data-ng-bind="selected.model"></b>
+            </div>
+            <div ng-if="!selected._id" translate="devices.PLEASESELECTDEVICE">
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()" translate="global.OK"></button>
+        <button class="btn btn-default" type="button" ng-click="cancel()" translate="global.CANCEL"></button>
+    </div>
+
+</div>

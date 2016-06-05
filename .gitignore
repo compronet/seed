@@ -10,7 +10,8 @@ public/www/*.js
 public/www/*/*.js
 public/www/css
 public/www/fonts
-
+public/www/img
+public/www/js
 app/tests/coverage/
 .bower-*/
 .idea/

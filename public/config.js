@@ -5,7 +5,7 @@ var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'startapp';
 	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies', 'ngAnimate', 'ngTouch', 'ngSanitize',
-		'pascalprecht.translate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'ui.gravatar'];
+		'pascalprecht.translate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'ui.gravatar', 'ionic'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
