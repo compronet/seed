@@ -13,8 +13,8 @@ module.exports = function(grunt) {
 	var watchFiles = {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['server.js', 'config/**/*.js', 'app/**/*.js'],
-		clientViews: ['public/www/modules/**/views/**/*.html'],
-		clientJS: ['public/www/modules/**/*.js'],
+		clientViews: ['public/modules/**/views/**/*.html'],
+		clientJS: ['public/modules/**/*.js'],
 		clientLess: ['public/build/less/*.less', 'public/build/less/skins/*.less', 'public/www/js/app.js'],
 		mochaTests: ['app/tests/**/*.js']
 	};
@@ -237,11 +237,11 @@ module.exports = function(grunt) {
 					}, {
 						expand: true,
 						flatten: true,
-						src: ['public/www/modules/core/css/patterns/*'],
+						src: ['public/modules/core/css/patterns/*'],
 						dest: 'public/www/css/patterns/'
 					}, {
 						expand: true,
-						cwd: 'public/www/modules/core/img',
+						cwd: 'public/modules/core/img',
 						src: ['**/*'],
 						dest: 'public/www/img'
 					}

@@ -51,7 +51,6 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/metisMenu/dist/metisMenu.css',
-				'public/lib/fontawesome/css/font-awesome.css',
 				'public/lib/animate.css/animate.css',
 				'public/lib/whirl.css/dist/whirl.css'
 			],
@@ -82,17 +81,17 @@ module.exports = {
 		css: [
 			'public/www/css/AdminLTE.css',
 			'public/www/css/skins/_all-skins.css',
-			'public/www/modules/**/css/*.css'
+			'public/modules/**/css/*.css'
 		],
 		js: [
 			'public/config.js',
 			'public/application.js',
-			'public/www/modules/*/*.js',
-			'public/www/modules/*/*[!tests]*/*.js'
+			'public/modules/*/*.js',
+			'public/modules/*/*[!tests]*/*.js'
 		],
 		tests: [
 			'public/lib/angular-mocks/angular-mocks.js',
-			'public/www/modules/*/tests/*.js'
+			'public/modules/*/tests/*.js'
 		]
 	}
 };
