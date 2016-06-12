@@ -5,7 +5,7 @@
 	angular.module('users').config(['$httpProvider',
 		function($httpProvider) {
 			// Set the httpProvider "not authorized" interceptor
-			$httpProvider.interceptors.push(['$q', '$location', 'Authentication',
+			/*$httpProvider.interceptors.push(['$q', '$location', 'Authentication',
 				function($q, $location, Authentication) {
 					return {
 						responseError: function(rejection) {
@@ -28,7 +28,24 @@
 						}
 					};
 				}
-			]);
+			]);*/
+			$httpProvider.interceptors.push(['$q', '$location', '$window', function($q, $location, $window) {
+				return {
+					'request': function (config) {
+						config.headers = config.headers || {};
+						if ($window.localStorage.token) {
+							config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+						}
+						return config;
+					},
+					'responseError': function(response) {
+						if(response.status === 401 || response.status === 403) {
+							$location.path('/signin');
+						}
+						return $q.reject(response);
+					}
+				};
+			}]);
 		}
 	]).run(['Menus',
 		function(Menus) {

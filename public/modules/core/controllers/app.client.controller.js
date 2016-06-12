@@ -7,8 +7,9 @@
 	angular.module('core').controller('AppController', ['$scope', '$state', '$translate', 'appConstants',
 		'languageService', 'Authentication',
 		function($scope, $state, $translate, appConstants, languageService, Authentication) {
-			$scope.authentication = Authentication;
-			
+			$scope.authentication = {};
+			$scope.authentication.user = Authentication.getUser();
+
 			// Internationalization
 			// ----------------------
 			$scope.copyright = appConstants.copyright;

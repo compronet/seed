@@ -44,20 +44,25 @@ module.exports = function(db) {
 
 	//app.use(cors());
 	
-	/*
+
 	var whitelist = ['http://192.168.178.5:3000', 'http://localhost:3000','http://192.168.178.5:3030','http://141.0.20.167:3030','http://192.168.178.5:8100'];
 	var corsOptions = {
 		origin: function(origin, callback){
-			var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-			callback(null, originIsWhitelisted);
+			//var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+			//callback(null, originIsWhitelisted);
+			console.log(origin);
+			callback(null, true);
 		},
 		credentials: true
 	};
 	app.use(cors(corsOptions));
-	*/
+
 	
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {
+		/*res.setHeader('Access-Control-Allow-Origin', '*');
+		res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+		res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');*/
 		res.locals.url = req.protocol + '://' + req.headers.host + req.url;
 		next();
 	});

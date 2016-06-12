@@ -52,7 +52,7 @@
 
 			scope.signin();
 			$httpBackend.flush();
-
+			//FIXME: edit tests for jwt authentication
 			// Test scope value
 			expect(scope.authentication.user).toEqual('Fred');
 			expect($location.url()).toEqual('');

@@ -7,7 +7,7 @@
 			$scope.authentication = Authentication;
 
 			//If user is signed in then redirect back home
-			if ($scope.authentication.user) {
+			if ($scope.authentication.isLoggedIn()) {
 				$location.path('/');
 			}
 
@@ -36,7 +36,7 @@
 					$scope.passwordDetails = null;
 
 					// Attach user profile
-					Authentication.user = response;
+					//Authentication.user = response;
 
 					// And redirect to the index page
 					$location.path('/password/reset/success');

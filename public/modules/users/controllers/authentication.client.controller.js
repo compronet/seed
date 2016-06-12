@@ -4,12 +4,12 @@
 	angular.module('users').controller('AuthenticationController', ['$rootScope','$scope', '$http', '$location', 'Authentication',
 		'$window', 'appConstants', '$state',
 		function($rootScope,$scope, $http, $location, Authentication, $window, appConstants, $state) {
-
+			$scope.credentials = {};
 			$scope.authentication = Authentication;
-
+			console.log(appConstants.restUrl);
 			// If user is signed in then redirect back home
 
-			if ($scope.authentication.user) {
+			if ($scope.authentication.isLoggedIn()) {
 				$location.path('/');
 			}
 
@@ -24,13 +24,15 @@
 			};
 
 			$scope.signin = function() {
+
 				$http.post(appConstants.restUrl+'/auth/signin', $scope.credentials).success(function(response) {
 					// If successful we assign the response to the global user model
-					$scope.authentication.user = response;
+
+					Authentication.saveToken(response.token);
 					//Authentication.set(response);
 					// And redirect to the index page
 					//$window.location.href = '/';
-					$rootScope.user = response;
+
 					$state.go('home');
 					
 				}).error(function(response) {

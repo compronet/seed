@@ -44,7 +44,7 @@ exports.requiresLogin = function(req, res, next) {
 */
 
 exports.requiresLogin = function(req,res,next){
-	console.log(req.headers, req.cookies);
+	
 	var token;
 	///get the authorization token from the request headers, or from a cookie
 	if (req.headers && req.headers.authorization) {

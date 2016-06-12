@@ -1,3 +1,4 @@
+/*
 (function() {
 	'use strict';
 
@@ -13,6 +14,68 @@
 			return _this._data;
 		}
 	]);
+})();
+*/
+(function () {
+
+	angular
+		.module('users')
+		.service('Authentication', Authentication);
+
+	Authentication.$inject = ['$http', '$window'];
+	function Authentication ($http, $window) {
+
+		var saveToken = function (token) {
+			$window.localStorage['token'] = token;
+		};
+
+		var getToken = function () {
+			return $window.localStorage['token'];
+		};
+
+		var logout = function() {
+			$window.localStorage.removeItem('token');
+		};
+
+		var isLoggedIn = function() {
+			var token = getToken();
+			var payload;
+
+			if(token){
+				payload = token.split('.')[1];
+				payload = $window.atob(payload);
+				payload = JSON.parse(payload);
+
+				return payload.exp > Date.now() / 1000;
+			} else {
+				return false;
+			}
+		};
+		var getUser = function() {
+			var user;
+			if(isLoggedIn()){
+				var token = getToken();
+				var payload = token.split('.')[1];
+				payload = $window.atob(payload);
+				payload = JSON.parse(payload);
+				user = {
+					email : payload.email,
+					username : payload.username,
+					roles: payload.roles,
+					displayName: payload.displayName
+				};
+			}
+			return user;
+		};
+		return {
+			saveToken : saveToken,
+			getToken : getToken,
+			logout : logout,
+			isLoggedIn:isLoggedIn,
+			getUser : getUser
+		};
+	}
+
 })();
 
 /*

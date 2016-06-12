@@ -13,7 +13,7 @@
 					});
 
 					scope.onResize = function() {
-						var minH = $window.innerHeight- (Authentication.user?100:-49);
+						var minH = $window.innerHeight- (Authentication.isLoggedIn()?100:-49);
 						angular.element('.content-wrapper').css('min-height', minH	);
 					};
 

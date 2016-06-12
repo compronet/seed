@@ -60,6 +60,9 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
 	},
+	token:{
+		type:String
+	},
 	salt: {
 		type: String
 	},
@@ -151,13 +154,18 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
 UserSchema.methods.generateJwt = function() {
 	var expiry = new Date();
 	expiry.setDate(expiry.getDate() + 7);
-
-	return jwt.sign({
+	var jwtData = {
 		_id: this._id,
 		email: this.email,
 		username: this.username,
+		roles: this.roles,
+		displayName: this.displayName,
+		firstName:this.firstName,
+		lastName:this.lastName,
 		exp: parseInt(expiry.getTime() / 1000),
-	}, config.sessionSecret);
+	};
+
+	return jwt.sign(jwtData, config.sessionSecret);
 };
 
 mongoose.model('User', UserSchema);
