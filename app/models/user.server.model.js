@@ -6,7 +6,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
-
+var config = require('../../config/config');
+var jwt = require('jsonwebtoken');
 /**
  * A Validation function for local strategy properties
  */
@@ -145,6 +146,18 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
 			callback(null);
 		}
 	});
+};
+
+UserSchema.methods.generateJwt = function() {
+	var expiry = new Date();
+	expiry.setDate(expiry.getDate() + 7);
+
+	return jwt.sign({
+		_id: this._id,
+		email: this.email,
+		username: this.username,
+		exp: parseInt(expiry.getTime() / 1000),
+	}, config.sessionSecret);
 };
 
 mongoose.model('User', UserSchema);

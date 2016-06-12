@@ -44,8 +44,9 @@ exports.signup = function(req, res) {
  */
 exports.signin = function(req, res, next) {
 	passport.authenticate('local', function(err, user, info) {
-		
+
 		if (err || !user) {
+
 			res.status(400).send(info);
 		} else {
 			// Check if user is approved
@@ -62,6 +63,13 @@ exports.signin = function(req, res, next) {
 				if (err) {
 					res.status(400).send(err);
 				} else {
+					var token;
+					token = user.generateJwt();
+					res.status(200);
+					/*res.json({
+						"token" : token
+					});*/
+					user.token = token;
 					res.json(user);
 				}
 			});
