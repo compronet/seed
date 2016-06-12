@@ -16,20 +16,54 @@
 </head>
 
 <body data-ng-controller="AppController"  animation="slide-left-right-ios7">
-    <div>
 
-            <!-- Header  -->
+<ion-side-menus>
+
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-stable">
+            <h1 class="title">Left</h1>
+        </header>
+        <ion-content class="has-header">
+            <ion-list>
+                <ion-item menu-close data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" href="/#!/{{item.items[0].link}}">
+                    <i class="icon ion-{{item.iconClass}}"></i> <span  translate="{{item.title}}"></span>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+            <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+        </ion-nav-bar>
+
+        <!-- Header  -->
+        <ion-header-bar>
             <div data-ng-include="'modules/core/views/header.client.view.html'"></div>
-            <!-- Navigation -->
-            <div data-ng-include="'modules/core/views/navigation.client.view.html'"></div>
-            <!-- Main view  -->
-            <div data-ui-view></div>
+        </ion-header-bar>
 
-            <!-- Footer -->
+
+        <!-- Main view  -->
+       <!-- <ion-nav-view name="menuContent" animation="slide-left-right"> -->
+            <ion-view>
+                <ion-content padding="true">
+                    <div  data-ui-view></div>
+                </ion-content>
+            </ion-view>
+        <!-- </ion-nav-view> -->
+
+
+
+        <!-- Footer -->
+        <ion-footer-bar align-title="left" class="bar-assertive">
             <div data-ng-include="'modules/core/views/footer.client.view.html'"></div>
+        </ion-footer-bar>
+    </ion-side-menu-content>
+</ion-side-menus>
 
 
-    </div>
+
+
+
     <!--Load The Socket.io File-->
     <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <!--Application JavaScript Files-->
