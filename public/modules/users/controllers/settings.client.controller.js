@@ -1,8 +1,8 @@
 (function() {
 	'use strict';
 
-	angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-		function($scope, $http, $location, Users, Authentication) {
+	angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication', 'appConstants',
+		function($scope, $http, $location, Users, Authentication, appConstants) {
 			$scope.user = Authentication.getUser();
 
 			// If user is not signed in then redirect back home
@@ -30,7 +30,7 @@
 			$scope.removeUserSocialAccount = function(provider) {
 				$scope.success = $scope.error = null;
 
-				$http.delete('/users/accounts', {
+				$http.delete(appConstants.restUrl+'/users/accounts', {
 					params: {
 						provider: provider
 					}
@@ -69,7 +69,7 @@
 			$scope.changeUserPassword = function() {
 				$scope.success = $scope.error = null;
 
-				$http.post('/users/password', $scope.passwordDetails).success(function() {
+				$http.post(appConstants.restUrl+'/users/password', $scope.passwordDetails).success(function() {
 					// If successful show success message and clear form
 					$scope.success = true;
 					$scope.passwordDetails = null;

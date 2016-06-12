@@ -2,14 +2,14 @@
 	'use strict';
 
 	// Users service used for communicating with the users REST endpoint
-	angular.module('users').factory('Users', ['$resource', '$q', Users]);
-	function Users($resource, $q) {
+	angular.module('users').factory('Users', ['$resource', '$q','appConstants', Users]);
+	function Users($resource, $q, appConstants) {
 		var service = {
 			getRestApi: getRestApi,
 			approve: approve
 		};
 
-		var restApi = $resource('users', {}, {
+		var restApi = $resource(appConstants.restUrl+'users', {}, {
 			update: {
 				method: 'PUT'
 			}
@@ -22,7 +22,7 @@
 
 		function approve(id, approved) {
 			var deferred = $q.defer();
-			$resource('users/approve').save({
+			$resource(appConstants.restUrl+'users/approve').save({
 				_id: id,
 				approved: approved
 			}, function(user) {

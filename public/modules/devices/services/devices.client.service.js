@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
-	angular.module('devices').factory('Devices', ['$rootScope', '$resource', '$q', 'Socket', Devices]);
-	function Devices($rootScope, $resource, $q, Socket) {
+	angular.module('devices').factory('Devices', ['$rootScope', '$resource', '$q', 'Socket','appConstants', Devices]);
+	function Devices($rootScope, $resource, $q, Socket, appConstants) {
 
 		var onPingHandlers = [];
 		var rootTopic = rootTopic || 'seedApp';
@@ -19,7 +19,7 @@
 			getApps: getApps
 		};
 
-		var restApi = $resource('devices/:deviceId', {
+		var restApi = $resource(appConstants.restUrl+'devices/:deviceId', {
 			deviceId: '@_id'
 		}, {
 			update: {
@@ -34,7 +34,7 @@
 
 		function getApps(deviceId, inversed) {
 			var deferred = $q.defer();
-			$resource('apps/device/:deviceId').query({
+			$resource(appConstants.restUrl+'apps/device/:deviceId').query({
 				deviceId: deviceId,
 				inversed: inversed
 			}, function(apps) {
