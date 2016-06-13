@@ -15,7 +15,7 @@
 					},
 
 					function(err) {
-						$scope.error = err;
+						$scope.error = err.data.message;
 					}
 				);
 			};
