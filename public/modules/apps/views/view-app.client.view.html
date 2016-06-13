@@ -5,7 +5,7 @@
 				<div class="box-header with-border">
 					<h3 class="box-title" data-ng-bind="appViewCtrl.app.name"></h3>
 					<div class="box-tools pull-right">
-						<a class="btn btn-box-tool" data-ng-click="appViewCtrl.edit();">
+						<a class="btn btn-box-tool" data-ng-click="appViewCtrl.edit();" ng-if="appViewCtrl.dataAuth">
 							<i class="fa fa-edit"></i>
 						</a>
 						<a class="btn btn-box-tool" data-ng-click="appViewCtrl.remove();">
