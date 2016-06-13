@@ -2,7 +2,7 @@
 
 module.exports = {
 	db: 'mongodb://localhost/startapp',
-	port: process.env.PORT || 3030,
+	port: process.env.PORT || 3035,
 	assets: {
 		lib: {
 			css:{
