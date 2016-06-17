@@ -12,7 +12,9 @@
 				devices: '=',
 				onDeviceSelect: '&',
 				selected: '=',
-				searchText: '='
+				searchText: '=',
+				isDeviceCreatedByAuthedUser: '=',
+				hideDevicesNotCreatedByAuthedUser: '='
 			},
 			controller: function() {
 				var vm = this;
