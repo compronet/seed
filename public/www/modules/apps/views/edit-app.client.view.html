@@ -1,23 +1,30 @@
-<div data-ng-init="appEditCtrl.init()">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title" translate="global.EDIT"></h3>
-                </div>
-                <form class="form-horizontal" data-ng-submit="appEditCtrl.update()" novalidate>
-                    <div class="box-body">
-                        <app-data app="appEditCtrl.app" loading="appEditCtrl.loading"></app-data>
-                        <div data-ng-show="appEditCtrl.error" class="text-danger">
-                            <strong data-ng-bind="appEditCtrl.error"></strong>
+<ion-view title="Edit App">
+    <ion-nav-buttons side="primary">
+        <button class="button ion-navicon-round" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+        <div data-ng-init="appEditCtrl.init()">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title" translate="global.EDIT"></h3>
                         </div>
+                        <form class="form-horizontal" data-ng-submit="appEditCtrl.update()" novalidate>
+                            <div class="box-body">
+                                <app-data app="appEditCtrl.app" loading="appEditCtrl.loading"></app-data>
+                                <div data-ng-show="appEditCtrl.error" class="text-danger">
+                                    <strong data-ng-bind="appEditCtrl.error"></strong>
+                                </div>
+                            </div>
+                            <div class="box-footer text-right">
+                                <a class="btn btn-sm btn-default" data-ng-click="appEditCtrl.cancel();" translate="global.CANCEL"></a>
+                                <button class="btn btn-sm btn-primary" type="submit"><strong translate="global.UPDATE"></strong></button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="box-footer text-right">
-                        <a class="btn btn-sm btn-default" data-ng-click="appEditCtrl.cancel();" translate="global.CANCEL"></a>
-                        <button class="btn btn-sm btn-primary" type="submit"><strong translate="global.UPDATE"></strong></button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </ion-content>
+</ion-view>

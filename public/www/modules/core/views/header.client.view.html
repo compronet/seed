@@ -1,10 +1,10 @@
 <header class="bar bar-header bar-stable">
-    <h1 class="title">Left</h1>
+    <h1 class="title">Sidemenu</h1>
 </header>
 <ion-content class="has-header">
     <ion-list>
         <ion-item menu-close data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" href="/#!/{{item.items[0].link}}">
-            <i class="icon ion-{{item.iconClass}}"></i> <span  translate="{{item.title}}"></span>
+            <span  translate="{{item.title}}"></span>
         </ion-item>
     </ion-list>
 </ion-content>

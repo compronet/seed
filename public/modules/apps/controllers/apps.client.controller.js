@@ -26,6 +26,7 @@
 			}
 
 			function select(selectedApp) {
+				console.log('FIXME: apps view');
 				$state.go('apps.view', {
 					appId: selectedApp._id
 				});

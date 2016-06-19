@@ -1,24 +1,31 @@
-<div class="animated flipInX">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title" translate="apps.CREATENEW"></h3>
-                    </div>
-                    <form class="form-horizontal" data-ng-submit="appCreateCtrl.create()" novalidate>
-                    <div class="box-body">
+<ion-view title="Create App">
+    <ion-nav-buttons side="primary">
+        <button class="button ion-navicon-round" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+        <div class="animated flipInX">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title" translate="apps.CREATENEW"></h3>
+                            </div>
+                            <form class="form-horizontal" data-ng-submit="appCreateCtrl.create()" novalidate>
+                            <div class="box-body">
 
-                        <app-data app="appCreateCtrl.app"></app-data>
-                        <div data-ng-show="appCreateCtrl.error" class="text-danger">
-                            <strong data-ng-bind="appCreateCtrl.error"></strong>
+                                <app-data app="appCreateCtrl.app"></app-data>
+                                <div data-ng-show="appCreateCtrl.error" class="text-danger">
+                                    <strong data-ng-bind="appCreateCtrl.error"></strong>
+                                </div>
+                            </div>
+                                <div class="box-footer text-right">
+                                    <a class="btn btn-sm btn-default" data-ng-click="appCreateCtrl.cancel();" translate="global.CANCEL"></a>
+                                    <button class="btn btn-sm btn-primary" type="submit"><strong translate="global.CREATE"></strong></button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                        <div class="box-footer text-right">
-                            <a class="btn btn-sm btn-default" data-ng-click="appCreateCtrl.cancel();" translate="global.CANCEL"></a>
-                            <button class="btn btn-sm btn-primary" type="submit"><strong translate="global.CREATE"></strong></button>
-                        </div>
-                    </form>
                 </div>
-            </div>
         </div>
-</div>
+    </ion-content>
+</ion-view>
