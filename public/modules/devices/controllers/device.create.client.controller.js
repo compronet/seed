@@ -32,7 +32,7 @@
 					},
 
 					function(errorResponse) {
-						vm.error = errorResponse.data.message;
+						vm.error = errorResponse.data?errorResponse.data.message:errorResponse;
 					}
 				);
 			}

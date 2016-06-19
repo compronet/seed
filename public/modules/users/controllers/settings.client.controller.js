@@ -57,7 +57,7 @@
 						},
 
 						function(response) {
-							$scope.error = response.data.message;
+							$scope.error = response.data?response.data.message:response;
 						}
 					);
 				} else {

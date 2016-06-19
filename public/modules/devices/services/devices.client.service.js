@@ -19,7 +19,7 @@
 			getApps: getApps
 		};
 
-		var restApi = $resource(appConstants.restUrl+'devices/:deviceId', {
+		var restApi = $resource(appConstants.restUrl+'/devices/:deviceId', {
 			deviceId: '@_id'
 		}, {
 			update: {
@@ -34,7 +34,7 @@
 
 		function getApps(deviceId, inversed) {
 			var deferred = $q.defer();
-			$resource(appConstants.restUrl+'apps/device/:deviceId').query({
+			$resource(appConstants.restUrl+'/apps/device/:deviceId').query({
 				deviceId: deviceId,
 				inversed: inversed
 			}, function(apps) {
