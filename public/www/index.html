@@ -17,42 +17,41 @@
 
 <body data-ng-controller="AppController"  animation="slide-left-right-ios7">
 
-<ion-side-menus>
+    <ion-side-menus>
 
-    <ion-side-menu side="left">
-        <header class="bar bar-header bar-stable">
-            <h1 class="title">Left</h1>
-        </header>
-        <ion-content class="has-header">
-            <ion-list>
-                <ion-item menu-close data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" href="/#!/{{item.items[0].link}}">
-                    <i class="icon ion-{{item.iconClass}}"></i> <span  translate="{{item.title}}"></span>
-                </ion-item>
-            </ion-list>
-        </ion-content>
-    </ion-side-menu>
-    <ion-side-menu-content>
-        <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-            <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
-        </ion-nav-bar>
+        <ion-side-menu side="left">
+            <header class="bar bar-header bar-stable">
+                <h1 class="title">Left</h1>
+            </header>
+            <ion-content class="has-header">
+                <ion-list>
+                    <ion-item menu-close data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" href="/#!/{{item.items[0].link}}">
+                        <i class="icon ion-{{item.iconClass}}"></i> <span  translate="{{item.title}}"></span>
+                    </ion-item>
+                </ion-list>
+            </ion-content>
+        </ion-side-menu>
+        <ion-side-menu-content>
+            <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+                <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+            </ion-nav-bar>
 
-        <!-- Header  -->
-        <ion-header-bar>
-            <div data-ng-include="'modules/core/views/header.client.view.html'"></div>
-        </ion-header-bar>
+            <!-- Sub-Header  -->
+            <!--<ion-header-bar class="bar-subheader">
+
+            </ion-header-bar>
+            -->
+
+            <!-- Main view  -->
+           <ion-nav-view></ion-nav-view>
 
 
-        <!-- Main view  -->
-       <ion-nav-view></ion-nav-view>
-
-
-
-        <!-- Footer -->
-        <ion-footer-bar align-title="left" class="bar-assertive">
-            <div data-ng-include="'modules/core/views/footer.client.view.html'"></div>
-        </ion-footer-bar>
-    </ion-side-menu-content>
-</ion-side-menus>
+            <!-- Footer -->
+            <ion-footer-bar align-title="left" class="bar-assertive">
+                <div data-ng-include="'modules/core/views/footer.client.view.html'"></div>
+            </ion-footer-bar>
+        </ion-side-menu-content>
+    </ion-side-menus>
 
 
 

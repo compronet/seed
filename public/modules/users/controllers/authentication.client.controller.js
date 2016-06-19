@@ -6,7 +6,6 @@
 		function($rootScope,$scope, $http, $location, Authentication, $window, appConstants, $state) {
 			$scope.credentials = {};
 			$scope.authentication = Authentication;
-			console.log(appConstants.restUrl);
 			// If user is signed in then redirect back home
 
 			if ($scope.authentication.isLoggedIn()) {
