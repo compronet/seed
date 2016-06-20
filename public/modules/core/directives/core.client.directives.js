@@ -36,31 +36,27 @@
 				template: '<a class="sidebar-toggle" href="" ng-click="minimalize()" data-toggle="offcanvas" ' +
 					'role="button"><span class="sr-only">Toggle navigation</span></a>',
 				controller: function($scope) {
+					function doHide(){
+						// Hide menu in order to smoothly turn on when maximize menu
+						angular.element('#side-menu').hide();
+						// For smoothly turn on menu
+						$timeout(function() {
+							angular.element('#side-menu').fadeIn(500);
+						}, 100);
+					}
 					$scope.minimalize = function() {
-						if (!angular.element('body').hasClass('body-small')) {
-							angular.element('body').toggleClass('sidebar-collapse');
-							if (!angular.element('body').hasClass('sidebar-collapse')) {
-								// Hide menu in order to smoothly turn on when maximize menu
-								angular.element('#side-menu').hide();
-
-								// For smoothly turn on menu
-								$timeout(function() {
-									angular.element('#side-menu').fadeIn(500);
-								}, 100);
+						if (!angular.elementByID('layoutWrapper').hasClass('body-small')) {
+							angular.elementByID('layoutWrapper').toggleClass('sidebar-collapse');
+							if (!angular.elementByID('layoutWrapper').hasClass('sidebar-collapse')) {
+								doHide();
 							} else {
 								// Remove all inline style from jquery fadeIn function to reset menu state
 								angular.element('#side-menu').removeAttr('style');
 							}
 						} else {
-							angular.element('body').toggleClass('sidebar-open');
-							if (!angular.element('body').hasClass('sidebar-open')) {
-								// Hide menu in order to smoothly turn on when maximize menu
-								angular.element('#side-menu').hide();
-
-								// For smoothly turn on menu
-								$timeout(function() {
-									angular.element('#side-menu').fadeIn(500);
-								}, 100);
+							angular.elementByID('layoutWrapper').toggleClass('sidebar-open');
+							if (!angular.elementByID('layoutWrapper').hasClass('sidebar-open')) {
+								doHide();
 							} else {
 								// Remove all inline style from jquery fadeIn function to reset menu state
 								angular.element('#side-menu').removeAttr('style');
