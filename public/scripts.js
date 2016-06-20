@@ -40,7 +40,7 @@ $(document).ready(function() {
 		fixHeight();
 	});
 });
-
+*/
 // Minimalize menu when screen is less than 768px
 $(function() {
 	$(window).bind('load resize', function() {
@@ -51,4 +51,4 @@ $(function() {
 		}
 	});
 });
-*/
+
