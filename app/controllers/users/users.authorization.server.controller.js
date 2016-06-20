@@ -62,6 +62,7 @@ exports.requiresLogin = function(req,res,next){
 	}
 
 	jwt.verify(token, config.sessionSecret, function(err, decoded) {
+		req.user = decoded;
 	 	if(err)return res.status(401).send({
 			message: 'User is not logged in'
 		});

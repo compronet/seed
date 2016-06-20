@@ -6,6 +6,8 @@
 	"pt": "Portugiesisch",
 	"global": {
 		"OK": "OK",
+		"REORDER":"Neu sortieren",
+		"SERVERERROR": "Die Anfrage konnte aufgrund eines Serverfehlers nicht bearbeitet werden.",
 		"READY": "Bereit",
 		"SEARCH": "Suchen",
 		"SENDDATA": "Daten absenden",

@@ -12,26 +12,42 @@
 			scope: {
 				apps: '=',
 				onAppSelect: '&',
-				removeAppFn: '&',
+				editAppFn: '&?',
+				onAppDelete: '&?',
 				editable: '=',
 				selected: '=',
-				searchText: '='
+				searchText: '=',
+				showDelete:'=',
+				showReorder:'='
 			},
 			controller: function() {
 				var vm = this;
 				vm.selectFn = selectFn;
-				vm.removeAppFn = removeApp;
 				vm.appSelectionFn = appSelection;
 				vm.appCreateInline = appCreateInline;
+				vm.moveItem = moveItem;
 
+				vm.onItemDelete = function(item) {
+					vm.apps.splice(vm.apps.indexOf(item), 1);
+					if(angular.isFunction(vm.onAppDelete())){
+						vm.onAppDelete()(item);	
+					}
+					
+				};
+
+				function moveItem (item, fromIndex, toIndex) {
+					vm.apps.splice(fromIndex, 1);
+					vm.apps.splice(toIndex, 0, item);
+				}
+				
 				function selectFn(item) {
 					if (_.isFunction(vm.onAppSelect())) {
 						vm.onAppSelect()(item);
 					}
 				}
 
-				function removeApp(app) {
-					_.pull(vm.apps, app);
+				function edit(item){
+					vm.editAppFn()(item);
 				}
 
 				function appCreateInline() {

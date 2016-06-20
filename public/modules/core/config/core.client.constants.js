@@ -4,7 +4,7 @@
 (function() {
 	'use strict';
 	angular.module('core').constant('appConstants', {
-		restUrl: 'http://compronet.io:'+(window.restPort?window.restPort:'3035'),
+		restUrl: (window.restUrl?window.restUrl:'http://compronet.io')+':'+(window.restPort?window.restPort:'3035'),
 		//restUrl: 'http://192.168.178.20:'+(window.restPort?window.restPort:'3035'),
 		defaultLanguageCode: 'de',
 		translation: {

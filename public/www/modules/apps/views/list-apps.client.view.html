@@ -1,42 +1,18 @@
-<ion-view title="List Apps">
+<ion-view title="{{ 'apps.APPS' | translate}}">
     <ion-nav-buttons side="primary">
         <button class="button ion-navicon-round" menu-toggle="left"></button>
+        <button class="button button-icon icon ion-ios-minus-outline"
+                ng-click="appsCtrl.showDelete = !appsCtrl.showDelete; appsCtrl.showReorder = false"></button>
+        <button class="button" ng-click="appsCtrl.showDelete = false; appsCtrl.showReorder = !appsCtrl.showReorder" translate="global.REORDER">
+
+        </button>
     </ion-nav-buttons>
-    <ion-content padding="true" class="has-header">
-        <div class="ctrl-wrap" data-ng-init="appsCtrl.loadAll()">
-            <section class="content-header">
-                    <h1 translate="apps.APPS"></h1>
-            </section>
-            <section class="content">
-                <div class="row">
-                    <div class="col-lg-4 animated fadeIn">
-                        <div class="box box-info">
-                            <div class="box-header with-border">
-                                <h3 class="box-title"><span data-ng-bind="appsCtrl.apps.length"></span> <span translate="apps.APPSLENGTH"></span></h3>
-                                <div class="box-tools pull-right">
-                                    <a class="btn btn-box-tool" data-ng-click="appsCtrl.reload();">
-                                        <i class="fa fa-refresh"></i>
-                                    </a>
-                                    <a class="btn btn-box-tool" data-ng-click="appsCtrl.create();">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span> <input ng-model="appsCtrl.searchText" type="text" placeholder="{{ 'global.SEARCH' | translate}}" class="form-control"></div>
-                                <hr/>
-                                <apps-list apps="appsCtrl.apps" search-text="appsCtrl.searchText" selected="appsCtrl.selected" on-app-select="appsCtrl.select"></apps-list>
-                                <div class="alert alert-warning text-center" data-ng-hide="!appsCtrl.apps.$resolved || appsCtrl.apps.length" translate="global.NODATASETS"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div ui-view="view"></div>
-                        <div ui-view="edit"></div>
-                        <div ui-view="create"></div>
-                    </div>
-                </div>
-            </section>
-        </div>
+    <ion-content padding="true" class="has-header" data-ng-init="appsCtrl.loadAll()">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input ng-model="appsCtrl.searchText" type="search" placeholder="{{ 'global.SEARCH' | translate}}" >
+            </label>
+            <apps-list editable="true" apps="appsCtrl.apps" search-text="appsCtrl.searchText" selected="appsCtrl.selected" on-app-select="appsCtrl.select" edit-app-fn="appsCtrl.edit" show-delete="appsCtrl.showDelete" show-reorder="appsCtrl.showReorder" on-app-delete="appsCtrl.delete" ></apps-list>
+            <div class="alert alert-warning text-center" data-ng-hide="!appsCtrl.apps.$resolved || appsCtrl.apps.length" translate="global.NODATASETS"></div>
     </ion-content>
 </ion-view>

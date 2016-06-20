@@ -14,6 +14,17 @@
 			vm.reload = reload;
 			vm.select = select;
 			vm.create = create;
+			vm.edit = edit;
+			vm.delete = deleteFn;
+			vm.showDelete = false;
+			vm.showReorder = false;
+
+			function edit(app) {
+				$state.go('apps.edit', {
+					appId: app.appId
+				});
+			}
+
 
 			function loadAll() {
 				vm.apps = Apps.getRestApi().query();
@@ -24,9 +35,10 @@
 				vm.selected = {};
 				$state.go('apps');
 			}
-
+			function deleteFn(app){
+				console.log('delete '+app._id);
+			}
 			function select(selectedApp) {
-				console.log('FIXME: apps view');
 				$state.go('apps.view', {
 					appId: selectedApp._id
 				});

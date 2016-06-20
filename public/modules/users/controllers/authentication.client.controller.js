@@ -1,9 +1,9 @@
 (function() {
 	'use strict';
 
-	angular.module('users').controller('AuthenticationController', ['$rootScope','$scope', '$http', '$location', 'Authentication',
+	angular.module('users').controller('AuthenticationController', ['$rootScope','$scope', '$http', '$filter', '$location', 'Authentication',
 		'$window', 'appConstants', '$state',
-		function($rootScope,$scope, $http, $location, Authentication, $window, appConstants, $state) {
+		function($rootScope,$scope, $http, $filter, $location, Authentication, $window, appConstants, $state) {
 			$scope.credentials = {};
 			$scope.authentication = Authentication;
 			// If user is signed in then redirect back home
@@ -35,7 +35,12 @@
 					$state.go('home');
 					
 				}).error(function(response) {
-					$scope.error = response.message;
+					if(response){
+						$scope.error = response.message;
+					}else{
+						$scope.error = $filter('translate')('global.SERVERERROR');
+					}
+
 				});
 			};
 		}

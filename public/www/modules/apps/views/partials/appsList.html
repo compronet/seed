@@ -1,27 +1,25 @@
-<div class="list-devices">
-    <div class="list-group">
-        <div class="alert alert-warning" translate="devices.NOAPPSRELATED" ng-if="appsListCtrl.editable && !appsListCtrl.apps.length"></div>
-        <div ng-if="appsListCtrl.apps.length" class="list-devices">
-            <div class="list-group">
-                <a data-ng-repeat="app in appsListCtrl.apps | filter:appsListCtrl.searchText" data-ng-click="appsListCtrl.selectFn(app)"
-                    ng-class="{active: app._id === appsListCtrl.selected._id}" class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                        <span data-ng-bind="app.name"></span>
-                        <button class="pull-right btn btn-sm btn-default" data-ng-click="appsListCtrl.removeAppFn(app)" ng-if="appsListCtrl.editable">
-                            <i class="fa fa-trash-o"></i>
-                        </button>
-                    </h4>
-                </a>
-            </div>
-        </div>
+<div class="list-apps">
+    <ion-list
+            show-delete="appsListCtrl.showDelete"
+            show-reorder="appsListCtrl.showReorder"
+            can-swipe="listCanSwipe">
+        <ion-item ng-repeat="app in appsListCtrl.apps| filter:appsListCtrl.searchText" >
 
-        <div ng-if="appsListCtrl.editable" class="btn-group pull-right">
-            <button type="button" class="btn btn-sm btn-default ng-scope" data-ng-click="appsListCtrl.appSelectionFn()">
-                <span translate="apps.SETRELATION"></span>
-            </button>
-            <button type="button" class="btn btn-sm btn-default ng-scope" data-ng-click="appsListCtrl.appCreateInline()">
-                <span translate="apps.ADD"></span>
-            </button>
-        </div>
-    </div>
+            showDelete:{{appsCtrl.showDelete}}
+            <h2>{{app.name}}</h2>
+
+            <ion-option-button ng-if="appsListCtrl.editable" class="button-info"
+                               ng-click="appsListCtrl.edit(app)" translate="global.EDIT">
+
+            </ion-option-button>
+            <ion-delete-button class="ion-minus-circled"
+                               ng-click="appsListCtrl.onItemDelete(app)">
+            </ion-delete-button>
+            <ion-reorder-button class="ion-navicon" on-reorder="appsListCtrl.moveItem(app, $fromIndex, $toIndex)">
+            </ion-reorder-button>
+
+        </ion-item>
+    </ion-list>
 </div>
+
+

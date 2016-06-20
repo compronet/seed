@@ -27,6 +27,7 @@ exports.index = function(req, res) {
 		user: req.user,
 		rootTopic: config.mqtt.rootTopic,
 		restPort: config.port,
+		restUrl: config.restUrl,
 		request: req
 	});
 };
