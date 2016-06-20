@@ -4,8 +4,6 @@
             show-reorder="appsListCtrl.showReorder"
             can-swipe="listCanSwipe">
         <ion-item ng-repeat="app in appsListCtrl.apps| filter:appsListCtrl.searchText" >
-
-            showDelete:{{appsCtrl.showDelete}}
             <h2>{{app.name}}</h2>
 
             <ion-option-button ng-if="appsListCtrl.editable" class="button-info"

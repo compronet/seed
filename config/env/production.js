@@ -3,6 +3,7 @@
 module.exports = {
 	db: 'mongodb://localhost/startapp',
 	port: process.env.PORT || 3035,
+	restUrl:'http://compronet.io',
 	assets: {
 		lib: {
 			css:{
