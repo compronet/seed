@@ -5,8 +5,8 @@
 (function() {
 	'use strict';
 	angular.module('core').controller('AppController', ['$scope', '$state', '$translate', 'appConstants',
-		'languageService', 'Authentication', '$ionicSideMenuDelegate',
-		function($scope, $state, $translate, appConstants, languageService, Authentication, $ionicSideMenuDelegate) {
+		'languageService', 'Authentication', 
+		function($scope, $state, $translate, appConstants, languageService, Authentication) {
 			$scope.authentication = {};
 			$scope.authentication.user = Authentication.getUser();
 
@@ -40,10 +40,6 @@
 			$scope.language.init();
 			$scope.language.set($translate.preferredLanguage());
 			
-			$scope.toggleLeft = function() {
-				$ionicSideMenuDelegate.toggleLeft();
-			};
-
 		}
 	]);
 })();

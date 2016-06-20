@@ -1,8 +1,8 @@
 (function() {
 	'use strict';
 
-	angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus',
-		function($scope, Authentication, Menus) {
+	angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus','$ionicSideMenuDelegate',
+		function($scope, Authentication, Menus, $ionicSideMenuDelegate) {
 			$scope.authentication = {};
 			$scope.authentication.user = Authentication.getUser();
 			
@@ -16,6 +16,10 @@
 			$scope.$on('$stateChangeSuccess', function() {
 				$scope.isCollapsed = false;
 			});
+
+			$scope.toggleLeft = function() {
+				$ionicSideMenuDelegate.toggleLeft();
+			};
 		}
 	]);
 })();
