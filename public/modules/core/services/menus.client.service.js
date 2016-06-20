@@ -81,7 +81,7 @@
 
 			// Add menu item object
 			this.addMenuItem = function(menuId, menuItemTitle, menuItemURL, menuItemType, menuItemUIRoute, isPublic,
-				roles, position, iconClass) {
+										roles, position, iconClass) {
 				// Validate that the menu exists
 				this.validateMenuExistance(menuId);
 
@@ -107,7 +107,7 @@
 
 			// Add submenu item object
 			this.addSubMenuItem = function(menuId, rootMenuItemURL, menuItemTitle, menuItemURL, menuItemUIRoute,
-				isPublic, roles, position) {
+										   isPublic, roles, position) {
 				// Validate that the menu exists
 				this.validateMenuExistance(menuId);
 
