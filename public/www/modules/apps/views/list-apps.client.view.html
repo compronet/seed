@@ -1,13 +1,12 @@
 <ion-view title="{{ 'apps.APPS' | translate}}">
     <ion-nav-buttons side="primary">
-        <button class="button ion-navicon-round" menu-toggle="left"></button>
         <button class="button button-icon icon ion-ios-minus-outline"
                 ng-click="appsCtrl.showDelete = !appsCtrl.showDelete; appsCtrl.showReorder = false"></button>
         <button class="button" ng-click="appsCtrl.showDelete = false; appsCtrl.showReorder = !appsCtrl.showReorder" translate="global.REORDER">
 
         </button>
     </ion-nav-buttons>
-    <ion-content padding="true" class="has-header" data-ng-init="appsCtrl.loadAll()">
+    <ion-content data-ng-init="appsCtrl.loadAll()">
             <label class="item item-input">
                 <i class="icon ion-search placeholder-icon"></i>
                 <input ng-model="appsCtrl.searchText" type="search" placeholder="{{ 'global.SEARCH' | translate}}" >
