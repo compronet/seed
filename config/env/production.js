@@ -3,7 +3,7 @@
 module.exports = {
 	db: 'mongodb://localhost/startapp',
 	port: process.env.PORT || 3035,
-	restUrl:'http://compronet.io',
+	restUrl:'http://compronet.io',//FIXME: check for secure config
 	assets: {
 		lib: {
 			css:{
