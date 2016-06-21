@@ -58,5 +58,8 @@
     "angular-translate-storage-cookie": "^2.9.2",
     "famfamfam-flags": "^1.0.0",
     "whirl": "^1.0.0"
+  },
+  "resolutions": {
+    "angular": "~1.4"
   }
 }

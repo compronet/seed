@@ -2,7 +2,8 @@
 	'use strict';
 
 	// Apps controller
-	angular.module('apps').controller('AppViewController', ['$state', '$stateParams', 'Authentication', 'Apps', 'AppHelper',
+	angular.module('apps').controller('AppViewController', ['$state', '$stateParams', 'Authentication', 'Apps',
+		'AppHelper',
 		function($state, $stateParams, Authentication, Apps, AppHelper) {
 			var vm = this;
 			vm.authentication = Authentication;
@@ -40,7 +41,6 @@
 					closeApp();
 				});
 			}
-
 
 		}
 	]);
