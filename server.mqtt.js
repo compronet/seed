@@ -31,7 +31,7 @@ config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
 });
 
 var mqttSrv = require('./config/mosca')();
-var client = mqtt.connect('mqtt://localhost');
+var client = mqtt.connect('mqtt://compronet.io');
 
 //start the ping monitoring for devices
 require('./app/utils/ping')(mqttSrv, client);

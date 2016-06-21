@@ -131,7 +131,7 @@ module.exports = function(app, mongoStore) {
 						clientId: handshake.sessionID
 					};
 
-					var client = mqtt.connect('mqtt://localhost', mqttOptions);
+					var client = mqtt.connect('mqtt://compronet.io', mqttOptions);
 					app.set('mqtt', client);
 					config.sockets.forEach(function(socketConfiguration) {
 						require(path.resolve(socketConfiguration))(client, io, socket, handshake.sessionID);
