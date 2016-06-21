@@ -2,12 +2,12 @@
 	'use strict';
 
 	// Apps controller
-	angular.module('apps').controller('AppViewController', ['$state', '$stateParams', 'Authentication', 'Apps',
-		function($state, $stateParams, Authentication, Apps) {
+	angular.module('apps').controller('AppViewController', ['$state', '$stateParams', 'Authentication', 'Apps', 'AppHelper',
+		function($state, $stateParams, Authentication, Apps, AppHelper) {
 			var vm = this;
 			vm.authentication = Authentication;
 			vm.loading = true;
-
+			vm.dataAuth = false;
 			vm.edit = edit;
 			vm.close = closeApp;
 			vm.init = init;
@@ -29,6 +29,7 @@
 					appId: $stateParams.appId
 				}, function(app) {
 					vm.app = app;
+					vm.dataAuth = AppHelper.authData(app);
 					vm.loading = false;
 					Apps.notify(app);
 				});
@@ -39,6 +40,7 @@
 					closeApp();
 				});
 			}
+
 
 		}
 	]);

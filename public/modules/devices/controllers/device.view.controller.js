@@ -2,8 +2,8 @@
 	'use strict';
 
 	// Devices controller
-	angular.module('devices').controller('DeviceViewController', ['$state', '$stateParams', 'Authentication', 'Devices',
-		function($state, $stateParams, Authentication, Devices) {
+	angular.module('devices').controller('DeviceViewController', ['$state', '$stateParams', 'Authentication', 'Devices', 'AppHelper',
+		function($state, $stateParams, Authentication, Devices, AppHelper) {
 			var vm = this;
 			vm.authentication = Authentication;
 			vm.loading = {};
@@ -32,6 +32,7 @@
 					deviceId: $stateParams.deviceId
 				}, function(device) {
 					vm.device = device;
+					vm.dataAuth = AppHelper.authData(device);
 					vm.loading.device = false;
 
 					Devices.getApps(device._id).then(function(apps) {

@@ -15,7 +15,9 @@
 				removeAppFn: '&',
 				editable: '=',
 				selected: '=',
-				searchText: '='
+				searchText: '=',
+				isAppCreatedByAuthedUser: '=',
+				hideAppsNotCreatedByAuthedUser: '='
 			},
 			controller: function() {
 				var vm = this;
