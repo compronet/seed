@@ -8,7 +8,7 @@ module.exports = {
 	},
 	languages: ['de', 'gb', 'tr', 'hu', 'pt'],
 	port: process.env.PORT || 3005,
-	restUrl:'http://192.168.178.5',
+	restUrl:'http://127.0.0.5',
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',

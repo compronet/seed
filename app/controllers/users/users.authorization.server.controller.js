@@ -50,6 +50,7 @@ exports.requiresLogin = function(req,res,next){
 			message: 'User is not logged in'
 		});
 		req.user = user;
+		next();
 	});
 };
 
