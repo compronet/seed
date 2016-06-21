@@ -35,16 +35,19 @@
 					'role="button"><span class="sr-only">Toggle navigation</span></a>',
 				controller: function($scope) {
 					$scope.minimalize = function() {
-						var targetClass='';
+						var targetClass = '';
 						if (!angular.element('body').hasClass('body-small')) {
-							targetClass='sidebar-collapse';
+							targetClass = 'sidebar-collapse';
 						} else {
-							targetClass='sidebar-open';
+							targetClass = 'sidebar-open';
 						}
+
 						angular.element('body').toggleClass(targetClass);
 						if (!angular.element('body').hasClass(targetClass)) {
+
 							// Hide menu in order to smoothly turn on when maximize menu
 							angular.element('#side-menu').hide();
+
 							// For smoothly turn on menu
 							$timeout(function() {
 								angular.element('#side-menu').fadeIn(500);
