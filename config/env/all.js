@@ -46,7 +46,8 @@ module.exports = {
 		}
 	},
 	mqtt:{
-		rootTopic:'seedApp'
+		rootTopic:'seedApp',
+		url:'localhost'
 	},
 	assets: {
 		lib: {
