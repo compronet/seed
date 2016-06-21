@@ -71,18 +71,6 @@ module.exports = function(grunt) {
 					'public/www/css/AdminLTE.css': 'public/build/less/AdminLTE.less',
 
 					//Non minified skin files
-					'public/www/css/skins/skin-blue.css': 'public/build/less/skins/skin-blue.less',
-					'public/www/css/skins/skin-black.css': 'public/build/less/skins/skin-black.less',
-					'public/www/css/skins/skin-yellow.css': 'public/build/less/skins/skin-yellow.less',
-					'public/www/css/skins/skin-green.css': 'public/build/less/skins/skin-green.less',
-					'public/www/css/skins/skin-red.css': 'public/build/less/skins/skin-red.less',
-					'public/www/css/skins/skin-purple.css': 'public/build/less/skins/skin-purple.less',
-					'public/www/css/skins/skin-blue-light.css': 'public/build/less/skins/skin-blue-light.less',
-					'public/www/css/skins/skin-black-light.css': 'public/build/less/skins/skin-black-light.less',
-					'public/www/css/skins/skin-yellow-light.css': 'public/build/less/skins/skin-yellow-light.less',
-					'public/www/css/skins/skin-green-light.css': 'public/build/less/skins/skin-green-light.less',
-					'public/www/css/skins/skin-red-light.css': 'public/build/less/skins/skin-red-light.less',
-					'public/www/css/skins/skin-purple-light.css': 'public/build/less/skins/skin-purple-light.less',
 					'public/www/css/skins/_all-skins.css': 'public/build/less/skins/_all-skins.less'
 				}
 			},
@@ -98,19 +86,15 @@ module.exports = function(grunt) {
 					'public/www/css/AdminLTE.min.css': 'public/build/less/AdminLTE.less',
 
 					// Skins minified
-					'public/www/css/skins/skin-blue.min.css': 'public/build/less/skins/skin-blue.less',
-					'public/www/css/skins/skin-black.min.css': 'public/build/less/skins/skin-black.less',
-					'public/www/css/skins/skin-yellow.min.css': 'public/build/less/skins/skin-yellow.less',
-					'public/www/css/skins/skin-green.min.css': 'public/build/less/skins/skin-green.less',
-					'public/www/css/skins/skin-red.min.css': 'public/build/less/skins/skin-red.less',
-					'public/www/css/skins/skin-purple.min.css': 'public/build/less/skins/skin-purple.less',
-					'public/www/css/skins/skin-blue-light.min.css': 'public/build/less/skins/skin-blue-light.less',
-					'public/www/css/skins/skin-black-light.min.css': 'public/build/less/skins/skin-black-light.less',
-					'public/www/css/skins/skin-yellow-light.min.css': 'public/build/less/skins/skin-yellow-light.less',
-					'public/www/css/skins/skin-green-light.min.css': 'public/build/less/skins/skin-green-light.less',
-					'public/www/css/skins/skin-red-light.min.css': 'public/build/less/skins/skin-red-light.less',
-					'public/www/css/skins/skin-purple-light.min.css': 'public/build/less/skins/skin-purple-light.less',
 					'public/www/css/skins/_all-skins.min.css': 'public/build/less/skins/_all-skins.less'
+				}
+			}
+		},
+		cssmin: {
+			combine: {
+				files: {
+					'public/www/app.min.css': '<%= applicationCSSFiles %>',
+					'public/www/vendor.min.css': '<%= vendorCSSFiles %>'
 				}
 			}
 		},
@@ -253,11 +237,6 @@ module.exports = function(grunt) {
 					}, {
 						expand: true,
 						flatten: true,
-						src: ['public/lib/fontawesome/fonts/*'],
-						dest: 'public/www/fonts/'
-					}, {
-						expand: true,
-						flatten: true,
 						src: ['public/modules/core/css/patterns/*'],
 						dest: 'public/www/css/patterns/'
 					}, {
@@ -328,6 +307,8 @@ module.exports = function(grunt) {
 		var config = require('./config/config');
 		grunt.config.set('vendorJavaScriptFiles', config.assets.lib.js);
 		grunt.config.set('applicationJavaScriptFiles', config.assets.js);
+		grunt.config.set('vendorCSSFiles', config.assets.lib.css);
+		grunt.config.set('applicationCSSFiles', config.assets.css);
 	});
 
 	// Default task(s).
@@ -343,8 +324,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'jscs']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['env:build', 'lint', 'loadConfig', 'ngAnnotate', 'less', 'image', 'uglify', 'concat',
-		'copy'
+	grunt.registerTask('build', ['env:build', 'lint', 'loadConfig', 'ngAnnotate', 'less', 'image', 'uglify', 'cssmin',
+		'concat', 'copy'
 	]);
 
 	// Test task.

@@ -35,8 +35,15 @@
 				}
 
 				function appCreateInline() {
-					//TODO: add "create new app" here in addition to setting the device relation of an existing one
-					console.warn('not implemented yet');
+					var modalInstance = $uibModal.open({
+						animation: appConstants.animationsEnabled,
+						templateUrl: 'modules/apps/views/partials/appCreateModal.html',
+						controller: 'AppCreateModalController'
+					});
+					modalInstance.result.then(function(app) {
+						vm.apps.push(app);
+					});
+
 				}
 
 				function appSelection() {

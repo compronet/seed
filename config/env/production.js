@@ -5,9 +5,11 @@ module.exports = {
 	port: process.env.PORT || 3030,
 	assets: {
 		lib: {
+			css: ['public/www/vendor.min.css'],
 			js: ['public/www/vendor.min.js']
 		},
 		img: ['public/www/img/*.png'],
+		css: ['public/www/app.min.css'],
 		js: [
 			'public/www/js/app.min.js',
 		],

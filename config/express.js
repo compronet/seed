@@ -39,6 +39,7 @@ module.exports = function(db) {
 	app.locals.keywords = config.app.keywords;
 	app.locals.facebookAppId = config.facebook.clientID;
 	app.locals.jsFiles = config.getJavaScriptAssets();
+	app.locals.cssFiles = config.getCSSAssets();
 
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {

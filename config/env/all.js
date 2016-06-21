@@ -51,7 +51,6 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/metisMenu/dist/metisMenu.css',
-				'public/lib/fontawesome/css/font-awesome.css',
 				'public/lib/animate.css/animate.css',
 				'public/lib/whirl.css/dist/whirl.css'
 			],
@@ -80,6 +79,8 @@ module.exports = {
 			]
 		},
 		css: [
+			'public/www/css/AdminLTE.css',
+			'public/www/css/skins/_all-skins.css',
 			'public/modules/**/css/*.css'
 		],
 		js: [
