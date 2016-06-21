@@ -7,7 +7,7 @@ var _ = require('lodash');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var config = require('../../../config/config');
-var jwt = require('jsonwebtoken');
+var jwtCtrl = require('../jwt.server.controller');
 
 /**
  * User middleware
@@ -45,28 +45,11 @@ exports.requiresLogin = function(req, res, next) {
 
 exports.requiresLogin = function(req,res,next){
 	
-	var token;
-	///get the authorization token from the request headers, or from a cookie
-	if (req.headers && req.headers.authorization) {
-		var parts = req.headers.authorization.split(' ');
-		if (parts.length == 2) {
-			var scheme = parts[0];
-			var credentials = parts[1];
-
-			if (/^Bearer$/i.test(scheme)) {
-				token = credentials;
-			}
-		}
-	}else if(req.cookies && req.cookies.token){
-		token = req.cookies.token;
-	}
-
-	jwt.verify(token, config.sessionSecret, function(err, decoded) {
-		req.user = decoded;
-	 	if(err)return res.status(401).send({
+	jwtCtrl.verifyToken(req,function(err,user){
+		if(err)return res.status(401).send({
 			message: 'User is not logged in'
 		});
-		next();
+		req.user = user;
 	});
 };
 

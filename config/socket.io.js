@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var socketio = require('socket.io');
 var mqtt = require('mqtt');
-
+var jwtCtrl = require('../app/controllers/jwt.server.controller');
 // Define the Socket.io configuration method
 module.exports = function(app, mongoStore) {
 	var server;
@@ -81,6 +81,7 @@ module.exports = function(app, mongoStore) {
 
 			// Use the mongoStorage instance to get the Express session information
 			mongoStore.get(sessionId, function(err, session) {
+
 				if (err) {
 					return next(err, false);
 				}
@@ -95,11 +96,15 @@ module.exports = function(app, mongoStore) {
 				// Use Passport to populate the user details
 				passport.initialize()(socket.request, {}, function() {
 					passport.session()(socket.request, {}, function() {
-						if (socket.request.user) {
-							next(null, true);
-						} else {
-							next(new Error('User is not authenticated'), false);
-						}
+						jwtCtrl.verifyToken(socket.request,function(err,user){
+							if(err){
+								socket.request.user = user;
+								next(null,true);
+							}else{
+								next(err, false);
+							}
+						});
+
 					});
 				});
 			});
