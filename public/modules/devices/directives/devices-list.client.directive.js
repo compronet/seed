@@ -13,7 +13,6 @@
 				onDeviceSelect: '&',
 				selected: '=',
 				searchText: '=',
-				isDeviceCreatedByAuthedUser: '=',
 				hideDevicesNotCreatedByAuthedUser: '='
 			},
 			controller: function() {

@@ -24,7 +24,7 @@
                         </label>
                         <hr/>
                         <apps-list apps="appsCtrl.apps" search-text="appsCtrl.searchText" selected="appsCtrl.selected"
-                        on-app-select="appsCtrl.select" is-app-created-by-authed-user="appsCtrl.isAppCreatedByAuthedUser"
+                        on-app-select="appsCtrl.select"
                         hide-apps-not-created-by-authed-user="appsCtrl.hideAppsNotCreatedByAuthedUser">
                         </apps-list>
                         <div class="alert alert-warning text-center" data-ng-hide="!appsCtrl.apps.$resolved || appsCtrl.apps.length" translate="global.NODATASETS"></div>

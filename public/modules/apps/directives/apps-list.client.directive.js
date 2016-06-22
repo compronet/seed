@@ -16,7 +16,6 @@
 				editable: '=',
 				selected: '=',
 				searchText: '=',
-				isAppCreatedByAuthedUser: '=',
 				hideAppsNotCreatedByAuthedUser: '='
 			},
 			controller: function() {

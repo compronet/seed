@@ -24,7 +24,7 @@
                         </label>
                         <hr/>
                         <devices-list selected="devicesCtrl.selected" search-text="devicesCtrl.searchText" devices="devicesCtrl.devices"
-                          on-device-select="devicesCtrl.select" is-device-created-by-authed-user="devicesCtrl.isDeviceCreatedByAuthedUser"
+                          on-device-select="devicesCtrl.select"
                           hide-devices-not-created-by-authed-user="devicesCtrl.hideDevicesNotCreatedByAuthedUser"></devices-list>
                         <div class="alert alert-warning text-center" data-ng-hide="!devicesCtrl.devices.$resolved || devicesCtrl.devices.length" translate="global.NODATASETS"></div>
                     </div>
