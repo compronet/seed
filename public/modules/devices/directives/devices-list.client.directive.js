@@ -13,7 +13,7 @@
 				onDeviceSelect: '&',
 				selected: '=',
 				searchText: '=',
-				hideDevicesNotCreatedByAuthedUser: '='
+				authFiltered: '='
 			},
 			controller: function() {
 				var vm = this;

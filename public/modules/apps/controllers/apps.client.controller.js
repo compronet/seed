@@ -10,7 +10,7 @@
 			vm.selected = {};
 			vm.searchText = '';
 
-			vm.hideAppsNotCreatedByAuthedUser = false;
+			vm.authFiltered = false;
 
 			vm.loadAll = loadAll;
 			vm.reload = reload;

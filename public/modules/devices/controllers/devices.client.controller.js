@@ -9,7 +9,7 @@
 			vm.authentication = Authentication;
 			vm.selected = {};
 
-			vm.hideDevicesNotCreatedByAuthedUser = false;
+			vm.authFiltered = false;
 
 			vm.loadAll = loadAll;
 			vm.reload = reload;

@@ -2,7 +2,7 @@
     <div class="list-group">
         <a data-ng-repeat="device in devicesListCtrl.devices
             | filter: devicesListCtrl.searchText
-            | auth: devicesListCtrl.hideDevicesNotCreatedByAuthedUser"
+            | auth: devicesListCtrl.authFiltered"
             data-ng-click="devicesListCtrl.selectFn(device)" class="list-group-item" ng-class="{active: device._id === devicesListCtrl.selected._id}">
             <h4 class="list-group-item-heading">
                 <span data-ng-bind="device.manufacturer"></span> <span data-ng-bind="device.model"></span>

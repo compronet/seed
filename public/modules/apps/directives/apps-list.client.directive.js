@@ -16,7 +16,7 @@
 				editable: '=',
 				selected: '=',
 				searchText: '=',
-				hideAppsNotCreatedByAuthedUser: '='
+				authFiltered: '='
 			},
 			controller: function() {
 				var vm = this;
