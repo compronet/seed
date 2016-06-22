@@ -7,7 +7,6 @@
 			var vm = this;
 			vm.authentication = Authentication;
 			vm.loading = true;
-			vm.dataAuth = false;
 			vm.edit = edit;
 			vm.close = closeApp;
 			vm.init = init;
@@ -29,7 +28,7 @@
 					appId: $stateParams.appId
 				}, function(app) {
 					vm.app = app;
-					vm.dataAuth = AppHelper.authData(app);
+					vm.authedData = AppHelper.authData(app);
 					vm.loading = false;
 					Apps.notify(app);
 				});

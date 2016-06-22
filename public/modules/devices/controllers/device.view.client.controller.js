@@ -32,7 +32,7 @@
 					deviceId: $stateParams.deviceId
 				}, function(device) {
 					vm.device = device;
-					vm.dataAuth = AppHelper.authData(device);
+					vm.authedData = AppHelper.authData(device);
 					vm.loading.device = false;
 
 					Devices.getApps(device._id).then(function(apps) {
