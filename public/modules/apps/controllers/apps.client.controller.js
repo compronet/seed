@@ -3,15 +3,14 @@
 
 	// Apps controller
 	angular.module('apps').controller('AppsController', ['_', '$state', '$stateParams', '$location', 'Authentication',
-		'Apps', 'AppHelper',
-		function(_, $state, $stateParams, $location, Authentication, Apps, AppHelper) {
+		'Apps',
+		function(_, $state, $stateParams, $location, Authentication, Apps) {
 			var vm = this;
 			vm.authentication = Authentication;
 			vm.selected = {};
 			vm.searchText = '';
 
-			vm.isAppCreatedByAuthedUser = isAppCreatedByAuthedUser;
-			vm.hideAppsNotCreatedByAuthedUser = false;
+			vm.authFiltered = false;
 
 			vm.loadAll = loadAll;
 			vm.reload = reload;
@@ -37,10 +36,6 @@
 			function create() {
 				vm.selected = {};
 				$state.go('apps.create');
-			}
-
-			function isAppCreatedByAuthedUser(app) {
-				return AppHelper.authData(app);
 			}
 
 			Apps.onNotification(function(app) {
