@@ -8,7 +8,11 @@
 		 * @return {array}                    Valid authed data
 		 */
 		return function(input, shouldAuth) {
-			if (!shouldAuth) return input;
+
+			if (!shouldAuth) {
+				return input;
+			}
+
 			return input.filter(function(item) {
 				return AppHelper.authData(item);
 			});
