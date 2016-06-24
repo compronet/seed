@@ -22,7 +22,6 @@
 	<!-- /.search form -->
 	<!-- sidebar menu: : style can be found in sidebar.less -->
 	<ul side-navigation id="side-menu" class="sidebar-menu">
-		<li class="header">MAIN NAVIGATION</li>
 		<li ng-class="{active: $uiRoute}" ui-route="/" >
 			<a href="/#!/"><i class="fa fa-home"></i> <span translate="menu.HOME"></span></a>
 		<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
