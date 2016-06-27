@@ -25,7 +25,12 @@
 		<li ng-class="{active: $uiRoute}" ui-route="/" >
 			<a href="/#!/"><i class="fa fa-home"></i> <span translate="menu.HOME"></span></a>
 		<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-			<a href="/#!/{{item.items[0].link}}"><i class="fa {{item.iconClass}}"></i> <span  translate="{{item.title}}"></span></a>
+			<a href=""><i class="fa {{item.iconClass}}"></i> <span class="nav-label" translate="{{item.title}}"> </span> <span ng-show="item.items" class="fa fa-angle-left pull-right"></span></a>
+      <ul class="nav nav-second-level" ng-class="{in: ($uiRoute)}">
+        <li role="presentation" data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+          <a role="menuitem" tabindex="-1" href="/#!/{{subitem.link}}"><span translate="{{subitem.title}}"></span></a>
+        </li>
+      </ul>
 		</li>
 	</ul>
   </section>
