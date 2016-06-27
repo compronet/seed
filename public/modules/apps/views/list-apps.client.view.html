@@ -19,9 +19,7 @@
                     </div>
                     <div class="box-body">
                         <div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span> <input ng-model="appsCtrl.searchText" type="text" placeholder="{{ 'global.SEARCH' | translate}}" class="form-control"></div>
-                        <label><input type="checkbox" ng-model="appsCtrl.authFiltered" />
-                          Hide apps not created by you
-                        </label>
+                        <input type="checkbox" ng-model="appsCtrl.authFiltered" /><span translate="apps.ONLYSHOWAPPSBYUSER"></span>
                         <hr/>
                         <apps-list apps="appsCtrl.apps" search-text="appsCtrl.searchText" selected="appsCtrl.selected"
                         on-app-select="appsCtrl.select" auth-filtered="appsCtrl.authFiltered">
