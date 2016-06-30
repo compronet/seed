@@ -69,7 +69,6 @@ exports.signup = function(req, res) {
 		}
 	], function (err) {
 		if (err) {
-			console.log(err);
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
