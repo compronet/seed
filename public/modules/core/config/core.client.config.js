@@ -17,5 +17,6 @@
 		});
 		$translateProvider.preferredLanguage(appConstants.defaultLanguageCode);
 		$translateProvider.useLocalStorage();
+		$translateProvider.useSanitizeValueStrategy('sanitize');
 	}]);
 })();
