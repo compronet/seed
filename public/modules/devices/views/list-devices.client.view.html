@@ -19,9 +19,7 @@
                     </div>
                     <div class="box-body">
                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-search"></i></span> <input ng-model="devicesCtrl.searchText" type="text" placeholder="{{ 'global.SEARCH' | translate}}" class="form-control"></div>
-                        <label><input type="checkbox" ng-model="devicesCtrl.authFiltered" />
-                          Hide devices not created by you
-                        </label>
+                        <input type="checkbox" ng-model="devicesCtrl.authFiltered" /><span translate="devices.ONLYSHOWDEVICESBYUSER"></span>
                         <hr/>
                         <devices-list selected="devicesCtrl.selected" search-text="devicesCtrl.searchText" devices="devicesCtrl.devices"
                           on-device-select="devicesCtrl.select"
