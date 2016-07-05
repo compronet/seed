@@ -44,7 +44,8 @@ module.exports = {
 		}
 	},
 	mqtt:{
-		rootTopic:'seedApp'
+		rootTopic:'seedApp',
+		url:'localhost'
 	},
 	assets: {
 		lib: {
@@ -72,7 +73,17 @@ module.exports = {
 				'public/lib/angular-touch/angular-touch.js',
 				'public/lib/angular-sanitize/angular-sanitize.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
-				'public/lib/angular-ui-utils/ui-utils.js',
+				'public/lib/angular-ui-utils/index.js',
+				'public/lib/angular-ui-event/dist/event.min.js',
+				'public/lib/angular-ui-grid/ui-grid.min.js',
+				'public/lib/angular-ui-indeterminate/dist/indeterminate.min.js',
+				'public/lib/angular-ui-mask/dist/mask.min.js',
+				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
+				'public/lib/angular-ui-scroll/dist/ui-scroll.min.js',
+				'public/lib/angular-ui-scrollpoint/dist/scrollpoint.min.js',
+				'public/lib/angular-ui-select/dist/select.min.js',
+				'public/lib/angular-ui-uploader/dist/uploader.min.js',
+				'public/lib/angular-ui-validate/dist/validate.min.js',
 				'public/lib/angular-gravatar/build/angular-gravatar.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/jquery-flot/jquery.flot.js'

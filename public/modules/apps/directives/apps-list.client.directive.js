@@ -12,17 +12,14 @@
 			scope: {
 				apps: '=',
 				onAppSelect: '&',
-				removeAppFn: '&',
 				editable: '=',
 				selected: '=',
 				searchText: '=',
-				isAppCreatedByAuthedUser: '=',
-				hideAppsNotCreatedByAuthedUser: '='
+				authFiltered: '='
 			},
 			controller: function() {
 				var vm = this;
 				vm.selectFn = selectFn;
-				vm.removeAppFn = removeApp;
 				vm.appSelectionFn = appSelection;
 				vm.appCreateInline = appCreateInline;
 
@@ -30,10 +27,6 @@
 					if (_.isFunction(vm.onAppSelect())) {
 						vm.onAppSelect()(item);
 					}
-				}
-
-				function removeApp(app) {
-					_.pull(vm.apps, app);
 				}
 
 				function appCreateInline() {

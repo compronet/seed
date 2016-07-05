@@ -19,13 +19,11 @@
                     </div>
                     <div class="box-body">
                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-search"></i></span> <input ng-model="devicesCtrl.searchText" type="text" placeholder="{{ 'global.SEARCH' | translate}}" class="form-control"></div>
-                        <label><input type="checkbox" ng-model="devicesCtrl.hideDevicesNotCreatedByAuthedUser" />
-                          Hide devices not created by you
-                        </label>
+                        <input type="checkbox" ng-model="devicesCtrl.authFiltered" /><span translate="devices.ONLYSHOWDEVICESBYUSER"></span>
                         <hr/>
                         <devices-list selected="devicesCtrl.selected" search-text="devicesCtrl.searchText" devices="devicesCtrl.devices"
-                          on-device-select="devicesCtrl.select" is-device-created-by-authed-user="devicesCtrl.isDeviceCreatedByAuthedUser"
-                          hide-devices-not-created-by-authed-user="devicesCtrl.hideDevicesNotCreatedByAuthedUser"></devices-list>
+                          on-device-select="devicesCtrl.select"
+                          auth-filtered="devicesCtrl.authFiltered"></devices-list>
                         <div class="alert alert-warning text-center" data-ng-hide="!devicesCtrl.devices.$resolved || devicesCtrl.devices.length" translate="global.NODATASETS"></div>
                     </div>
                 </div>

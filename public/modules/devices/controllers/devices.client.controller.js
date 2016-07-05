@@ -3,14 +3,13 @@
 
 	// Devices controller
 	angular.module('devices').controller('DevicesController', ['_', '$state', '$stateParams', '$location',
-		'Authentication', 'Devices', 'AppHelper',
-		function(_, $state, $stateParams, $location, Authentication, Devices, AppHelper) {
+		'Authentication', 'Devices',
+		function(_, $state, $stateParams, $location, Authentication, Devices) {
 			var vm = this;
 			vm.authentication = Authentication;
 			vm.selected = {};
 
-			vm.isDeviceCreatedByAuthedUser = isDeviceCreatedByAuthedUser;
-			vm.hideDevicesNotCreatedByAuthedUser = false;
+			vm.authFiltered = false;
 
 			vm.loadAll = loadAll;
 			vm.reload = reload;
@@ -36,10 +35,6 @@
 			function create() {
 				vm.selected = {};
 				$state.go('devices.create');
-			}
-
-			function isDeviceCreatedByAuthedUser(device) {
-				return AppHelper.authData(device);
 			}
 
 			Devices.onNotification(function(device) {

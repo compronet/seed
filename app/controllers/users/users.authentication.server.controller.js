@@ -3,9 +3,12 @@
 /**
  * Module dependencies.
  */
+var config = require('../../../config/config');
 var errorHandler = require('../errors.server.controller');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var async = require('async');
+var nodemailer = require('nodemailer');
 var User = mongoose.model('User');
 
 /**
@@ -24,7 +27,52 @@ exports.signup = function(req, res) {
 	user.displayName = user.firstName + ' ' + user.lastName;
 
 	// Then save the user
-	user.save(function(err) {
+	async.waterfall([
+		function getListOfAdmins(done) {
+			User.find({
+				roles: {
+					$in: ['admin']
+				}
+			}, 'displayName email', function (err, admins) {
+				done(err, admins);
+			});
+		},
+
+		function renderEmailTemplate(admins, done) {
+			res.render('templates/admin-notification-email', {
+				appName: config.app.title,
+				user: {
+					displayName: user.displayName,
+					email: user.email
+				}
+			}, function (err, emailTemplateHTML) {
+				done(err, admins, emailTemplateHTML);
+			});
+		},
+
+		function sendEmailToAllAdmins(admins, emailTemplateHTML, done) {
+			var smtpTransport = nodemailer.createTransport(config.mailer.options);
+			var mailOptions = {
+				to: admins.map(
+					function (admin) {
+						return admin.email;
+					}
+				),
+				from: config.mailer.from,
+				subject: 'New User',
+				html: emailTemplateHTML
+			};
+			smtpTransport.sendMail(mailOptions, function (err) {
+				done(err);
+			});
+		},
+
+		function saveUser(done) {
+			user.save(function (err) {
+				done(err);
+			});
+		}
+	], function (err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -33,7 +81,6 @@ exports.signup = function(req, res) {
 			// Remove sensitive data before login
 			user.password = undefined;
 			user.salt = undefined;
-
 			res.json(user);
 		}
 	});

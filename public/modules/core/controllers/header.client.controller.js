@@ -5,6 +5,9 @@
 		function($scope, Authentication, Menus) {
 			$scope.authentication = Authentication;
 			$scope.isCollapsed = false;
+			$scope.searchMenu = {
+				title: ''
+			};
 			$scope.menu = Menus.getMenu('topbar');
 
 			$scope.toggleCollapsibleMenu = function() {
