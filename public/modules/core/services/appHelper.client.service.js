@@ -14,7 +14,7 @@
 			if (typeof dataSet !== 'undefined') {
 				isAuth = angular.equals(dataSet.user._id, Authentication.user._id);
 			}
-			
+
 			return isAuth;
 		}
 

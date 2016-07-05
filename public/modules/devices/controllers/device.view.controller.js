@@ -2,7 +2,8 @@
 	'use strict';
 
 	// Devices controller
-	angular.module('devices').controller('DeviceViewController', ['$state', '$stateParams', 'Authentication', 'Devices', 'AppHelper',
+	angular.module('devices').controller('DeviceViewController', ['$state', '$stateParams', 'Authentication',
+		'Devices', 'AppHelper',
 		function($state, $stateParams, Authentication, Devices, AppHelper) {
 			var vm = this;
 			vm.authentication = Authentication;
@@ -68,7 +69,7 @@
 					shadowSize: 0 // Drawing is faster without shadows
 				},
 				grid: {
-					show:false,
+					show: false,
 					borderWidth: 0,
 					minBorderMargin: 20,
 					labelMargin: 10
