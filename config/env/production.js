@@ -18,6 +18,13 @@ module.exports = {
 			'public/modules/*/tests/*.js'
 		]
 	},
+	pubsubsettings: {
+		//using ascoltatore
+		type: 'mongo',
+		url: 'mongodb://localhost:27017/mqtt',
+		pubsubCollection: 'ascoltatori',
+		mongo: {}
+	},
 	mqtt:{
 		rootTopic:'seedApp',
 		url:'compronet.io'
