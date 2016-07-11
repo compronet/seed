@@ -137,6 +137,7 @@
 		"CREATENEW": "Create New Device",
 		"DEVICE": "Device",
 		"IP": "IP",
+		"ONLYSHOWDEVICESBYUSER":"only own devices",
 		"NODEVICESTOSELECT": "No devices found to select",
 		"PLEASESELECTDEVICE": "Please select a device",
 		"NOAPPSRELATED": "No related apps yet"

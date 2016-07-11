@@ -137,6 +137,7 @@
 		"CREATENEW": "Eszköz létrehozása",
 		"DEVICE": "Eszköz",
 		"IP": "IP",
+		"ONLYSHOWDEVICESBYUSER":"only own devices",
 		"NODEVICESTOSELECT": "Nem található kiválasztható eszköz",
 		"PLEASESELECTDEVICE": "Kérem válasszon egy eszközt",
 		"NOAPPSRELATED": "Még nincs kapcsolódó alkalmazás"

@@ -138,6 +138,7 @@
 		"DEVICE": "Gerät",
 		"IP": "IP",
 		"NODEVICESTOSELECT": "Keine Geräte zur Auswahl verfügbar",
+		"ONLYSHOWDEVICESBYUSER":"nur eigene Geräte",
 		"PLEASESELECTDEVICE": "Bitte wählen Sie ein Gerät aus",
 		"NOAPPSRELATED": "Noch keine Anwendungen zugeordnet"
 	},
