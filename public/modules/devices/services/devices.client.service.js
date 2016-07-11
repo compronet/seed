@@ -14,7 +14,7 @@
 		var service = {
 			getRestApi: getRestApi,
 			notify: notify,
-			setPingHandler:setPingHandler,
+			setPingHandler: setPingHandler,
 			onNotification: onNotification,
 			getApps: getApps
 		};

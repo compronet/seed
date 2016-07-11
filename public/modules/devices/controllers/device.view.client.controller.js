@@ -69,7 +69,7 @@
 					shadowSize: 0 // Drawing is faster without shadows
 				},
 				grid: {
-					show:false,
+					show: false,
 					borderWidth: 0,
 					minBorderMargin: 20,
 					labelMargin: 10
