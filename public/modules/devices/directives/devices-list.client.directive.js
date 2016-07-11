@@ -31,6 +31,8 @@
 					var filteredIndex = _.indexOf(vm.devices, filteredDevice);
 					var targetDevice = vm.devices[filteredIndex];
 					if (targetDevice) {
+
+						targetDevice.error = ping.error;
 						targetDevice.isReady = ping.error ? false : true;
 					}
 
