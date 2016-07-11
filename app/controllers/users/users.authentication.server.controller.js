@@ -38,6 +38,12 @@ exports.signup = function(req, res) {
 			});
 		},
 
+		function saveUser(admins, done) {
+			user.save(function (err) {
+				done(err, admins);
+			});
+		},
+
 		function renderEmailTemplate(admins, done) {
 			res.render('templates/admin-notification-email', {
 				appName: config.app.title,
@@ -62,16 +68,12 @@ exports.signup = function(req, res) {
 				subject: 'New User',
 				html: emailTemplateHTML
 			};
-			smtpTransport.sendMail(mailOptions, function (err) {
-				done(err);
-			});
-		},
-
-		function saveUser(done) {
-			user.save(function (err) {
+			smtpTransport.sendMail(mailOptions, function (err/*, info*/) {
+				//console.log('Message sent: ' + info.response);
 				done(err);
 			});
 		}
+
 	], function (err) {
 		if (err) {
 			return res.status(400).send({
