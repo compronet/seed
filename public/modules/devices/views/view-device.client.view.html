@@ -5,10 +5,10 @@
 				<div class="box-header with-border">
 					<h3 class="box-title"><span data-ng-bind="deviceViewCtrl.device.manufacturer"></span> <span data-ng-bind="deviceViewCtrl.device.model"></span></h3>
 					<div class="box-tools pull-right">
-						<a class="btn btn-box-tool" data-ng-click="deviceViewCtrl.edit();" ng-if="deviceViewCtrl.dataAuth">
+						<a class="btn btn-box-tool" data-ng-click="deviceViewCtrl.edit();" ng-if="deviceViewCtrl.authedData">
 							<i class="fa fa-edit"></i>
 						</a>
-						<a class="btn btn-box-tool" data-ng-click="deviceViewCtrl.remove();" ng-if="deviceViewCtrl.dataAuth">
+						<a class="btn btn-box-tool" data-ng-click="deviceViewCtrl.remove();" ng-if="deviceViewCtrl.authedData">
 							<i class="fa fa-trash-o"></i>
 						</a>
 						<a class="btn btn-box-tool" data-ng-click="deviceViewCtrl.close();">

@@ -53,6 +53,7 @@
 
 			Devices.setPingHandler('DeviceViewController', pingHandler);
 			function pingHandler(ping) {
+				console.log(ping.target, vm.device.ip);
 				if (ping && vm.device) {
 					if (ping.target === vm.device.ip) {
 						vm.pingError = ping.error;

@@ -27,7 +27,7 @@ module.exports = {
 	},
 	mqtt:{
 		rootTopic:'seedApp',
-		url:'compronet.io'
+		url:'localhost'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
