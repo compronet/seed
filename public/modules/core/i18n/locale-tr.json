@@ -127,7 +127,8 @@
 		"NOAPPTOSELECT": "Uygulama bulunamadı",
 		"SETRELATION": "Cihaz tanımla",
 		"PLEASESELECTAPP": "Uygulama seç",
-		"NORELATEDDEVICE": "Cihaz tanımlanmamış"
+		"NORELATEDDEVICE": "Cihaz tanımlanmamış",
+		"ONLYSHOWAPPSBYUSER":"sadece kendi uygulamalarım"
 	},
 	"devices": {
 		"DEVICES": "Cihazlar",
