@@ -7,7 +7,7 @@
 		var rootTopic = rootTopic || 'seedApp';
 
 		Socket.on(rootTopic + '/device/ping', function (message) {
-			
+
 			for (var key in onPingHandlers) {
 				onPingHandlers[key](message.ping);
 			}
