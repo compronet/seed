@@ -31,6 +31,9 @@ $ npm install -g bower
 $ sudo npm install -g grunt-cli
 ```
 
+## Set environment
+You can find sample enviroment files in the config/env_samples folder. Rename it to env and set the desired variables. You have to set the MAILER_XX variables, otherwise the registration will not work!
+
 ## Quick Install
 Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop you MEAN application.
 

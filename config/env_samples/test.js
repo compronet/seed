@@ -1,9 +1,10 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/startapp-dev',
+	db: 'mongodb://localhost/startapp-test',
+	port: 3001,
 	app: {
-		title: 'StartApp - Development Environment'
+		title: 'StartApp - Test Environment'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
@@ -31,13 +32,13 @@ module.exports = {
 		callbackURL: '/auth/github/callback'
 	},
 	mailer: {
-		from: process.env.MAILER_FROM || 'test@compronetdev.de',
+		from: process.env.MAILER_FROM || 'MAILER_FROM',
 		options: {
-			host: process.env.MAILER_SERVICE_HOST || 'smtprelaypool.ispgateway.de',
+			host: process.env.MAILER_SERVICE_HOST || 'MAILER_SERVICE_HOST',
 			port: process.env.MAILER_SERVICE_PORT || 465,
 			auth: {
-				user: process.env.MAILER_EMAIL_ID || 'test@compronetdev.de',
-				pass: process.env.MAILER_PASSWORD || 'r89mdcbo'
+				user: process.env.MAILER_EMAIL_ID || 'MAILER_EMAIL_ID',
+				pass: process.env.MAILER_PASSWORD || 'MAILER_PASSWORD'
 			}
 		}
 	}
