@@ -36,7 +36,7 @@
     "method-override": "^2.3.6",
     "mongoose": "^4.4.19",
     "morgan": "^1.7.0",
-    "mosca": "^2.0.1",
+    "mosca": "^2.0.2",
     "mqtt": "^1.10.0",
     "net-ping": "^1.2.0",
     "nodemailer": "^2.4.2",
