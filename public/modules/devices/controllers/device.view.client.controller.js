@@ -25,6 +25,7 @@
 
 			function closeDevice() {
 				Devices.notify();
+				Devices.setActiveDeviceIp(null);
 				$state.go('devices');
 			}
 
@@ -35,6 +36,7 @@
 					vm.device = device;
 					vm.authedData = AppHelper.authData(device);
 					vm.loading.device = false;
+					Devices.setActiveDeviceIp(vm.device.ip);
 
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;
@@ -51,16 +53,15 @@
 				});
 			}
 
-			Devices.setPingHandler('DeviceViewController', pingHandler);
-			function pingHandler(ping) {
-				console.log(ping.target, vm.device.ip);
-				if (ping && vm.device) {
-					if (ping.target === vm.device.ip) {
-						vm.pingError = ping.error;
-						updateChart(ping.diff);
-					}
+			function pingHandler(pings) {
+				var pingData = pings[vm.device.ip];
+				if(pingData) {
+					vm.pingError = pingData.error;
+					updateChart(pingData.ping);
 				}
 			}
+
+			Devices.setPingHandler('deviceView', pingHandler);
 
 			// REALTIME
 			// -----------------------------------

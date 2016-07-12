@@ -1,15 +1,23 @@
 (function() {
 	'use strict';
-	angular.module('devices').factory('Devices', ['$rootScope', '$resource', '$q', 'Socket', Devices]);
-	function Devices($rootScope, $resource, $q, Socket) {
+	angular.module('devices').factory('Devices', ['$rootScope', '$resource', '$q', '_', 'Socket', Devices]);
+	function Devices($rootScope, $resource, $q, _, Socket) {
 
+		var devicePingStorage = {};
 		var onPingHandlers = [];
+		var activeDeviceIp = null;
 		var rootTopic = rootTopic || 'seedApp';
 
 		Socket.on(rootTopic + '/device/ping', function (message) {
+			devicePingStorage[message.ping.target] = {
+				ping: message.ping.diff,
+				isReady: message.ping.error ? false : true,
+				error: message.ping.error || null
+			};
 
-			for (var key in onPingHandlers) {
-				onPingHandlers[key](message.ping);
+			onPingHandlers.devicesList(devicePingStorage);
+			if(activeDeviceIp === message.ping.target) {
+				onPingHandlers.deviceView(devicePingStorage);
 			}
 		});
 
@@ -18,6 +26,7 @@
 			notify: notify,
 			setPingHandler: setPingHandler,
 			onNotification: onNotification,
+			setActiveDeviceIp: setActiveDeviceIp,
 			getApps: getApps
 		};
 
@@ -52,6 +61,10 @@
 
 		function setPingHandler(key, handler) {
 			onPingHandlers[key] = handler;
+		}
+
+		function setActiveDeviceIp(ip) {
+			activeDeviceIp = ip;
 		}
 
 		function onNotification(handler) {
