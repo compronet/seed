@@ -2,8 +2,6 @@
 	'use strict';
 	angular.module('devices').factory('Devices', ['$rootScope', '$resource', '$q', '_', 'Socket', Devices]);
 	function Devices($rootScope, $resource, $q, _, Socket) {
-
-		var devicePingStorage = {};
 		var onPingHandlers = [];
 		var rootTopic = rootTopic || 'seedApp';
 
