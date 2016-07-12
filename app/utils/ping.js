@@ -24,7 +24,8 @@ Promise.config({
 
 module.exports = function(srv, client) {
 	mqttSrv = srv;
-	client.on('connect', function() {
+	client.on('connect', function(connack) {
+
 		client.subscribe(config.mqtt.rootTopic + '/device/update');
 	});
 
@@ -70,6 +71,7 @@ function validTarget(target) {
 }
 
 function queryHost(target) {
+	
 	session.pingHost(target, function(error, target, sent, rcvd) {
 		var diff;
 		if (error) {

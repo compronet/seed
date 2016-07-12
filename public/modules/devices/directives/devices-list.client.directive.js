@@ -25,15 +25,12 @@
 					}
 				}
 
-				function pingHandler(pingData) {
-					var device = _.find(vm.devices, { ip: pingData.ip });
-					device.error = pingData.error;
-					device.isReady = pingData.isReady;
-				}
-
 				vm.devices.$promise.then(function() {
 					angular.forEach(vm.devices, function(device) {
-						Devices.setPingHandler(device.ip, pingHandler);
+						Devices.setPingHandlerList(device.ip, function(pingData) {
+							device.error = pingData.error;
+							device.isReady = pingData.isReady;
+						});
 					});
 				});
 

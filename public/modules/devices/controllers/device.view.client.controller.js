@@ -36,7 +36,12 @@
 					vm.device = device;
 					vm.authedData = AppHelper.authData(device);
 					vm.loading.device = false;
-					Devices.setPingHandler(vm.device.ip, pingHandler);
+
+					Devices.setPingHandlerView(device.ip, function (pingData) {
+						vm.pingError = pingData.error;
+						updateChart(pingData.ping);
+					});
+
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;
 						vm.apps = apps;
@@ -52,10 +57,7 @@
 				});
 			}
 
-			function pingHandler(pingData) {
-				vm.pingError = pingData.error;
-				updateChart(pingData.ping);
-			}
+
 
 			// REALTIME
 			// -----------------------------------
