@@ -58,8 +58,6 @@
 				updateChart(pingData.ping);
 			}
 
-
-
 			// REALTIME
 			// -----------------------------------
 			vm.realTimeOptions = {
