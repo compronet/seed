@@ -4,7 +4,7 @@
             | filter: devicesListCtrl.searchText
             | auth: devicesListCtrl.authFiltered"
             data-ng-click="devicesListCtrl.selectFn(device)" class="list-group-item" ng-class="{active: device._id === devicesListCtrl.selected._id}"
-            title="{{device.error}}">
+            title="{{device.error.message}}">
             <h4 class="list-group-item-heading">
                 <span data-ng-bind="device.ip"></span>
                 <span class="pull-right">
