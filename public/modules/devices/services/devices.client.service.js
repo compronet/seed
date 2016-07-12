@@ -5,20 +5,20 @@
 
 		var devicePingStorage = {};
 		var onPingHandlers = [];
-		var activeDeviceIp = null;
 		var rootTopic = rootTopic || 'seedApp';
 
 		Socket.on(rootTopic + '/device/ping', function (message) {
-			devicePingStorage[message.ping.target] = {
+			var pingData = {
+				ip: message.ping.target,
 				ping: message.ping.diff,
 				isReady: message.ping.error ? false : true,
 				error: message.ping.error || null
 			};
-
-			onPingHandlers.devicesList(devicePingStorage);
-			if(activeDeviceIp === message.ping.target) {
-				onPingHandlers.deviceView(devicePingStorage);
+			var targetFn = onPingHandlers[message.ping.target];
+			if (angular.isFunction(targetFn)) {
+				targetFn(pingData);
 			}
+
 		});
 
 		var service = {
@@ -26,7 +26,6 @@
 			notify: notify,
 			setPingHandler: setPingHandler,
 			onNotification: onNotification,
-			setActiveDeviceIp: setActiveDeviceIp,
 			getApps: getApps
 		};
 
@@ -61,10 +60,6 @@
 
 		function setPingHandler(key, handler) {
 			onPingHandlers[key] = handler;
-		}
-
-		function setActiveDeviceIp(ip) {
-			activeDeviceIp = ip;
 		}
 
 		function onNotification(handler) {

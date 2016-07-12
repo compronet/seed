@@ -36,8 +36,8 @@
 					vm.device = device;
 					vm.authedData = AppHelper.authData(device);
 					vm.loading.device = false;
-					Devices.setActiveDeviceIp(vm.device.ip);
-
+					//Devices.setActiveDeviceIp(vm.device.ip);
+					Devices.setPingHandler(vm.device.ip, pingHandler);
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;
 						vm.apps = apps;
@@ -53,15 +53,12 @@
 				});
 			}
 
-			function pingHandler(pings) {
-				var pingData = pings[vm.device.ip];
-				if(pingData) {
-					vm.pingError = pingData.error;
-					updateChart(pingData.ping);
-				}
+			function pingHandler(pingData) {
+				vm.pingError = pingData.error;
+				updateChart(pingData.ping);
 			}
 
-			Devices.setPingHandler('deviceView', pingHandler);
+
 
 			// REALTIME
 			// -----------------------------------
