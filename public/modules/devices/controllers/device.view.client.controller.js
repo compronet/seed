@@ -36,7 +36,6 @@
 					vm.device = device;
 					vm.authedData = AppHelper.authData(device);
 					vm.loading.device = false;
-					//Devices.setActiveDeviceIp(vm.device.ip);
 					Devices.setPingHandler(vm.device.ip, pingHandler);
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;
