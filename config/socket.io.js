@@ -9,10 +9,10 @@ var https = require('https');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var socketio = require('socket.io');
-var mqtt = require('mqtt');
+
 
 // Define the Socket.io configuration method
-module.exports = function(app, mongoStore) {
+module.exports = function(app, mqttClient, mongoStore) {
 	var server;
 	if (config.secure && config.secure.ssl === true) {
 		// Load SSL key and certificate
@@ -119,25 +119,8 @@ module.exports = function(app, mongoStore) {
 					handshake.sessionID = handshake.signedCookies['connect.sid'];
 					socket.join(handshake.sessionID);
 
-					//TODO: extend mqtt.connect for user auth with app
-					/*var mqttOptions = {
-						port:1883,
-						username:'appuser',
-						password:'iloveapp',
-						clientId: 'serverjs_'+uuid.v1(),
-						clear:false
-					}*/
-					var mqttOptions = {
-						clientId: handshake.sessionID
-					};
-					var client = app.get('mqtt');
-					if (!client) {
-						client = mqtt.connect('mqtt://' + config.mqtt.url, mqttOptions);
-						app.set('mqtt', client);
-					}
-
 					config.sockets.forEach(function(socketConfiguration) {
-						require(path.resolve(socketConfiguration))(client, io, socket, handshake.sessionID);
+						require(path.resolve(socketConfiguration))(mqttClient, io, socket, handshake.sessionID);
 					});
 				}
 

@@ -22,14 +22,10 @@ Promise.config({
 	}
 });
 
-module.exports = function(srv, client) {
+module.exports = function(srv, mqttClient) {
 	mqttSrv = srv;
-	client.on('connect', function(connack) {
-
-		client.subscribe(config.mqtt.rootTopic + '/device/update');
-	});
-
-	client.on('message', function(/*topic, buffer, data*/) {
+	
+	mqttClient.on('message', function(topic, buffer, data) {
 		targetSync();
 	});
 
@@ -71,7 +67,7 @@ function validTarget(target) {
 }
 
 function queryHost(target) {
-	
+
 	session.pingHost(target, function(error, target, sent, rcvd) {
 		var diff;
 		if (error) {
@@ -79,7 +75,8 @@ function queryHost(target) {
 			console.log(chalk.red(target + ': ' + error.toString()));
 		} else {
 			diff = rcvd - sent;
-			console.log(chalk.green(target + ': Alive'));
+
+			//console.log(chalk.green(target + ': ' + rcvd));
 		}
 
 		var msgData = {};
