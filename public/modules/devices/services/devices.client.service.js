@@ -19,7 +19,6 @@
 				targetFnList(pingData);
 			}
 
-			console.log(message.ping.target);
 			var targetFnView = pingHandlersView[message.ping.target];
 			if (angular.isFunction(targetFnView)) {
 				targetFnView(pingData);
