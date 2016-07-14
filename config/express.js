@@ -169,15 +169,15 @@ module.exports = function(db, mqttClient) {
 		return httpsServer;
 	}
 
+	if (mqttClient) {
+		app.set('mqttClient', mqttClient);
+	}
+
 	// Configure Socket.io
 	// Load the Socket.io configuration and return server object
 	// NOTE Socket.io function is not needed for testing
 	if (process.env.NODE_ENV !== 'test') {
 		return require('./socket.io')(app, mqttClient, mongoStore);
-	}
-
-	if (mqttClient) {
-		app.set('mqttClient', mqttClient);
 	}
 
 	// Return Express server instance

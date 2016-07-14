@@ -97,6 +97,10 @@ module.exports = function(app, mqttClient, mongoStore) {
 					passport.session()(socket.request, {}, function() {
 						if (socket.request.user) {
 							next(null, true);
+							socket.join(sessionId);
+							config.sockets.forEach(function(socketConfiguration) {
+								require(path.resolve(socketConfiguration))(mqttClient, io, socket, sessionId);
+							});
 						} else {
 							next(new Error('User is not authenticated'), false);
 						}
@@ -104,30 +108,6 @@ module.exports = function(app, mqttClient, mongoStore) {
 				});
 			});
 		});
-	});
-
-	var parseCookie = cookieParser(config.sessionSecret);
-
-	// Add an event listener to the 'connection' event
-	io.on('connection', function(socket) {
-		var handshake = socket.handshake;
-		if (handshake.headers.cookie) {
-			parseCookie(handshake, null, function(err) {
-				if (err) {
-					console.log('socket.io connection: ', err.toString());
-				} else {
-					handshake.sessionID = handshake.signedCookies['connect.sid'];
-					socket.join(handshake.sessionID);
-
-					config.sockets.forEach(function(socketConfiguration) {
-						require(path.resolve(socketConfiguration))(mqttClient, io, socket, handshake.sessionID);
-					});
-				}
-
-			});
-		} else {
-			console.log('socket.io connection: missing handshake.cookie');
-		}
 	});
 
 	return server;
