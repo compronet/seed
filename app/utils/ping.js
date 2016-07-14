@@ -76,7 +76,7 @@ function queryHost(target) {
 		} else {
 			diff = rcvd - sent;
 
-			//console.log(chalk.green(target + ': ' + rcvd));
+			console.log(chalk.green(target + ': ' + rcvd));
 		}
 
 		var msgData = {};

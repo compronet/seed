@@ -21,6 +21,7 @@ var db = mongoose.connect(config.db, function(err) {
 		console.log(chalk.red(err));
 	}
 });
+
 // Connect as Mqtt Client
 //TODO: extend mqtt.connect for user auth with app
 /*var mqttOptions = {
@@ -38,7 +39,7 @@ console.log('connecting ', mqttOptions.clientId);
 var mqttClient = mqtt.connect('mqtt://' + config.mqtt.url, mqttOptions);
 var subscriptionTopic = config.mqtt.rootTopic + '/#';
 mqttClient.on('connect', function(connack) {
-	console.log(appId+' subscribing: ' + subscriptionTopic);
+	console.log(appId + ' subscribing: ' + subscriptionTopic);
 	mqttClient.subscribe(subscriptionTopic);
 });
 /*
@@ -47,8 +48,19 @@ mqttClient.on('close', function() {
 	mqttClient.unsubscribe(subscriptionTopic);
 });
 */
+
 // Init the express application
 var app = require('./config/express')(db, mqttClient);
+
+mqttClient.on('message', function(topic, msgBuffer) {
+	var msgStr = msgBuffer.toString();
+	try {
+		var message = JSON.parse(msgStr);
+		app.io.emit(topic, message);
+	} catch (e) {
+		console.log(e);
+	}
+});
 
 // Bootstrap passport config
 require('./config/passport')();

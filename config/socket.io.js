@@ -10,7 +10,6 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var socketio = require('socket.io');
 
-
 // Define the Socket.io configuration method
 module.exports = function(app, mqttClient, mongoStore) {
 	var server;
@@ -60,6 +59,7 @@ module.exports = function(app, mqttClient, mongoStore) {
 
 	// Create a new Socket.io server
 	var io = socketio.listen(server);
+	server.io = io;
 
 	// Create a MongoDB storage object
 	/*var mongoStore = new MongoStore({
