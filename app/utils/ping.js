@@ -24,8 +24,7 @@ Promise.config({
 
 module.exports = function(srv, mqttClient) {
 	mqttSrv = srv;
-	
-	mqttClient.on('message', function(topic, buffer, data) {
+	mqttClient.on('message', function(/* topic, buffer, data */) {
 		targetSync();
 	});
 
@@ -75,7 +74,6 @@ function queryHost(target) {
 			console.log(chalk.red(target + ': ' + error.toString()));
 		} else {
 			diff = rcvd - sent;
-			//console.log(chalk.green(target + ': ' + rcvd));
 		}
 
 		var msgData = {};

@@ -38,7 +38,7 @@ var mqttOptions = {
 console.log('connecting ', mqttOptions.clientId);
 var mqttClient = mqtt.connect('mqtt://' + config.mqtt.url, mqttOptions);
 var subscriptionTopic = config.mqtt.rootTopic + '/#';
-mqttClient.on('connect', function(connack) {
+mqttClient.on('connect', function(/*connack*/) {
 	console.log(appId + ' subscribing: ' + subscriptionTopic);
 	mqttClient.subscribe(subscriptionTopic);
 });
