@@ -25,7 +25,6 @@
 
 			function closeDevice() {
 				Devices.notify();
-				Devices.setActiveDeviceIp(null);
 				$state.go('devices');
 			}
 
