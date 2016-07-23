@@ -3,8 +3,8 @@
  */
 (function() {
 	'use strict';
-	angular.module('devices').directive('deviceData', ['languageService', deviceData]);
-	function deviceData(languageService) {
+	angular.module('devices').directive('deviceData', ['Language', deviceData]);
+	function deviceData(Language) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -14,8 +14,8 @@
 			},
 			controller: function() {
 				var vm = this;
-				vm.languages = languageService.getAvailable();
-				vm.descLang = languageService.getSelected();
+				vm.languages = Language.getAvailable();
+				vm.descLang = Language.getSelected();
 			},
 
 			controllerAs: 'deviceDataCtrl',

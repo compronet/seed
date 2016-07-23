@@ -174,8 +174,9 @@
 				return this.menus[menuId];
 			};
 
-			//Adding the topbar menu
+
 			this.addMenu('topbar');
+			this.addMenu('sidebar');
 		}
 	]);
 })();

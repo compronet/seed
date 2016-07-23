@@ -1,4 +1,5 @@
 <header class="main-header" data-ng-controller="HeaderController">
+
     <!-- Logo -->
     <a href="/#!/home" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -8,7 +9,8 @@
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
-		<span minimaliza-sidebar></span>
+
+		<span minimalize-sidebar is-collapsed="isCollapsed"></span>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav" data-ng-hide="authentication.user">
                 <li ui-route="/signup">

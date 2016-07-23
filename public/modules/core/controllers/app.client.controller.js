@@ -5,8 +5,8 @@
 (function() {
 	'use strict';
 	angular.module('core').controller('AppController', ['$scope', '$state', '$translate', 'appConstants',
-		'languageService',
-		function($scope, $state, $translate, appConstants, languageService) {
+		'Language',
+		function($scope, $state, $translate, appConstants, Language) {
 
 			// Internationalization
 			// ----------------------
@@ -24,13 +24,13 @@
 				init: function() {
 					var preferredLanguage = $translate.preferredLanguage(); // we know we have set a preferred one in app.config
 					$scope.language.selectedId = (preferredLanguage);
-					languageService.setSelected($scope.language.selectedId);
+					Language.setSelected($scope.language.selectedId);
 				},
 
 				set: function(localeId) {
 					$translate.use(localeId);
 					$scope.language.selectedId = localeId;
-					languageService.setSelected($scope.language.selectedId);
+					Language.setSelected($scope.language.selectedId);
 
 				}
 			};

@@ -1,4 +1,4 @@
-<aside class="main-sidebar" data-ng-controller="HeaderController">
+<aside class="main-sidebar" data-ng-controller="SidebarController">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
 	<!-- Sidebar user panel -->
@@ -10,27 +10,8 @@
 		<p data-ng-bind="authentication.user.displayName"></p>
 	  </div>
 	</div>
-	<!-- search form -->
-	<form action="#" method="get" class="sidebar-form">
-	  <div class="input-group">
-		<input type="text" ng-model="searchMenu.title" class="form-control" placeholder="Search...">
-		<span class="input-group-btn">
-		  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-		</span>
-	  </div>
-	</form>
-	<!-- /.search form -->
 	<!-- sidebar menu: : style can be found in sidebar.less -->
-	<ul side-navigation id="side-menu" class="sidebar-menu">
-		<li ng-show="item.inSearch" ui-sref-active="active" ui-sref="{{item.link}}" class="treeview" data-ng-repeat="item in menu.items | translateFilter: searchMenu.title | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="/{{item.link}}">
-			<a href="#"><i class="fa {{item.iconClass}}"></i> <span class="nav-label" translate="{{item.title}}"> </span> <span ng-show="item.items" class="fa fa-angle-left pull-right"></span></a>
-			<ul class="treeview-menu">
-				<li ng-show="item.inSearch" ui-sref-active="active" ui-sref="{{subitem.link}}" role="presentation" data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}">
-					<a role="menuitem" tabindex="-1" href="/#!/{{subitem.link}}"><span translate="{{subitem.title}}"></span></a>
-				</li>
-			</ul>
-		</li>
-	</ul>
+	<side-navigation></side-navigation>
   </section>
   <!-- /.sidebar -->
 </aside>
