@@ -1,0 +1,18 @@
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <span class="hidden-xs" data-ng-bind="authentication.user.displayName"></span>
+</a>
+<ul class="dropdown-menu">
+    <li>
+        <a href="/#!/settings/profile" translate="menu.EDITPROFILE"></a>
+    </li>
+    <li>
+        <a href="/#!/settings/accounts" translate="menu.SOCIALACCOUNTS"></a>
+    </li>
+    <li data-ng-show="authentication.user.provider === 'local'">
+        <a href="/#!/settings/password" translate="menu.CHANGEPWD"></a>
+    </li>
+    <li class="divider"></li>
+    <li>
+        <a href="/auth/signout" translate="menu.SIGNOUT"></a>
+    </li>
+</ul>
