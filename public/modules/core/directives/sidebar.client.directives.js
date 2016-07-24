@@ -16,15 +16,9 @@
 					$scope.authentication = Authentication;
 					$scope.isCollapsed = Sidebar.isCollapsed();
 
-					//collapseChange();
 					Sidebar.onCollapsed(function(_collapsed) {
 						$scope.isCollapsed = _collapsed;
-						if (!_collapsed) {
-							$timeout(function() {
-							angular.element('#side-menu li:not(.active) .treeview-menu').removeClass('in');
-							angular.element('#side-menu li.active .treeview-menu').css('height', 'auto');
-						}, 200);
-						}
+						collapseChange(false);
 					});
 
 					$scope.menu = Menus.getMenu('sidebar');
@@ -33,16 +27,23 @@
 						title: ''
 					};
 					$scope.$on('$stateChangeSuccess', function() {
-						if (Sidebar.isCollapsed()) {
-							collapseChange();
-						}
+						collapseChange(true);
+
 					});
 
-					function collapseChange() {
+					function collapseChange(byState) {
+
 						$timeout(function() {
-							angular.element('#side-menu-collapsed .treeview-menu').addClass('in');
-							angular.element('#side-menu-collapsed .treeview-menu').css('height', 'auto');
-						}, 200);
+							if (Sidebar.isCollapsed()) {
+								angular.element('#side-menu-collapsed .treeview-menu').addClass('in');
+								angular.element('#side-menu-collapsed .treeview-menu').css('height', 'auto');
+							}else {
+								if (!byState) {
+									angular.element('#side-menu li:not(.active) .treeview-menu').removeClass('in');
+									angular.element('#side-menu li.active .treeview-menu').css('height', 'auto');
+								}
+							}
+						});
 					}
 				},
 
@@ -59,7 +60,8 @@
 					scope.onResize();
 
 					// Call metsi to build when user signup
-					scope.$watch('authentication.user', function() {
+					scope.$watch(Authentication.user, function() {
+
 						$timeout(function() {
 							angular.element('#side-menu').metisMenu();
 							angular.element('#side-menu-collapsed').metisMenu();
@@ -77,28 +79,31 @@
 				controller: function($scope) {
 					$scope.minimalize = function() {
 						var targetClass = '';
+						var isSmall = false;
 						if (!angular.element('body').hasClass('body-small')) {
 							targetClass = 'sidebar-collapse';
 
 						} else {
 							targetClass = 'sidebar-open';
-
+							isSmall = true;
 						}
 
 						var isCollapsed;
 						angular.element('body').toggleClass(targetClass);
 						if (!angular.element('body').hasClass(targetClass)) {
-							isCollapsed = false;
+							isCollapsed = false || isSmall;
 
 							// Hide menu in order to smoothly turn on when maximize menu
-							angular.element('#side-menu').hide();
+							//angular.element('#side-menu').hide();
 
 							// For smoothly turn on menu
-							$timeout(function() {
+							/*$timeout(function() {
 								angular.element('#side-menu').fadeIn(500);
 							}, 100);
+							*/
+							angular.element('#side-menu').show();
 						} else {
-							isCollapsed = true;
+							isCollapsed = !isSmall;
 
 							// Remove all inline style from jquery fadeIn function to reset menu state
 							angular.element('#side-menu').removeAttr('style');
