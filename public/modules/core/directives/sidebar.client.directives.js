@@ -47,7 +47,7 @@
 					}
 				},
 
-				link: function(scope, element) {
+				link: function(scope/*, element*/) {
 					angular.element($window).bind('resize', function() {
 						scope.onResize();
 					});

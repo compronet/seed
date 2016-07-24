@@ -1,8 +1,8 @@
 (function() {
 	'use strict';
 
-	angular.module('users').controller('AuthenticationController', ['$scope', '$state', '$http', '$location', 'Authentication',
-		'$window',
+	angular.module('users').controller('AuthenticationController', ['$scope', '$state', '$http', '$location',
+		'Authentication', '$window',
 		function($scope, $state, $http, $location, Authentication, $window) {
 			$scope.authentication = Authentication;
 
@@ -24,7 +24,7 @@
 			$scope.signin = function() {
 				$http.post('/auth/signin', $scope.credentials).success(function(response) {
 					// If successful we assign the response to the global user model
-					//Authentication.user = response;
+					Authentication.user = response;
 
 					// And redirect to the index page
 					$window.location.href = '/';

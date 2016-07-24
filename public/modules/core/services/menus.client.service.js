@@ -174,7 +174,6 @@
 				return this.menus[menuId];
 			};
 
-
 			this.addMenu('topbar');
 			this.addMenu('sidebar');
 		}
