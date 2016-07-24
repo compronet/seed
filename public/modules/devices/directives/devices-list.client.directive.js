@@ -9,7 +9,6 @@
 			restrict: 'E',
 			replace: true,
 			scope: {
-				devices: '=',
 				onDeviceSelect: '&',
 				selected: '=',
 				searchText: '=',
@@ -25,7 +24,8 @@
 					}
 				}
 
-				vm.devices.$promise.then(function() {
+				Devices.onNotificationList(function(devices) {
+					vm.devices = devices;
 					angular.forEach(vm.devices, function(device) {
 						Devices.setPingHandlerList(device.ip, function(pingData) {
 							device.error = pingData.error;

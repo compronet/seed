@@ -11,19 +11,23 @@
 
 			vm.authFiltered = false;
 
-			vm.loadAll = loadAll;
 			vm.reload = reload;
 			vm.select = select;
 			vm.create = create;
-
-			function loadAll() {
-				vm.devices = Devices.getRestApi().query();
-			}
+			loadDevices();
 
 			function reload() {
-				loadAll();
-				vm.selected = {};
+				//loadAll();
+				//vm.selected = {};
 				$state.go('devices');
+				loadDevices();
+			}
+
+			function loadDevices() {
+				vm.devices = Devices.getRestApi().query();
+				vm.devices.$promise.then(function(devices) {
+					Devices.notifyList(devices);
+				});
 			}
 
 			function select(selectedApp) {

@@ -29,9 +29,11 @@
 		var service = {
 			getRestApi: getRestApi,
 			notify: notify,
+			notifyList: notifyList,
 			setPingHandlerList: setPingHandlerList,
 			setPingHandlerView: setPingHandlerView,
 			onNotification: onNotification,
+			onNotificationList: onNotificationList,
 			getApps: getApps
 		};
 
@@ -64,12 +66,22 @@
 			$rootScope.$emit('deviceSelected', device);
 		}
 
+		function notifyList(devices) {
+			$rootScope.$emit('devicesLoaded', devices);
+		}
+
 		function setPingHandlerList(key, handler) {
 			pingHandlersList[key] = handler;
 		}
 
 		function setPingHandlerView(key, handler) {
 			pingHandlersView[key] = handler;
+		}
+
+		function onNotificationList(handler) {
+			$rootScope.$on('devicesLoaded', function(e, devices) {
+				handler(devices);
+			});
 		}
 
 		function onNotification(handler) {
