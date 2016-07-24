@@ -127,7 +127,8 @@
 		"NOAPPTOSELECT": "Uygulama bulunamadı",
 		"SETRELATION": "Cihaz tanımla",
 		"PLEASESELECTAPP": "Uygulama seç",
-		"NORELATEDDEVICE": "Cihaz tanımlanmamış"
+		"NORELATEDDEVICE": "Cihaz tanımlanmamış",
+		"ONLYSHOWAPPSBYUSER":"sadece kendi uygulamalarım"
 	},
 	"devices": {
 		"DEVICES": "Cihazlar",
@@ -137,6 +138,7 @@
 		"CREATENEW": "Yeni cihaz oluştur",
 		"DEVICE": "Cihaz",
 		"IP": "IP",
+		"ONLYSHOWDEVICESBYUSER":"sadece kendi cihazlarım",
 		"NODEVICESTOSELECT": "Cihaz seçeneği bulunamadı",
 		"PLEASESELECTDEVICE": "Lütfen cihaz seçiniz",
 		"NOAPPSRELATED": "Henüz atanmış uygulama yok"

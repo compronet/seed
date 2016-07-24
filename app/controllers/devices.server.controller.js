@@ -124,8 +124,8 @@ exports.deviceByID = function(req, res, next) {
 
 function publishDeviceUpdate(app) {
 	try {
-		var client = app.get('mqtt');
-		client.publish(config.mqtt.rootTopic + '/device/update', JSON.stringify({ message: 'test' }));
+		var mqttClient = app.get('mqttClient');
+		mqttClient.publish(config.mqtt.rootTopic + '/device/update', JSON.stringify({ message: 'test' }));
 	} catch (e) {
 		console.log(e);
 	}

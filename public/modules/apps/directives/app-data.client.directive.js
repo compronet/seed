@@ -3,10 +3,10 @@
  */
 (function() {
 	'use strict';
-	angular.module('apps').directive('appData', ['$log', '$uibModal', 'appConstants', 'languageService', appData]);
+	angular.module('apps').directive('appData', ['$log', '$uibModal', 'appConstants', 'Language', appData]);
 
-	//appData.$inject = ['$log', '$uibModal', 'appConstants', 'languageService'];
-	function appData($log, $uibModal, appConstants, languageService) {
+	//appData.$inject = ['$log', '$uibModal', 'appConstants', 'Language'];
+	function appData($log, $uibModal, appConstants, Language) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -17,8 +17,8 @@
 			controller: function() {
 				var vm = this;
 				vm.deviceSelection = deviceSelection;
-				vm.languages = languageService.getAvailable();
-				vm.descLang = languageService.getSelected();
+				vm.languages = Language.getAvailable();
+				vm.descLang = Language.getSelected();
 
 				function deviceSelection(size) {
 					var modalInstance = $uibModal.open({

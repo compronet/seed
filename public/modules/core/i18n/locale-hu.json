@@ -127,7 +127,8 @@
 		"NOAPPTOSELECT": "Nem található kiválasztható eszköz",
 		"SETRELATION": "Kapcsolat beállítása",
 		"PLEASESELECTAPP": "Kérem válasszon egy alkalmazást",
-		"NORELATEDDEVICE": "Még nincs kapcsolódó eszköz"
+		"NORELATEDDEVICE": "Még nincs kapcsolódó eszköz",
+		"ONLYSHOWAPPSBYUSER":"only own apps"
 	},
 	"devices": {
 		"DEVICES": "Eszközök",
@@ -137,6 +138,7 @@
 		"CREATENEW": "Eszköz létrehozása",
 		"DEVICE": "Eszköz",
 		"IP": "IP",
+		"ONLYSHOWDEVICESBYUSER":"only own devices",
 		"NODEVICESTOSELECT": "Nem található kiválasztható eszköz",
 		"PLEASESELECTDEVICE": "Kérem válasszon egy eszközt",
 		"NOAPPSRELATED": "Még nincs kapcsolódó alkalmazás"

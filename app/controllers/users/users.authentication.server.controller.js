@@ -37,6 +37,13 @@ exports.signup = function(req, res) {
 				done(err, admins);
 			});
 		},
+
+		function saveUser(admins, done) {
+			user.save(function (err) {
+				done(err, admins);
+			});
+		},
+
 		function renderEmailTemplate(admins, done) {
 			res.render('templates/admin-notification-email', {
 				appName: config.app.title,
@@ -48,25 +55,25 @@ exports.signup = function(req, res) {
 				done(err, admins, emailTemplateHTML);
 			});
 		},
+
 		function sendEmailToAllAdmins(admins, emailTemplateHTML, done) {
 			var smtpTransport = nodemailer.createTransport(config.mailer.options);
 			var mailOptions = {
-				to: admins.map(function (admin) {
-					return admin.email;
-				}),
+				to: admins.map(
+					function (admin) {
+						return admin.email;
+					}
+				),
 				from: config.mailer.from,
 				subject: 'New User',
 				html: emailTemplateHTML
 			};
-			smtpTransport.sendMail(mailOptions, function (err) {
-				done(err);
-			});
-		},
-		function saveUser(done) {
-			user.save(function (err) {
+			smtpTransport.sendMail(mailOptions, function (err/*, info*/) {
+				//console.log('Message sent: ' + info.response);
 				done(err);
 			});
 		}
+
 	], function (err) {
 		if (err) {
 			return res.status(400).send({

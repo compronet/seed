@@ -86,7 +86,16 @@
 				this.validateMenuExistance(menuId);
 
 				// Push new menu item
-				this.menus[menuId].items.push({
+				this.menus[menuId].items.push(this.getMenuItem(menuId, menuItemTitle, menuItemURL, menuItemType,
+					menuItemUIRoute, isPublic, roles, position, iconClass));
+
+				// Return the menu object
+				return this.menus[menuId];
+			};
+
+			this.getMenuItem = function(menuId, menuItemTitle, menuItemURL, menuItemType, menuItemUIRoute, isPublic,
+										roles, position, iconClass) {
+				return {
 					title: menuItemTitle,
 					link: menuItemURL,
 					menuItemType: menuItemType || 'item',
@@ -98,11 +107,9 @@
 					position: position || 0,
 					iconClass: iconClass || 'fa-laptop',
 					items: [],
+					inSearch:true,
 					shouldRender: shouldRender
-				});
-
-				// Return the menu object
-				return this.menus[menuId];
+				};
 			};
 
 			// Add submenu item object
@@ -167,8 +174,8 @@
 				return this.menus[menuId];
 			};
 
-			//Adding the topbar menu
 			this.addMenu('topbar');
+			this.addMenu('sidebar');
 		}
 	]);
 })();

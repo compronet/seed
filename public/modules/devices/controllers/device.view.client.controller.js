@@ -36,6 +36,11 @@
 					vm.authedData = AppHelper.authData(device);
 					vm.loading.device = false;
 
+					Devices.setPingHandlerView(device.ip, function (pingData) {
+						vm.pingError = pingData.error;
+						updateChart(pingData.ping);
+					});
+
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;
 						vm.apps = apps;
@@ -51,16 +56,6 @@
 				});
 			}
 
-			Devices.setPingHandler('DeviceViewController', pingHandler);
-			function pingHandler(ping) {
-				if (ping && vm.device) {
-					if (ping.target === vm.device.ip) {
-						vm.pingError = ping.error;
-						updateChart(ping.diff);
-					}
-				}
-			}
-
 			// REALTIME
 			// -----------------------------------
 			vm.realTimeOptions = {
@@ -69,7 +64,7 @@
 					shadowSize: 0 // Drawing is faster without shadows
 				},
 				grid: {
-					show:false,
+					show: false,
 					borderWidth: 0,
 					minBorderMargin: 20,
 					labelMargin: 10

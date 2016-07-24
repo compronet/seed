@@ -18,9 +18,16 @@ module.exports = {
 			'public/modules/*/tests/*.js'
 		]
 	},
+	pubsubsettings: {
+		//using ascoltatore
+		type: 'mongo',
+		url: 'mongodb://localhost:27017/mqtt',
+		pubsubCollection: 'ascoltatori',
+		mongo: {}
+	},
 	mqtt:{
 		rootTopic:'seedApp',
-		url:'compronet.io'
+		url:'localhost'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
@@ -50,7 +57,8 @@ module.exports = {
 	mailer: {
 		from: process.env.MAILER_FROM || 'MAILER_FROM',
 		options: {
-			service: process.env.MAILER_SERVICE_PROVIDER || 'MAILER_SERVICE_PROVIDER',
+			host: process.env.MAILER_SERVICE_HOST || 'MAILER_SERVICE_HOST',
+			port: process.env.MAILER_SERVICE_PORT || 465,
 			auth: {
 				user: process.env.MAILER_EMAIL_ID || 'MAILER_EMAIL_ID',
 				pass: process.env.MAILER_PASSWORD || 'MAILER_PASSWORD'

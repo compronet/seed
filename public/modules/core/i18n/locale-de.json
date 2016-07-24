@@ -127,7 +127,8 @@
 		"NOAPPTOSELECT": "Keine Anwendungen zur Auswahl verfügbar",
 		"SETRELATION": "Set Beziehung",
 		"PLEASESELECTAPP": "Bitte wählen Sie eine Anwendung aus",
-		"NORELATEDDEVICE": "Kein Gerät zugeordnet"
+		"NORELATEDDEVICE": "Kein Gerät zugeordnet",
+		"ONLYSHOWAPPSBYUSER":"nur eigene Anwendungen"
 	},
 	"devices": {
 		"DEVICES": "Geräte",
@@ -138,6 +139,7 @@
 		"DEVICE": "Gerät",
 		"IP": "IP",
 		"NODEVICESTOSELECT": "Keine Geräte zur Auswahl verfügbar",
+		"ONLYSHOWDEVICESBYUSER":"nur eigene Geräte",
 		"PLEASESELECTDEVICE": "Bitte wählen Sie ein Gerät aus",
 		"NOAPPSRELATED": "Noch keine Anwendungen zugeordnet"
 	},

@@ -20,7 +20,7 @@ var config = require('./config');
 var consolidate = require('consolidate');
 var path = require('path');
 
-module.exports = function(db) {
+module.exports = function(db, mqttClient) {
 	// Initialize express app
 	var app = express();
 	var mongoStore = new MongoStore({
@@ -169,11 +169,15 @@ module.exports = function(db) {
 		return httpsServer;
 	}
 
+	if (mqttClient) {
+		app.set('mqttClient', mqttClient);
+	}
+
 	// Configure Socket.io
 	// Load the Socket.io configuration and return server object
 	// NOTE Socket.io function is not needed for testing
 	if (process.env.NODE_ENV !== 'test') {
-		return require('./socket.io')(app, mongoStore);
+		return require('./socket.io')(app, mqttClient, mongoStore);
 	}
 
 	// Return Express server instance

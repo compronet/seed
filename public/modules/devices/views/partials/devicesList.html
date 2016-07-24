@@ -3,10 +3,14 @@
         <a data-ng-repeat="device in devicesListCtrl.devices
             | filter: devicesListCtrl.searchText
             | auth: devicesListCtrl.authFiltered"
-            data-ng-click="devicesListCtrl.selectFn(device)" class="list-group-item" ng-class="{active: device._id === devicesListCtrl.selected._id}">
+            data-ng-click="devicesListCtrl.selectFn(device)" class="list-group-item" ng-class="{active: device._id === devicesListCtrl.selected._id}"
+            title="{{device.error.message}}">
             <h4 class="list-group-item-heading">
-                <span data-ng-bind="device.manufacturer"></span> <span data-ng-bind="device.model"></span>
-                <i ng-class="device.isReady?'pull-right fa fa-circle text-green':'pull-right fa fa-circle text-red'"></i>
+                <span data-ng-bind="device.ip"></span>
+                <span class="pull-right">
+                    <small class="label label-default">{{device.manufacturer}} {{device.model}}&nbsp;<i ng-class="device.isReady?'fa fa-circle text-green':'fa fa-circle text-red'"></i>&nbsp;</small>
+
+                </span>
             </h4>
         </a>
     </div>

@@ -25,18 +25,15 @@
 					}
 				}
 
-				function pingHandler(ping) {
-					var filtered = _.filter(vm.devices, { ip: ping.target });
-					var filteredDevice = filtered[0];
-					var filteredIndex = _.indexOf(vm.devices, filteredDevice);
-					var targetDevice = vm.devices[filteredIndex];
-					if (targetDevice) {
-						targetDevice.isReady = ping.error ? false : true;
-					}
+				vm.devices.$promise.then(function() {
+					angular.forEach(vm.devices, function(device) {
+						Devices.setPingHandlerList(device.ip, function(pingData) {
+							device.error = pingData.error;
+							device.isReady = pingData.isReady;
+						});
+					});
+				});
 
-				}
-
-				Devices.setPingHandler('devicesList', pingHandler);
 			},
 
 			controllerAs: 'devicesListCtrl',

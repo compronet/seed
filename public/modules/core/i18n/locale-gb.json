@@ -127,7 +127,8 @@
 		"NOAPPTOSELECT": "No apps found to select",
 		"SETRELATION": "Set relation",
 		"PLEASESELECTAPP": "Please select an app",
-		"NORELATEDDEVICE": "No device related"
+		"NORELATEDDEVICE": "No device related",
+		"ONLYSHOWAPPSBYUSER":"only own apps"
 	},
 	"devices": {
 		"DEVICES": "Devices",
@@ -137,6 +138,7 @@
 		"CREATENEW": "Create New Device",
 		"DEVICE": "Device",
 		"IP": "IP",
+		"ONLYSHOWDEVICESBYUSER":"only own devices",
 		"NODEVICESTOSELECT": "No devices found to select",
 		"PLEASESELECTDEVICE": "Please select a device",
 		"NOAPPSRELATED": "No related apps yet"

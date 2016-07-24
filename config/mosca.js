@@ -10,8 +10,8 @@ module.exports = function() {
 		console.log('Mosca server is up and running');
 	}); //on init it fires up setup()
 
-	mqttSrv.on('clientConnected', function(/*client*/) {
-		//console.log('client connected', client.id);
+	mqttSrv.on('clientConnected', function(client) {
+		console.log('client connected', client.id);
 	});
 
 	// fired when a message is received

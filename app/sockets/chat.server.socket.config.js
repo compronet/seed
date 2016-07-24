@@ -1,7 +1,7 @@
 'use strict';
 
 // Create the chat configuration
-module.exports = function(mqttClient, io, socket/*, sessionID*/) {
+module.exports = function(mqttClient, io, socket /*, sessionID*/) {
 	// Emit the status event when a new socket client is connected
 	io.emit('chatMessage', {
 		type: 'status',

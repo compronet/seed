@@ -3,8 +3,8 @@
  */
 (function() {
 	'use strict';
-	angular.module('core').factory('languageService', ['appConstants', languageService]);
-	function languageService(appConstants) {
+	angular.module('core').factory('Language', ['appConstants', Language]);
+	function Language(appConstants) {
 		var selected = '';
 		var method = {
 			setSelected: setSelected,

@@ -1,20 +1,36 @@
 (function() {
 	'use strict';
-	angular.module('devices').factory('Devices', ['$rootScope', '$resource', '$q', 'Socket', Devices]);
-	function Devices($rootScope, $resource, $q, Socket) {
-
-		var onPingHandlers = [];
+	angular.module('devices').factory('Devices', ['$rootScope', '$resource', '$q', '_', 'Socket', Devices]);
+	function Devices($rootScope, $resource, $q, _, Socket) {
+		var pingHandlersList = [];
+		var pingHandlersView = [];
 		var rootTopic = rootTopic || 'seedApp';
+
 		Socket.on(rootTopic + '/device/ping', function (message) {
-			for (var key in onPingHandlers) {
-				onPingHandlers[key](message.ping);
+			var pingData = {
+				ip: message.ping.target,
+				ping: message.ping.diff,
+				isReady: (message.ping.error && message.ping.error !== '') ? false : true,
+				error: message.ping.error || null
+			};
+
+			var targetFnList = pingHandlersList[message.ping.target];
+			if (angular.isFunction(targetFnList)) {
+				targetFnList(pingData);
 			}
+
+			var targetFnView = pingHandlersView[message.ping.target];
+			if (angular.isFunction(targetFnView)) {
+				targetFnView(pingData);
+			}
+
 		});
 
 		var service = {
 			getRestApi: getRestApi,
 			notify: notify,
-			setPingHandler:setPingHandler,
+			setPingHandlerList: setPingHandlerList,
+			setPingHandlerView: setPingHandlerView,
 			onNotification: onNotification,
 			getApps: getApps
 		};
@@ -48,8 +64,12 @@
 			$rootScope.$emit('deviceSelected', device);
 		}
 
-		function setPingHandler(key, handler) {
-			onPingHandlers[key] = handler;
+		function setPingHandlerList(key, handler) {
+			pingHandlersList[key] = handler;
+		}
+
+		function setPingHandlerView(key, handler) {
+			pingHandlersView[key] = handler;
 		}
 
 		function onNotification(handler) {
