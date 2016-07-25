@@ -28,12 +28,10 @@
 
 		var service = {
 			getRestApi: getRestApi,
-			notify: notify,
 			notifyList: notifyList,
 			notifyUpdated: notifyUpdated,
 			setPingHandlerList: setPingHandlerList,
 			setPingHandlerView: setPingHandlerView,
-			onNotification: onNotification,
 			onNotificationUpdated: onNotificationUpdated,
 			onNotificationList: onNotificationList,
 			getApps: getApps
@@ -64,10 +62,6 @@
 			return deferred.promise;
 		}
 
-		function notify(device) {
-			$rootScope.$emit('deviceSelected', device);
-		}
-
 		function notifyList(devices) {
 			$rootScope.$emit('devicesLoaded', devices);
 		}
@@ -87,12 +81,6 @@
 		function onNotificationList(handler) {
 			$rootScope.$on('devicesLoaded', function(e, devices) {
 				handler(devices);
-			});
-		}
-
-		function onNotification(handler) {
-			$rootScope.$on('deviceSelected', function(e, device) {
-				handler(device);
 			});
 		}
 

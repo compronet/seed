@@ -15,7 +15,6 @@
 			vm.create = create;
 
 			function cancel() {
-				Devices.notify();
 				$state.go('devices');
 			}
 
@@ -24,7 +23,6 @@
 				newDevice.description = vm.device.description;
 				newDevice.$save(
 					function(device) {
-						Devices.notify(device);
 						Devices.notifyUpdated(device);
 						$state.go('devices.view', {
 							deviceId: device._id

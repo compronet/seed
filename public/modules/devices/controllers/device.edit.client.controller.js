@@ -23,7 +23,6 @@
 				}, function(device) {
 					vm.loading.device = false;
 					vm.device = device;
-					Devices.notify(device);
 					deferred.resolve(device);
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;

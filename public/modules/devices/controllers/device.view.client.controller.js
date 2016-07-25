@@ -24,7 +24,6 @@
 			}
 
 			function closeDevice() {
-				Devices.notify();
 				Devices.notifyUpdated();
 				$state.go('devices');
 			}
@@ -45,7 +44,6 @@
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;
 						vm.apps = apps;
-						Devices.notify(device);
 					});
 
 				});

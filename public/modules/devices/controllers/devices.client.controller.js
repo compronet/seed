@@ -17,14 +17,11 @@
 			loadDevices();
 
 			function reload() {
-				//loadAll();
-				//vm.selected = {};
 				$state.go('devices');
 				loadDevices();
 			}
 
-			Devices.onNotificationUpdated(function(device) {
-				console.log(device);
+			Devices.onNotificationUpdated(function(/*device*/) {
 				loadDevices();
 			});
 
@@ -45,23 +42,6 @@
 				vm.selected = {};
 				$state.go('devices.create');
 			}
-
-			Devices.onNotification(function(device) {
-				if (device) {
-					var deviceUpdate = _.find(vm.devices, {
-						_id: device._id
-					});
-					if (deviceUpdate) {
-						_.assign(deviceUpdate, device);
-					} else {
-						vm.devices.push(device);
-					}
-
-					vm.selected = device;
-				} else {
-					reload();
-				}
-			});
 
 		}
 	]);
