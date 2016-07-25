@@ -23,7 +23,6 @@
 				}, function(device) {
 					vm.loading.device = false;
 					vm.device = device;
-					Devices.notify(device);
 					deferred.resolve(device);
 					Devices.getApps(device._id).then(function(apps) {
 						vm.loading.apps = false;
@@ -42,6 +41,7 @@
 				deferred.promise.then(function(device) {
 					device.$update(
 						function() {
+							Devices.notifyUpdated(device);
 							$state.go('devices.view', {
 								deviceId: device._id
 							});

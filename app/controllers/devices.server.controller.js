@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
- var _ = require('lodash');
+var _ = require('lodash');
 var Promise = require('bluebird');
 Promise.config({
 	// Enables all warnings except forgotten return statements.
@@ -20,16 +20,16 @@ var config = require('../../config/config');
  * Create a new element
  */
 exports.create = function(req, res) {
-	publishDeviceUpdate(req.app);
+
 	if (typeof req.body.apps !== 'undefined') {
 		var deviceId = mongoose.Types.ObjectId();
 		var appIds = _.map(req.body.apps, '_id');
 		handleApps(deviceId, appIds, function() {
 			req.body._id = deviceId;
-			baseController.create(req, res, Collection);
+			baseController.create(req, res, Collection, updated);
 		});
 	} else {
-		baseController.create(req, res, Collection);
+		baseController.create(req, res, Collection, updated);
 	}
 };
 
@@ -44,17 +44,22 @@ exports.read = function(req, res) {
  * Update an element
  */
 exports.update = function(req, res) {
-	publishDeviceUpdate(req.app);
 	if (typeof req.body.apps !== 'undefined') {
 		var deviceId = req.body._id;
 		var appIds = _.map(req.body.apps, '_id');
 		handleApps(deviceId, appIds, function() {
-			baseController.update(req, res);
+			baseController.update(req, res, updated);
 		});
 	} else {
-		baseController.update(req, res);
+		baseController.update(req, res, updated);
 	}
 };
+
+var updated = function(result, req, res) {
+		res.jsonp(result);
+		publishDeviceUpdate(req.app);
+
+	};
 
 function handleApps(deviceId, appIds, next) {
 	var App = mongoose.model('App');
@@ -81,10 +86,7 @@ function handleApps(deviceId, appIds, next) {
  * Delete an element
  */
 exports.delete = function(req, res) {
-	baseController.delete(req, res, function(result) {
-		publishDeviceUpdate(req.app);
-		res.jsonp(result);
-	});
+	baseController.delete(req, res, updated);
 };
 
 /**

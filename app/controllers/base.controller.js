@@ -42,7 +42,7 @@ exports.create = function(req, res, Collection, resolveFn, errFn) {
 	element.saveAsync()
 		.then(function(result) {
 			if (resolveFn) {
-				resolveFn(result);
+				resolveFn(result, req, res);
 			} else {
 				res.jsonp(result);
 			}
@@ -65,7 +65,7 @@ exports.update = function(req, res, resolveFn, errFn) {
 	element.saveAsync()
 		.then(function(result) {
 			if (resolveFn) {
-				resolveFn(result);
+				resolveFn(result, req, res);
 			} else {
 				res.jsonp(result);
 			}
@@ -89,7 +89,7 @@ exports.delete = function(req, res, resolveFn, errFn) {
 	element.removeAsync()
 		.then(function(result) {
 			if (resolveFn) {
-				resolveFn(result);
+				resolveFn(result, req, res);
 			} else {
 				res.jsonp(result);
 			}
@@ -110,7 +110,7 @@ exports.list = function(req, res, query, resolveFn, errFn) {
 	query.execAsync()
 		.then(function(elements) {
 			if (resolveFn) {
-				resolveFn(elements);
+				resolveFn(elements, req, res);
 			} else {
 				res.jsonp(elements);
 			}
@@ -134,7 +134,7 @@ exports.count = function(req, res, query, resolveFn, errFn) {
 				count: count
 			};
 			if (resolveFn) {
-				resolveFn(countRes);
+				resolveFn(countRes, req, res);
 			} else {
 				res.jsonp(countRes);
 			}
