@@ -30,9 +30,11 @@
 			getRestApi: getRestApi,
 			notify: notify,
 			notifyList: notifyList,
+			notifyUpdated: notifyUpdated,
 			setPingHandlerList: setPingHandlerList,
 			setPingHandlerView: setPingHandlerView,
 			onNotification: onNotification,
+			onNotificationUpdated: onNotificationUpdated,
 			onNotificationList: onNotificationList,
 			getApps: getApps
 		};
@@ -70,6 +72,10 @@
 			$rootScope.$emit('devicesLoaded', devices);
 		}
 
+		function notifyUpdated(device) {
+			$rootScope.$emit('deviceUpdated', device);
+		}
+
 		function setPingHandlerList(key, handler) {
 			pingHandlersList[key] = handler;
 		}
@@ -86,6 +92,12 @@
 
 		function onNotification(handler) {
 			$rootScope.$on('deviceSelected', function(e, device) {
+				handler(device);
+			});
+		}
+
+		function onNotificationUpdated(handler) {
+			$rootScope.$on('deviceUpdated', function(e, device) {
 				handler(device);
 			});
 		}

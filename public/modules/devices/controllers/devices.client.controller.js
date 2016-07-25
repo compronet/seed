@@ -23,6 +23,11 @@
 				loadDevices();
 			}
 
+			Devices.onNotificationUpdated(function(device) {
+				console.log(device);
+				loadDevices();
+			});
+
 			function loadDevices() {
 				vm.devices = Devices.getRestApi().query();
 				vm.devices.$promise.then(function(devices) {

@@ -42,6 +42,7 @@
 				deferred.promise.then(function(device) {
 					device.$update(
 						function() {
+							Devices.notifyUpdated(device);
 							$state.go('devices.view', {
 								deviceId: device._id
 							});

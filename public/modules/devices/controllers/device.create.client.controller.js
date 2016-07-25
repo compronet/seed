@@ -23,10 +23,11 @@
 				var newDevice = new(Devices.getRestApi())(vm.device);
 				newDevice.description = vm.device.description;
 				newDevice.$save(
-					function(response) {
-						Devices.notify(response);
+					function(device) {
+						Devices.notify(device);
+						Devices.notifyUpdated(device);
 						$state.go('devices.view', {
-							deviceId: response._id
+							deviceId: device._id
 						});
 						clear();
 					},

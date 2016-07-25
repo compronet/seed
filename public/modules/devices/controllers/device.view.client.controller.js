@@ -25,6 +25,7 @@
 
 			function closeDevice() {
 				Devices.notify();
+				Devices.notifyUpdated();
 				$state.go('devices');
 			}
 
