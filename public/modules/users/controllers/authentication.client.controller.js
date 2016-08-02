@@ -24,7 +24,6 @@
 			$scope.signin = function() {
 				$http.post('/auth/signin', $scope.credentials).success(function(response) {
 					// If successful we assign the response to the global user model
-					//Authentication.user = response;
 					$scope.authentication.user = response;
 
 					// And redirect to the index page
